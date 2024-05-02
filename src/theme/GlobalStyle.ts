@@ -70,6 +70,10 @@ body{
 	background-color:${(props) => props.theme.bgColor};
 }
 
+a{
+  color : ${(props) => props.theme.titleTextColor}
+}
+
 `;
 
 export default GlobalStyle;
