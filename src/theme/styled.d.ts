@@ -6,8 +6,8 @@ declare module "styled-components" {
     titleTextColor: string;
     bgColor: string;
     normalTextColor: string;
-    BtnLightBgColor: string;
-    btnDarkBgColor: string;
-    btnDarkTextColor: string;
+    btnBBgColor: string;
+    btnABgColor: string;
+    btnATextColor: string;
   }
 }

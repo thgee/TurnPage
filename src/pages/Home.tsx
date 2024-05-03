@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import BestSellerPreview from "../components/BestSellerPreview";
+import BookListItem from "../components/BookList";
+import BookList from "../components/BookList";
 
 const Home = () => {
   return (
@@ -12,7 +14,7 @@ const Home = () => {
         <BestSellerContainer>
           <LeftBracketIcon />
           <BestSellerCarousel>
-            {BestSellerPreviews.map((info) => (
+            {dataBooks.map((info) => (
               <BestSellerPreview bookInfo={info} />
             ))}
           </BestSellerCarousel>
@@ -27,6 +29,7 @@ const Home = () => {
           <Tab>친구들의 독후감</Tab>
           <Tab>현재 판매중인 책</Tab>
         </TabWrap>
+        <BookList />
       </SectionB>
     </Container>
   );
@@ -65,6 +68,9 @@ const BestSellerContainer = styled.div`
 const BestSellerCarousel = styled.div`
   display: flex;
   overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 340px;
   > div {
     margin: 30px;
   }
@@ -79,13 +85,13 @@ const Tab = styled.span`
   text-align: center;
   padding: 10px 0;
   cursor: pointer;
-  background-color: ${(p) => p.theme.btnDarkBgColor};
-  color: ${(p) => p.theme.btnDarkTextColor};
+  background-color: ${(p) => p.theme.btnABgColor};
+  color: ${(p) => p.theme.btnATextColor};
 `;
 
 //  ============ 더미데이터 (API 연결 후 삭제할 것) ===================
 
-const BestSellerPreviews = [
+const dataBooks = [
   {
     img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
     title: "명상 살인",
