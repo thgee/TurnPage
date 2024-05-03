@@ -42,7 +42,7 @@ export default Header;
 const Container = styled.header`
   background-color: ${(p) => p.theme.pointColor};
   height: 56px;
-  width: 100vw;
+  width: 100%;
   border-bottom: 1px solid black;
   display: flex;
 `;
@@ -56,6 +56,7 @@ const RowFlexProto = styled.div`
 
 const RowA = styled(RowFlexProto)`
   flex-grow: 0.3;
+  flex-shrink: 0;
 `;
 const RowB = styled(RowFlexProto)`
   flex-grow: 0.4;
@@ -63,6 +64,7 @@ const RowB = styled(RowFlexProto)`
 
 const RowC = styled(RowFlexProto)`
   flex-grow: 0.3;
+  flex-shrink: 0;
 `;
 
 // 검색창 박스
@@ -82,10 +84,12 @@ const Search = styled.div`
     flex-grow: 1;
     margin: 0 10px;
     outline: none;
+    width: 100%;
   }
 `;
 
 // 돋보기
 const SearchIcon = styled(FaSearch)`
   margin-right: 20px;
+  flex-shrink: 0;
 `;
