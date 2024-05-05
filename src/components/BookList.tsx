@@ -30,17 +30,19 @@ const BookListItem = ({ bookInfo }: IBookInfo) => {
           <img src={bookInfo.img} alt="책 표지" />
         </div>
         <BookInfoWrap>
-          <div>
+          <div className="title-wrap">
             <h1>{bookInfo.title}</h1>
             <h2>{bookInfo.subTtile}</h2>
           </div>
-          <span>{bookInfo.author}</span>
+          <span className="author">{bookInfo.author}</span>
           <div>
-            <span>{bookInfo.publisher}</span>
-            <span>{bookInfo.date}</span>
+            <span className="publisher">{bookInfo.publisher}</span>
+            <span className="date">{bookInfo.date}</span>
           </div>
-          <PiStarFill size={26} />
-          <PiStarBold size={26} />
+          <div className="star-wrap">
+            <PiStarFill size={26} />
+            <PiStarBold size={26} />
+          </div>
         </BookInfoWrap>
       </RowA>
 
@@ -59,24 +61,27 @@ const BookListItem = ({ bookInfo }: IBookInfo) => {
 };
 
 const RowA = styled.div`
-  flex-grow: 0.4;
-  background-color: blue;
+  flex-grow: 1;
+  display: flex;
+  padding: 20px;
 `;
 const RowB = styled.div`
-  flex-grow: 0.6;
+  flex-grow: 0.3;
   display: flex;
-  background-color: red;
   align-items: center;
+  justify-content: space-between;
 
   .price-wrap {
     flex-grow: 1;
     text-align: end;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0.3;
   }
 
   .btn-wrap {
     // ButtonA
     padding: 20px;
-
     > button {
       display: block;
       margin: 10px 0;
@@ -88,17 +93,46 @@ const BookItemContainer = styled.li`
   width: 100%;
   border: 1px solid ${(p) => p.theme.titleTextColor};
   border-radius: 20px;
-  margin: 30px 0;
   padding: 10px 20px;
   display: flex;
+  max-width: 1500px;
+  margin: 30px auto;
 `;
 
 const BookInfoWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-left: 10px;
+  justify-content: space-between;
+
+  .title-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
   // title
   h1 {
+    font-weight: 500;
+    font-size: 1.4rem;
   }
   // subtitle
   h2 {
+    align-self: end;
+    flex-grow: 1;
+    margin-left: 6px;
+    color: #888;
+  }
+
+  .author,
+  .publisher,
+  .date {
+    color: #888;
+  }
+
+  .star-wrap {
+    display: flex;
+    margin-top: 24px;
   }
 `;
 
