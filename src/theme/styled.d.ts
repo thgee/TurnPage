@@ -10,5 +10,12 @@ declare module "styled-components" {
     btnABgColor: string;
     btnATextColor: string;
     btnBTextColor: string;
+
+    homeTab: {
+      tabActiveBgColor: string;
+      tabActiveTextColor: string;
+      tabInactiveBgColor: string;
+      tabInactiveTextColor: string;
+    };
   }
 }
