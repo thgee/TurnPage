@@ -9,5 +9,6 @@ declare module "styled-components" {
     btnBBgColor: string;
     btnABgColor: string;
     btnATextColor: string;
+    btnBTextColor: string;
   }
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { PiStarBold, PiStarFill } from "react-icons/pi";
 import ButtonA from "./ButtonA";
+
 // ==================== BookList =================
 
 const BookList = () => {
@@ -23,6 +24,19 @@ const BookListContainer = styled.ul`
 // ==================== BookListItem =================
 
 const BookListItem = ({ bookInfo }: IBookInfo) => {
+  const getStar = (num: number) => {
+    const stars = [];
+    for (let _ = 0; _ < num; _++) {
+      stars.push(<PiStarFill size={26} />);
+    }
+
+    for (let _ = 0; _ < 5 - num; _++) {
+      stars.push(<PiStarBold size={26} />);
+    }
+
+    return stars;
+  };
+
   return (
     <BookItemContainer>
       <RowA>
@@ -39,10 +53,7 @@ const BookListItem = ({ bookInfo }: IBookInfo) => {
             <span className="publisher">{bookInfo.publisher}</span>
             <span className="date">{bookInfo.date}</span>
           </div>
-          <div className="star-wrap">
-            <PiStarFill size={26} />
-            <PiStarBold size={26} />
-          </div>
+          <div className="star-wrap">{getStar(bookInfo.grade)}</div>
         </BookInfoWrap>
       </RowA>
 
@@ -72,6 +83,7 @@ const RowB = styled.div`
   justify-content: space-between;
 
   .price-wrap {
+    align-items: center;
     flex-grow: 1;
     text-align: end;
     display: flex;
@@ -85,6 +97,17 @@ const RowB = styled.div`
     > button {
       display: block;
       margin: 10px 0;
+    }
+  }
+
+  // BookListItem 작아졌을 때
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: center;
+
+    .price-wrap {
+      width: 100%;
+      justify-content: space-around;
     }
   }
 `;
@@ -132,7 +155,8 @@ const BookInfoWrap = styled.div`
 
   .star-wrap {
     display: flex;
-    margin-top: 24px;
+    flex-grow: 0.6;
+    align-items: center;
   }
 `;
 
