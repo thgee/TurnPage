@@ -69,7 +69,7 @@ body{
   color : ${(props) => props.theme.textColor};
 	background-color:${(props) => props.theme.bgColor};
   min-width: 800px;
-  margin-top : 56px
+  margin-top : 56px;
 }
 
 a{

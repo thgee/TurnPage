@@ -47,6 +47,7 @@ const Container = styled.header`
   display: flex;
   position: fixed;
   top: 0;
+  left: 0;
 `;
 
 // 헤더 3등분 flex 원형

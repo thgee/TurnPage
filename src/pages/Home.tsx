@@ -52,7 +52,9 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div``;
+
 const SectionA = styled.div`
+  padding: 30px;
   .title {
     font-weight: 700;
     font-size: 2rem;
@@ -102,9 +104,13 @@ const Tab = styled.span<{ isClick: boolean }>`
   padding: 10px 0;
   cursor: pointer;
   background-color: ${(p) =>
-    p.isClick ? p.theme.btnABgColor : p.theme.btnBBgColor};
+    p.isClick
+      ? p.theme.homeTab.tabActiveBgColor
+      : p.theme.homeTab.tabInactiveBgColor};
   color: ${(p) => (p) =>
-    p.isClick ? p.theme.btnATextColor : p.theme.btnBTextColor};
+    p.isClick
+      ? p.theme.homeTab.tabActiveTextColor
+      : p.theme.tabInactiveTextColor};
 `;
 
 //  ============ 더미데이터 (API 연결 후 삭제할 것) ===================
