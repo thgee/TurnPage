@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import BestSellerPreview from "../components/BestSellerPreview";
-import BookListItem from "../components/BookList";
 import BookList from "../components/BookList";
 import { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
@@ -15,15 +17,8 @@ const Home = () => {
       <SectionA>
         <h1 className="title">베스트 셀러</h1>
 
-        <BestSellerContainer>
-          <LeftBracketIcon />
-          <BestSellerCarousel>
-            {dataBooks.map((info) => (
-              <BestSellerPreview bookInfo={info} />
-            ))}
-          </BestSellerCarousel>
-          <RightBracketIcon />
-        </BestSellerContainer>
+        {/* carousel */}
+        <BestSellerCarousel bestSellers={dataBooks} />
       </SectionA>
 
       {/* 독후감, 판매중인책*/}
@@ -62,37 +57,6 @@ const SectionA = styled.div`
 `;
 const SectionB = styled.div``;
 
-const LeftBracketIcon = styled(FaAngleLeft)`
-  height: 50px;
-  width: 50px;
-  color: ${(p) => p.theme.titleTextColor};
-  cursor: pointer;
-  flex-shrink: 0;
-`;
-const RightBracketIcon = styled(FaAngleRight)`
-  height: 50px;
-  width: 50px;
-  color: ${(p) => p.theme.titleTextColor};
-  cursor: pointer;
-  flex-shrink: 0;
-`;
-const BestSellerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const BestSellerCarousel = styled.div`
-  display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  height: 340px;
-  > div {
-    margin: 30px;
-  }
-`;
-
 const TabWrap = styled.div`
   display: flex;
 `;
@@ -113,6 +77,83 @@ const Tab = styled.span<{ isClick: boolean }>`
       : p.theme.tabInactiveTextColor};
 `;
 
+// ============= 베스트셀러 Carousel ====================
+
+// 버튼 커스텀
+const LeftBracketIcon = ({ className, onClick }: IBracketIconProps) => {
+  return <LeftBracketIconContainer className={className} onClick={onClick} />;
+};
+
+const RightBracketIcon = ({ className, onClick }: IBracketIconProps) => {
+  return <RightBracketIconContainer className={className} onClick={onClick} />;
+};
+
+interface IBracketIconProps {
+  className?: string;
+  onClick?: any;
+}
+
+const LeftBracketIconContainer = styled(FaAngleLeft)`
+  height: 50px;
+  width: 50px;
+  color: ${(p) => p.theme.titleTextColor} !important;
+  flex-shrink: 0;
+`;
+const RightBracketIconContainer = styled(FaAngleRight)`
+  height: 50px;
+  width: 50px;
+  color: ${(p) => p.theme.titleTextColor} !important;
+  flex-shrink: 0;
+`;
+
+// 캐러셀 세팅
+const BestSellerCarousel = ({ bestSellers }: { bestSellers: any[] }) => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    nextArrow: <RightBracketIcon />,
+    prevArrow: <LeftBracketIcon />,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  return (
+    <div className="slider-container" style={{ margin: "50px 0" }}>
+      <Slider {...settings}>
+        {bestSellers.map((info) => (
+          <BestSellerPreview bookInfo={info} />
+        ))}
+      </Slider>
+    </div>
+  );
+};
 //  ============ 더미데이터 (API 연결 후 삭제할 것) ===================
 
 const dataBooks = [
