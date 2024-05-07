@@ -59,7 +59,6 @@ const BookListItem = ({ bookInfo, mode }: IBookListItemProps) => {
           <div className="star-wrap">{getStar(bookInfo.grade)}</div>
         </BookInfoWrap>
       </RowA>
-
       <RowB>
         <div className="price-wrap">
           <span>상태: {bookInfo.state}</span>
@@ -90,7 +89,6 @@ const BookListItem = ({ bookInfo, mode }: IBookListItemProps) => {
 const RowA = styled.div`
   flex-grow: 1;
   display: flex;
-  padding: 20px;
 `;
 const RowB = styled.div`
   flex-grow: 0.3;

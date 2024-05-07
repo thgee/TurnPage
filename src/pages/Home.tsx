@@ -6,20 +6,28 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRecoilState } from "recoil";
+import { bestSellerVisibleState } from "../atoms";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
   const [tabState, SetTabState] = useState("report");
 
+  const [bestSellerVisible, setBestSellerVisible] = useRecoilState(
+    bestSellerVisibleState
+  );
+
   return (
     <Container>
       {/* 베스트셀러 */}
-      <SectionA>
-        <h1 className="title">베스트 셀러</h1>
+      {bestSellerVisible && (
+        <SectionA>
+          <h1 className="title">베스트 셀러</h1>
 
-        {/* carousel */}
-        <BestSellerCarousel bestSellers={dataBooks} />
-      </SectionA>
+          {/* carousel */}
+          <BestSellerCarousel bestSellers={dataBooks} />
+        </SectionA>
+      )}
 
       {/* 독후감, 판매중인책*/}
       <SectionB>
@@ -59,6 +67,18 @@ const SectionB = styled.div``;
 
 const TabWrap = styled.div`
   display: flex;
+  position: sticky;
+  top: 65px;
+
+  // 탭 버튼 위쪽 공간에 backdrop filter을 주기 위함
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 65px; /* 또는 원하는 높이 */
+    top: -65px; /* 탭 위로 이동하여 탭 아래에 배치 */
+    backdrop-filter: blur(10px); /* 원하는 필터 효과를 적용 */
+  }
 `;
 
 const Tab = styled.span<{ isClick: boolean }>`
@@ -80,26 +100,14 @@ const Tab = styled.span<{ isClick: boolean }>`
 // ============= 베스트셀러 Carousel ====================
 
 // 버튼 커스텀
-const LeftBracketIcon = ({ className, onClick }: IBracketIconProps) => {
-  return <LeftBracketIconContainer className={className} onClick={onClick} />;
-};
 
-const RightBracketIcon = ({ className, onClick }: IBracketIconProps) => {
-  return <RightBracketIconContainer className={className} onClick={onClick} />;
-};
-
-interface IBracketIconProps {
-  className?: string;
-  onClick?: any;
-}
-
-const LeftBracketIconContainer = styled(FaAngleLeft)`
+const LeftBracketIcon = styled(FaAngleLeft)`
   height: 50px;
   width: 50px;
   color: ${(p) => p.theme.titleTextColor} !important;
   flex-shrink: 0;
 `;
-const RightBracketIconContainer = styled(FaAngleRight)`
+const RightBracketIcon = styled(FaAngleRight)`
   height: 50px;
   width: 50px;
   color: ${(p) => p.theme.titleTextColor} !important;

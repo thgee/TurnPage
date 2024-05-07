@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { useRecoilState } from "recoil";
+import { bestSellerVisibleState } from "../atoms";
 
 const Header = () => {
+  const [bestSellerVisible, setBestSellerVisible] = useRecoilState(
+    bestSellerVisibleState
+  );
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 한 글자라도 입력하면 bestSeller를 숨겨야 함
+    if (e.target.value.length > 0) setBestSellerVisible(false);
+    else setBestSellerVisible(true);
+  };
+
   return (
     <Container>
       {/* 검색창 왼쪽 */}
@@ -22,7 +34,11 @@ const Header = () => {
       {/* 검색창 */}
       <RowB>
         <Search>
-          <input type="text" placeholder="구매하고 싶은 책을 입력해 주세요" />
+          <input
+            type="text"
+            placeholder="구매하고 싶은 책을 입력해 주세요"
+            onChange={handleSearchInput}
+          />
           <SearchIcon />
         </Search>
       </RowB>
@@ -48,9 +64,10 @@ const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 `;
 
-// 헤더 3등분 flex 원형
+// 헤더 3등분 flex prototype
 const RowFlexProto = styled.div`
   display: flex;
   align-items: center;
