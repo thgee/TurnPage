@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import { useRecoilState } from "recoil";
-import { bestSellerVisibleState } from "../atoms";
+import { searchScrollMoveState } from "../atoms";
 
 const Header = () => {
-  const [bestSellerVisible, setBestSellerVisible] = useRecoilState(
-    bestSellerVisibleState
+  const [searchScrollMove, setSearchScrollMove] = useRecoilState(
+    searchScrollMoveState
   );
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // 한 글자라도 입력하면 bestSeller를 숨겨야 함
-    if (e.target.value.length > 0) setBestSellerVisible(false);
-    else setBestSellerVisible(true);
+    if (e.target.value.length > 0) setSearchScrollMove(true);
+    else setSearchScrollMove(false);
   };
 
   return (
@@ -26,7 +26,7 @@ const Header = () => {
             width="38px"
           />
         </Link>
-        <Link to="#">도서</Link>
+        <Link to="#">베스트셀러</Link>
         <Link to="#">독후감</Link>
         <Link to="#">책방</Link>
       </RowA>
@@ -61,8 +61,8 @@ const Container = styled.header`
   width: 100%;
   border-bottom: 1px solid black;
   display: flex;
-  position: fixed;
-  top: 0;
+  position: sticky;
+  top: 0px;
   left: 0;
   z-index: 10;
 `;

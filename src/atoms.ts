@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const bestSellerVisibleState = atom({
-  key: "bestSellerVisibleState",
-  default: true,
+export const searchScrollMoveState = atom({
+  key: "searchScrollMoveState",
+  default: false,
 });

@@ -8,8 +8,8 @@ import ButtonA from "./ButtonA";
 const BookList = () => {
   return (
     <BookListContainer>
-      {dataBooks.map((info) => (
-        <BookListItem bookInfo={info} mode="home" />
+      {dataBooks.map((info, i) => (
+        <BookListItem key={i} bookInfo={info} mode="home" />
       ))}
     </BookListContainer>
   );

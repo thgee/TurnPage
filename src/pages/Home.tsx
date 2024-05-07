@@ -2,35 +2,45 @@ import styled from "styled-components";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import BestSellerPreview from "../components/BestSellerPreview";
 import BookList from "../components/BookList";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRecoilState } from "recoil";
-import { bestSellerVisibleState } from "../atoms";
+import { searchScrollMoveState } from "../atoms";
+import { scroller } from "react-scroll";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
   const [tabState, SetTabState] = useState("report");
 
-  const [bestSellerVisible, setBestSellerVisible] = useRecoilState(
-    bestSellerVisibleState
+  const [searchScrollMove, setSearchScrollMove] = useRecoilState(
+    searchScrollMoveState
   );
+
+  // search 입력 시 스크롤 이동 로직
+  useEffect(() => {
+    if (searchScrollMove)
+      scroller.scrollTo("searchScrollMove", {
+        duration: 300,
+        smooth: true,
+        offset: -50, // 스크롤 위치 세부조정
+      });
+  }, [searchScrollMove]);
 
   return (
     <Container>
       {/* 베스트셀러 */}
-      {bestSellerVisible && (
-        <SectionA>
-          <h1 className="title">베스트 셀러</h1>
 
-          {/* carousel */}
-          <BestSellerCarousel bestSellers={dataBooks} />
-        </SectionA>
-      )}
+      <SectionA>
+        <h1 className="title">베스트 셀러</h1>
+
+        {/* carousel */}
+        <BestSellerCarousel bestSellers={dataBooks} />
+      </SectionA>
 
       {/* 독후감, 판매중인책*/}
-      <SectionB>
+      <SectionB id="searchScrollMove">
         {/* 탭 버튼 선택 */}
         <TabWrap>
           <Tab
@@ -77,7 +87,7 @@ const TabWrap = styled.div`
     width: 100%;
     height: 65px; /* 또는 원하는 높이 */
     top: -65px; /* 탭 위로 이동하여 탭 아래에 배치 */
-    backdrop-filter: blur(10px); /* 원하는 필터 효과를 적용 */
+    backdrop-filter: blur(8px); /* 원하는 필터 효과를 적용 */
   }
 `;
 
@@ -85,7 +95,7 @@ const Tab = styled.span<{ isClick: boolean }>`
   flex-grow: 0.5;
   border-radius: 8px;
   text-align: center;
-  padding: 10px 0;
+  padding: 14px 0;
   cursor: pointer;
   background-color: ${(p) =>
     p.isClick
@@ -131,23 +141,6 @@ const BestSellerCarousel = ({ bestSellers }: { bestSellers: any[] }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -155,8 +148,8 @@ const BestSellerCarousel = ({ bestSellers }: { bestSellers: any[] }) => {
   return (
     <div className="slider-container" style={{ margin: "50px 0" }}>
       <Slider {...settings}>
-        {bestSellers.map((info) => (
-          <BestSellerPreview bookInfo={info} />
+        {bestSellers.map((info, i) => (
+          <BestSellerPreview key={i} bookInfo={info} />
         ))}
       </Slider>
     </div>
