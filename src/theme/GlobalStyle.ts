@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 // 프리텐다드 폰트
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -68,6 +69,11 @@ body{
   font-family : "Pretendard",  sans-serif ;
   color : ${(props) => props.theme.textColor};
 	background-color:${(props) => props.theme.bgColor};
+  min-width: 800px;
+}
+
+a{
+  color : ${(props) => props.theme.titleTextColor}
 }
 
 `;
