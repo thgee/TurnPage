@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 import { searchScrollMoveState } from "../atoms";
+import KakaoLoginBtn from "./KakaoLoginBtn";
 
 const Header = () => {
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(
@@ -17,6 +18,7 @@ const Header = () => {
 
   return (
     <Container>
+      <KakaoLoginBtn />
       {/* 검색창 왼쪽 */}
       <RowA>
         <Link to="#">
