@@ -1,15 +1,26 @@
 const KakaoLoginBtn = () => {
-  const redirect_uri = "http://localhost:3000/"; //Redirect URI
+  const redirect_uri = `${process.env.REACT_APP_DOMAIN}/loginredirect`; //Redirect URI
   // oauth 요청 URL
-  console.log(process.env.REACT_APP_KAKAO_REST_API_KEY);
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${redirect_uri}&response_type=code`;
   const handleLogin = () => {
     window.location.href = kakaoURL;
   };
   return (
     <>
-      <button onClick={handleLogin}>카카오 로그인</button>
+      <img
+        src={`${process.env.PUBLIC_URL}/assets/kakaoLoginImg.png`}
+        onClick={handleLogin}
+      />
     </>
   );
 };
-export default KakaoLoginBtn;
+
+const Login = () => {
+  return (
+    <>
+      <KakaoLoginBtn />
+    </>
+  );
+};
+
+export default Login;

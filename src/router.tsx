@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import LoginRedirect from "./pages/LoginRedirect";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +14,16 @@ const router = createBrowserRouter([
     // outlet으로 Home부터 나머지 페이지 전부 보여주기
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "loginredirect",
+        element: <LoginRedirect />,
       },
     ],
     errorElement: <NotFound />,
