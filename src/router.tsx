@@ -1,7 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+<<<<<<< Updated upstream
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+=======
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound/NotFound";
+import LoginRedirect from "./pages/Login/LoginRedirect";
+import Login from "./pages/Login/Login";
+>>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   {
