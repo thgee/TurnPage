@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import LoginRedirect from "./pages/LoginRedirect";
-import Login from "./pages/Login";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound/NotFound";
+import LoginRedirect from "./pages/Login/LoginRedirect";
+import Login from "./pages/Login/Login";
 
 const router = createBrowserRouter([
   {
