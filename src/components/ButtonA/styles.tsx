@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  background-color: ${(p) => p.theme.btnABgColor};
-  color: ${(p) => p.theme.btnATextColor};
+  background-color: ${(p) => p.theme.btnColor.btn1Bg};
+  color: ${(p) => p.theme.btnColor.btn1Text};
   border-radius: 4px;
-  font-weight: 600;
   padding: 8px 10px;
   border: none;
   cursor: pointer;

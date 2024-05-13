@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Container } from "./styles";
 import { IButtonAProps } from "./types";
+import { Container } from "./styles";
 
 const ButtonA = ({ children }: IButtonAProps) => {
   return <Container>{children}</Container>;

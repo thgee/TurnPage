@@ -20,6 +20,14 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "loginredirect",
+        element: <LoginRedirect />,
+      },
+      {
         path: "best",
         element: <BestSeller />,
       },

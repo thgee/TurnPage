@@ -81,13 +81,13 @@ a{
 
 body{
   font-family: "Pretendard-light", sans-serif;
-  color : ${(props) => props.theme.textColor};
-	background-color:${(props) => props.theme.bgColor};
+  color : ${(props) => props.theme.commonColor.normalText};
+	background-color:${(props) => props.theme.commonColor.bg};
   min-width: 800px;
 }
 
 a{
-  color : ${(props) => props.theme.titleTextColor}
+  color : ${(props) => props.theme.commonColor.titleText}
 }
 
 `;
