@@ -9,7 +9,7 @@ export const BookListContainer = styled.ul`
   margin: 0 auto;
 `;
 
-// ================= BookListItem ======================
+// ================= BookItem1 ======================
 
 export const RowA = styled.div`
   flex-grow: 1;
@@ -46,7 +46,7 @@ export const RowB = styled.div`
     }
   }
 
-  // BookListItem 작아졌을 때
+  // BookItem1 작아졌을 때
   @media (max-width: 1050px) {
     flex-direction: column;
     justify-content: center;

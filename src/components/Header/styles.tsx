@@ -35,13 +35,15 @@ export const RowC = styled(RowFlexProto)`
 
 // 검색창 박스
 export const Search = styled.div`
-  border-radius: 20px;
+  border-radius: 16px;
   background-color: ${(p) => p.theme.bgColor};
   width: 90%;
   position: relative;
   height: 30px;
   display: flex;
   align-items: center;
+  padding: 20px;
+  box-shadow: inset 2px 2px 5px -3px rgb(10, 10, 10);
 
   // 검색하는 부분
   input {
@@ -56,6 +58,5 @@ export const Search = styled.div`
 
 // 돋보기
 export const SearchIcon = styled(FaSearch)`
-  margin-right: 20px;
   flex-shrink: 0;
 `;

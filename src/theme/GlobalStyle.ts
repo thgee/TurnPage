@@ -4,9 +4,21 @@ const GlobalStyle = createGlobalStyle`
 
 
 
-// 프리텐다드 폰트
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
+@font-face {
+  font-family: "Pretendard-light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+@font-face {
+  font-family: "Pretendard-medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+}
+@font-face {
+  font-family: "Pretendard-bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff")
+    format("woff");
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -68,7 +80,7 @@ a{
 }
 
 body{
-  font-family : "Pretendard",  sans-serif ;
+  font-family: "Pretendard-light", sans-serif;
   color : ${(props) => props.theme.textColor};
 	background-color:${(props) => props.theme.bgColor};
   min-width: 800px;

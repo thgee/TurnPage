@@ -1,13 +1,12 @@
-// ==================== BookListItem =================
-// <책방에서 호출, 홈에서 호출> 2가지 경우로 나뉨 -> mode prop으로 관리
-// mode === home, mode === sell
-
 import { PiStarFill, PiStarBold } from "react-icons/pi";
 import ButtonA from "../ButtonA/ButtonA";
 import BookInfoWrap, { BookItemContainer, RowA, RowB } from "./styles";
-import { IBookListItemProps } from "./types";
+import { IBookItem1Props } from "./types";
 
-const BookListItem = ({ bookInfo, mode }: IBookListItemProps) => {
+// 가격, 버튼 존재하는 아이템 박스
+// <베스트셀러에서 호출, 홈->판매중인 책에서 호출> 2가지 경우로 나뉨 -> mode prop으로 관리
+// mode === best, mode === sell
+const BookItem1 = ({ bookInfo, mode }: IBookItem1Props) => {
   const getStar = (num: number) => {
     const stars = [];
     for (let _ = 0; _ < num; _++) {
@@ -47,11 +46,10 @@ const BookListItem = ({ bookInfo, mode }: IBookListItemProps) => {
         </div>
         <div className="btn-wrap">
           {/* 홈에서 호출한 경우 */}
-          {mode === "home" && (
+          {mode === "best" && (
             <>
-              <ButtonA>중고 책방에서 둘러보기</ButtonA>
-              <ButtonA>책 정보 상세히 보기</ButtonA>
-              <ButtonA>친구가 쓴 독후감 읽어보기</ButtonA>
+              <ButtonA>중고 판매 게시글 살펴보기</ButtonA>
+              <ButtonA>친구들이 쓴 독후감 살펴보기</ButtonA>
             </>
           )}
           {/* 책방에서 호출한 경우 */}
@@ -67,4 +65,4 @@ const BookListItem = ({ bookInfo, mode }: IBookListItemProps) => {
   );
 };
 
-export default BookListItem;
+export default BookItem1;

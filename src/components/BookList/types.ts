@@ -1,4 +1,4 @@
-export interface IBookListItemProps {
+export interface IBookItem1Props {
   bookInfo: {
     img: string;
     title: string;

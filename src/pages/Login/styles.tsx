@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import KakaoLoginBtn from "../../components/LoginBtn/KakaoBtn/KakaoLoginBtn";
-import GoogleLoginBtn from "../../components/LoginBtn/GoogleBtn/GoogleLoginBtn";
 
 export const Container = styled.div`
   height: 100vh;

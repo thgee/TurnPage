@@ -5,6 +5,7 @@ import { searchScrollMoveState } from "../../atoms";
 import { scroller } from "react-scroll";
 import * as Style from "./styles";
 import BestSellerCarousel from "../../components/BestSeller/BestSellerCarousel/BestSellerCarousel";
+import { dataBooks } from "../../dummy/dummy";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
@@ -52,71 +53,10 @@ const Home = () => {
             현재 판매중인 책
           </Style.Tab>
         </Style.TabWrap>
-        <BookList />
+        <BookList mode={tabState} />
       </Style.SectionB>
     </Style.Container>
   );
 };
 
 export default Home;
-
-//  ============ 더미데이터 (API 연결 후 삭제할 것) ===================
-
-const dataBooks = [
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-  {
-    img: `${process.env.PUBLIC_URL}/tmp/bookImg.svg`,
-    title: "명상 살인",
-    desc: "스토리보다 생활 속 명상이 핵심",
-    author: "이태혁",
-    date: "2024년 2월 20일",
-  },
-];

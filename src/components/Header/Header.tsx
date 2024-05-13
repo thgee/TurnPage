@@ -18,16 +18,16 @@ const Header = () => {
     <Style.Container>
       {/* 검색창 왼쪽 */}
       <Style.RowA>
-        <Link to="#">
+        <Link to="/">
           <img
             src={`${process.env.PUBLIC_URL}/assets/logo.svg`}
             alt="logo"
             width="38px"
           />
         </Link>
-        <Link to="#">베스트셀러</Link>
+        <Link to="best">베스트셀러</Link>
         <Link to="#">독후감</Link>
-        <Link to="#">책방</Link>
+        <Link to="sell">책방</Link>
       </Style.RowA>
 
       {/* 검색창 */}
