@@ -5,12 +5,12 @@ import styled from "styled-components";
 export const LeftBracketIcon = styled(FaAngleLeft)`
   height: 50px;
   width: 50px;
-  color: ${(p) => p.theme.titleTextColor} !important;
+  color: ${(p) => p.theme.commonColor.titleText} !important;
   flex-shrink: 0;
 `;
 export const RightBracketIcon = styled(FaAngleRight)`
   height: 50px;
   width: 50px;
-  color: ${(p) => p.theme.titleTextColor} !important;
+  color: ${(p) => p.theme.commonColor.titleText} !important;
   flex-shrink: 0;
 `;

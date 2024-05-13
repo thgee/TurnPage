@@ -35,10 +35,10 @@ export const Tab = styled.span<{ isClick: boolean }>`
   cursor: pointer;
   background-color: ${(p) =>
     p.isClick
-      ? p.theme.homeTab.tabActiveBgColor
-      : p.theme.homeTab.tabInactiveBgColor};
+      ? p.theme.homeTabColor.tabActiveBg
+      : p.theme.homeTabColor.tabInactiveBg};
   color: ${(p) => (p) =>
     p.isClick
-      ? p.theme.homeTab.tabActiveTextColor
-      : p.theme.tabInactiveTextColor};
+      ? p.theme.homeTabColor.tabActiveText
+      : p.theme.homeTabColor.tabInactiveText};
 `;

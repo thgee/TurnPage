@@ -9,7 +9,7 @@ export const BookListContainer = styled.ul`
   margin: 0 auto;
 `;
 
-// ================= BookListItem ======================
+// ================= BookItem1 ======================
 
 export const RowA = styled.div`
   flex-grow: 1;
@@ -46,7 +46,7 @@ export const RowB = styled.div`
     }
   }
 
-  // BookListItem 작아졌을 때
+  // BookItem1 작아졌을 때
   @media (max-width: 1050px) {
     flex-direction: column;
     justify-content: center;
@@ -59,7 +59,7 @@ export const RowB = styled.div`
 
 export const BookItemContainer = styled.li`
   width: 100%;
-  border: 1px solid ${(p) => p.theme.titleTextColor};
+  border: 1px solid ${(p) => p.theme.commonColor.titleText};
   border-radius: 20px;
   padding: 10px 20px;
   display: flex;
@@ -81,7 +81,6 @@ export const BookInfoWrap = styled.div`
 
   // title
   h1 {
-    font-weight: 500;
     font-size: 1.4rem;
   }
   // subtitle

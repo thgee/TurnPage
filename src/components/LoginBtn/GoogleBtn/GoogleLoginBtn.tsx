@@ -1,5 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const GoogleLoginBtn = () => {
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    window.location.href = `${process.env.REACT_APP_DOMAIN}/oauth2/authorization/google`;
+  };
   return (
     <>
       <img

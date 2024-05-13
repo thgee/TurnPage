@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
 export const Container = styled.header`
-  background-color: ${(p) => p.theme.pointColor};
+  background-color: ${(p) => p.theme.commonColor.point};
   height: 56px;
   width: 100%;
   border-bottom: 1px solid black;
@@ -35,17 +35,19 @@ export const RowC = styled(RowFlexProto)`
 
 // 검색창 박스
 export const Search = styled.div`
-  border-radius: 20px;
-  background-color: ${(p) => p.theme.bgColor};
+  border-radius: 16px;
+  background-color: ${(p) => p.theme.commonColor.bg};
   width: 90%;
   position: relative;
   height: 30px;
   display: flex;
   align-items: center;
+  padding: 20px;
+  box-shadow: inset 2px 2px 5px -3px rgb(10, 10, 10);
 
   // 검색하는 부분
   input {
-    background-color: ${(p) => p.theme.bgColor};
+    background-color: ${(p) => p.theme.commonColor.bg};
     border: none;
     flex-grow: 1;
     margin: 0 10px;
@@ -56,6 +58,5 @@ export const Search = styled.div`
 
 // 돋보기
 export const SearchIcon = styled(FaSearch)`
-  margin-right: 20px;
   flex-shrink: 0;
 `;
