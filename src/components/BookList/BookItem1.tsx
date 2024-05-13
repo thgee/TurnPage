@@ -2,11 +2,14 @@ import { PiStarFill, PiStarBold } from "react-icons/pi";
 import ButtonA from "../ButtonA/ButtonA";
 import BookInfoWrap, { BookItemContainer, RowA, RowB } from "./styles";
 import { IBookItem1Props } from "./types";
+import { useNavigate } from "react-router-dom";
 
 // 가격, 버튼 존재하는 아이템 박스
 // <베스트셀러에서 호출, 홈->판매중인 책에서 호출> 2가지 경우로 나뉨 -> mode prop으로 관리
 // mode === best, mode === sell
 const BookItem1 = ({ bookInfo, mode }: IBookItem1Props) => {
+  const navigate = useNavigate();
+
   const getStar = (num: number) => {
     const stars = [];
     for (let _ = 0; _ < num; _++) {
@@ -55,7 +58,11 @@ const BookItem1 = ({ bookInfo, mode }: IBookItem1Props) => {
           {/* 책방에서 호출한 경우 */}
           {mode === "sell" && (
             <>
-              <ButtonA>해당 도서 정보 살펴보기</ButtonA>
+              <ButtonA
+                onClick={() => navigate(`/bookDetail/${bookInfo.title}`)}
+              >
+                해당 도서 정보 살펴보기
+              </ButtonA>
               <ButtonA>판매 게시글 상세히 보기</ButtonA>
             </>
           )}

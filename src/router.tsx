@@ -6,6 +6,7 @@ import LoginRedirect from "./pages/Login/LoginRedirect";
 import Login from "./pages/Login/Login";
 import BestSeller from "./pages/BestSeller/BestSeller";
 import Sell from "./pages/Sell/BestSeller";
+import BookDetail from "./pages/BookDetail/BookDetail";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "sell",
         element: <Sell />,
+      },
+      {
+        path: "bookDetail/:title",
+        element: <BookDetail />,
       },
     ],
     errorElement: <NotFound />,
