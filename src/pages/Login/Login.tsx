@@ -17,6 +17,5 @@ const Login = () => {
     </Style.Container>
   );
 };
-s;
 
 export default Login;
