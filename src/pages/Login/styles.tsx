@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  height: calc(100vh - 56px);
 `;
 export const ColContainer = styled.div`
   height: 100%;
