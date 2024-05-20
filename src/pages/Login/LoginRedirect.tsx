@@ -7,8 +7,9 @@ const LoginRedirect = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // 인가코드
+  // 인가코드, state
   const authCode = searchParams.get("code");
+  const authState = searchParams.get("state");
 
   useEffect(() => {
     // API로 인가코드 보내고 토큰 받아오기
