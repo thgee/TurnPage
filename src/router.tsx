@@ -2,11 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
-import LoginRedirect from "./pages/Login/LoginRedirect";
 import Login from "./pages/Login/Login";
 import BestSeller from "./pages/BestSeller/BestSeller";
 import Sell from "./pages/Sell/BestSeller";
 import BookDetail from "./pages/BookDetail/BookDetail";
+import RedirectGoogle from "./pages/Login/redirect/RedirectGoogle";
+import RedirectKakao from "./pages/Login/redirect/RedirectKakao";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "loginredirect",
-        element: <LoginRedirect />,
+        path: "callback/oauth2/code/kakao",
+        element: <RedirectKakao />,
+      },
+      {
+        path: "callback/oauth2/code/google",
+        element: <RedirectGoogle />,
       },
       {
         path: "best",

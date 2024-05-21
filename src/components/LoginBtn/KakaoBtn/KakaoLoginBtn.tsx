@@ -1,11 +1,12 @@
 const KakaoLoginBtn = ({ className }: { className?: string }) => {
   const handleLogin = () => {
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${
-      process.env.REACT_APP_KAKAO_API_KEY
-    }&redirect_uri=${
-      process.env.REACT_APP_DOMAIN
-    }/loginredirect&state=${generateRandomString(20)}
-    `;
+    const queryString = new URLSearchParams({
+      response_type: "code",
+      client_id: `${process.env.REACT_APP_KAKAO_API_KEY}`,
+      redirect_uri: `${process.env.REACT_APP_CLIENT_DOMAIN}/callback/oauth2/code/kakao`,
+      state: generateRandomString(20),
+    });
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?${queryString}`;
   };
   return (
     <>
