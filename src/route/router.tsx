@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Home from "./pages/Home/Home";
-import NotFound from "./pages/NotFound/NotFound";
-import Login from "./pages/Login/Login";
-import BestSeller from "./pages/BestSeller/BestSeller";
-import Sell from "./pages/Sell/BestSeller";
-import BookDetail from "./pages/BookDetail/BookDetail";
-import RedirectGoogle from "./pages/Login/redirect/RedirectGoogle";
-import RedirectKakao from "./pages/Login/redirect/RedirectKakao";
+import App from "../App";
+import Home from "../pages/Home/Home";
+import NotFound from "../pages/NotFound/NotFound";
+import Login from "../pages/Login/Login";
+import BestSeller from "../pages/BestSeller/BestSeller";
+import Sell from "../pages/Sell/BestSeller";
+import BookDetail from "../pages/BookDetail/BookDetail";
+import RedirectGoogle from "../pages/redirect/RedirectGoogle";
+import RedirectKakao from "../pages/redirect/RedirectKakao";
 
 const router = createBrowserRouter([
   {

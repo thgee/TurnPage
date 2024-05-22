@@ -4,8 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/theme";
 import GlobalStyle from "./theme/GlobalStyle";
 import { RouterProvider } from "react-router-dom";
-import router from "./router";
 import { RecoilRoot } from "recoil";
+import router from "./route/router";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,13 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import * as Style from "./styles";
-import { searchScrollMoveState } from "../../atoms";
+import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
+import { accessTokenState } from "../../recoil/accessTokenState";
+import { useEffect } from "react";
 
 const Header = () => {
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(
     searchScrollMoveState
   );
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setAccessToken("");
+  };
+
+  // 현재 url을 받아옴
+  const { pathname } = useLocation();
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // 한 글자라도 입력하면 bestSeller를 숨겨야 함
     if (e.target.value.length > 0) setSearchScrollMove(true);
@@ -25,9 +36,15 @@ const Header = () => {
             width="38px"
           />
         </Link>
-        <Link to="best">베스트셀러</Link>
-        <Link to="#">독후감</Link>
-        <Link to="sell">책방</Link>
+        <Link className="link" to="best">
+          베스트셀러
+        </Link>
+        <Link className="link" to="#">
+          독후감
+        </Link>
+        <Link className="link" to="sell">
+          책방
+        </Link>
       </Style.RowA>
 
       {/* 검색창 */}
@@ -44,9 +61,24 @@ const Header = () => {
 
       {/* 검색창 오른쪽 */}
       <Style.RowC>
-        <Link to="#">책 판매하기</Link>
-        <Link to="#">마이페이지</Link>
-        <Link to="login">로그인</Link>
+        <Link className="link" to="#">
+          책 판매하기
+        </Link>
+
+        {accessToken ? (
+          <>
+            <Link className="link" to="#">
+              마이페이지
+            </Link>
+            <span className="link" onClick={handleLogout}>
+              로그아웃
+            </span>
+          </>
+        ) : (
+          <Link className="link" to="login" state={{ prePagePath: pathname }}>
+            로그인
+          </Link>
+        )}
       </Style.RowC>
     </Style.Container>
   );
