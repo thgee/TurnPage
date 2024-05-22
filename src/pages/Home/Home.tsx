@@ -1,7 +1,7 @@
 import BookList from "../../components/BookList/BookList";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { searchScrollMoveState } from "../../atoms";
+import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { scroller } from "react-scroll";
 import * as Style from "./styles";
 import BestSellerCarousel from "../../components/BestSeller/BestSellerCarousel/BestSellerCarousel";
