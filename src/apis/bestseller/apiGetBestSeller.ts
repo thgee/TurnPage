@@ -11,6 +11,15 @@ export const apiGetBestSeller = (page: number, size: number) => {
           data: { bookPageElements },
         },
       }) => {
+        bookPageElements.map((it: any) => {
+          let _title = it.title.match(/^[^-]*/)[0];
+          let match = it.title.match(/-(.*)/);
+          if (match !== null && match[1] !== undefined) {
+            it.subTitle = match[1];
+          } else it.subTitle = "";
+          it.title = _title;
+          return it;
+        });
         return bookPageElements;
       }
     )

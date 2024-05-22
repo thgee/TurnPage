@@ -8,7 +8,7 @@ import BestSellerCarousel from "../../components/BestSeller/BestSellerCarousel/B
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
-  const [tabState, SetTabState] = useState("report");
+  const [tabState, SetTabState] = useState<"report" | "sell">("report");
 
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(
     searchScrollMoveState
