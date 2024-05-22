@@ -11,6 +11,14 @@ export const Container = styled.header`
   top: 0px;
   left: 0;
   z-index: 10;
+
+  .link {
+    cursor: pointer;
+    color: ${(p) => p.theme.commonColor.titleText};
+    &:hover {
+      color: ${(p) => p.theme.commonColor.normalText};
+    }
+  }
 `;
 
 // 헤더 3등분 flex prototype
