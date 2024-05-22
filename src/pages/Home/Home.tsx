@@ -5,7 +5,6 @@ import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { scroller } from "react-scroll";
 import * as Style from "./styles";
 import BestSellerCarousel from "../../components/BestSeller/BestSellerCarousel/BestSellerCarousel";
-import { dataBooks } from "../../dummy/dummy";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
@@ -33,7 +32,7 @@ const Home = () => {
         <h1 className="title">베스트 셀러</h1>
 
         {/* carousel */}
-        <BestSellerCarousel bestSellers={dataBooks} />
+        <BestSellerCarousel />
       </Style.SectionA>
 
       {/* 독후감, 판매중인책*/}

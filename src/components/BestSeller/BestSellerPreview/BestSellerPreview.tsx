@@ -1,18 +1,17 @@
+import { IBestSeller } from "../../../apis/bestseller/types";
 import * as Style from "./styles";
-import { IBestSellerPreviewProps } from "./types";
 
-const BestSellerPreview = ({ bookInfo }: IBestSellerPreviewProps) => {
+const BestSellerPreview = ({ bookInfo }: { bookInfo: IBestSeller }) => {
   return (
     <Style.Container>
       <Style.BookImgBox>
-        <img src={bookInfo.img} alt="책 표지 사진" />
+        <img src={bookInfo.cover} height={250} />
       </Style.BookImgBox>
-
       <Style.BookInfoWrap>
-        <h1>{bookInfo.title}</h1>
-        <p>{bookInfo.desc}</p>
+        <h1 className="title">{bookInfo.title}</h1>
+        {/* <p>{bookInfo.desc}</p> */}
         <span>{bookInfo.author}</span>
-        <span>{bookInfo.date}</span>
+        <span>{bookInfo.publicationDate}</span>
       </Style.BookInfoWrap>
     </Style.Container>
   );
