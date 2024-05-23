@@ -18,18 +18,24 @@ export const Container = styled.li`
 
 export const RowA = styled.div`
   display: flex;
+
+  @media (max-width: 1024px) {
+    align-items: center;
+  }
+
   > .img-box {
-    height: 350px;
-    width: 250px;
+    height: 280px;
+    width: 200px;
     overflow: hidden;
-    object-fit: cover;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 4px;
 
     > img {
-      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
 `;
@@ -98,5 +104,11 @@ export const BookInfoWrap = styled.div`
     display: flex;
     flex-grow: 0.6;
     align-items: center;
+  }
+
+  @media (max-width: 1080px) {
+    > * {
+      margin: 4px 0;
+    }
   }
 `;

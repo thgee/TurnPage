@@ -13,19 +13,6 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
     query: "(min-width : 1024px)",
   });
 
-  const getStar = (num: number) => {
-    const stars = [];
-    for (let _ = 0; _ < num; _++) {
-      stars.push(<PiStarFill size={26} />);
-    }
-
-    for (let _ = 0; _ < 5 - num; _++) {
-      stars.push(<PiStarBold size={26} />);
-    }
-
-    return stars;
-  };
-
   return (
     <Container>
       <RowA>
@@ -42,8 +29,8 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
             <h1>{bookInfo.title}</h1>
             <h2>
               {isPc &&
-                (bookInfo.subTitle.length > 20
-                  ? bookInfo.subTitle.slice(0, 20) + "..."
+                (bookInfo.subTitle.length > 15
+                  ? bookInfo.subTitle.slice(0, 15) + "..."
                   : bookInfo.subTitle)}
             </h2>
           </div>
@@ -52,7 +39,7 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
             <span className="publisher">{bookInfo.publisher}</span>
             <span className="date">{bookInfo.publicationDate}</span>
           </div>
-          <div className="star-wrap">{getStar(bookInfo.rank)}</div>
+          <div className="star-wrap">{getStar(bookInfo.star)}</div>
 
           {/* 화면이 줄어들면 버튼이 책 정보 아래로 이동 */}
           {!isPc && (
@@ -78,3 +65,16 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
 };
 
 export default BestSellerItem;
+
+const getStar = (num: number) => {
+  const stars = [];
+  for (let _ = 0; _ < num; _++) {
+    stars.push(<PiStarFill size={26} />);
+  }
+
+  for (let _ = 0; _ < 5 - num; _++) {
+    stars.push(<PiStarBold size={26} />);
+  }
+
+  return stars;
+};
