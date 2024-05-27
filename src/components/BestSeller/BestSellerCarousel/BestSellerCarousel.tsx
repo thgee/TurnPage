@@ -3,8 +3,16 @@ import * as Style from "./styles";
 import BestSellerPreview from "../BestSellerPreview/BestSellerPreview";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useQuery } from "@tanstack/react-query";
+import { apiGetBestSeller } from "../../../apis/bestseller/apiGetBestSeller";
+import { IBestSeller } from "../../../apis/bestseller/types";
 
-const BestSellerCarousel = ({ bestSellers }: { bestSellers: any[] }) => {
+const BestSellerCarousel = () => {
+  const { isLoading, data: bestSellerData } = useQuery<IBestSeller[]>({
+    queryKey: ["bestSeller", "home"],
+    queryFn: () => apiGetBestSeller({ pageParam: 0, size: 50 }),
+  });
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -27,8 +35,8 @@ const BestSellerCarousel = ({ bestSellers }: { bestSellers: any[] }) => {
   return (
     <div className="slider-container" style={{ margin: "50px 0" }}>
       <Slider {...settings}>
-        {bestSellers.map((info, i) => (
-          <BestSellerPreview key={i} bookInfo={info} />
+        {bestSellerData?.map((info) => (
+          <BestSellerPreview key={info.bookId} bookInfo={info} />
         ))}
       </Slider>
     </div>

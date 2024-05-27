@@ -1,18 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import { IBestSeller } from "../../../apis/bestseller/types";
 import * as Style from "./styles";
-import { IBestSellerPreviewProps } from "./types";
 
-const BestSellerPreview = ({ bookInfo }: IBestSellerPreviewProps) => {
+const BestSellerPreview = ({ bookInfo }: { bookInfo: IBestSeller }) => {
+  const navigate = useNavigate();
   return (
     <Style.Container>
-      <Style.BookImgBox>
-        <img src={bookInfo.img} alt="책 표지 사진" />
+      <Style.BookImgBox
+        onClick={() => {
+          navigate(`/bookDetail/${bookInfo.bookId}`);
+        }}
+      >
+        <img src={bookInfo.cover} height={250} />
       </Style.BookImgBox>
-
       <Style.BookInfoWrap>
-        <h1>{bookInfo.title}</h1>
-        <p>{bookInfo.desc}</p>
+        <h1 className="title">
+          {/* 제목이 20자 이상이면 ...으로 줄임 */}
+          {bookInfo.title.length > 20
+            ? bookInfo.title.slice(0, 20) + "..."
+            : bookInfo.title}
+        </h1>
         <span>{bookInfo.author}</span>
-        <span>{bookInfo.date}</span>
+        <span>{bookInfo.publicationDate}</span>
       </Style.BookInfoWrap>
     </Style.Container>
   );
