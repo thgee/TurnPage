@@ -9,7 +9,6 @@ export const Title = styled.h1`
 `;
 export const Section1 = styled.section`
   padding: 10px 30px;
-  display: flex;
 `;
 export const Section2 = styled.section``;
 

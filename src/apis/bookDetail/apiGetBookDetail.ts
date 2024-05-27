@@ -12,6 +12,9 @@ export const apiGetBookDetail = (bookId: number) => {
       } else data.subTitle = "";
       data.title = _title;
 
+      // 별점이 0이면 5로 바꿔주기
+      if (data.star === 0) data.star = 5;
+
       return data as IBookDetail;
     })
     .catch((error) => {
