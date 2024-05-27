@@ -11,7 +11,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // 브라우저가 다시 포커스 될 때 모든 api를 재호출 하는 것을 방지 (서버비용 절감 위함)
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 root.render(
   <QueryClientProvider client={queryClient}>
