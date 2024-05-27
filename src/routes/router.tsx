@@ -8,6 +8,7 @@ import Sell from "../pages/Sell/BestSeller";
 import BookDetail from "../pages/BookDetail/BookDetail";
 import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
+import MyPage from "../pages/MyPage/MyPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "book-detail/:bookId",
         element: <BookDetail />,
+      },
+      {
+        path: "mypage",
+        element: <MyPage />,
       },
     ],
     errorElement: <NotFound />,

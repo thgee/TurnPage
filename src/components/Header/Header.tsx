@@ -67,7 +67,7 @@ const Header = () => {
 
         {accessToken ? (
           <>
-            <Link className="link" to="#">
+            <Link className="link" to="mypage">
               마이페이지
             </Link>
             <span className="link" onClick={handleLogout}>

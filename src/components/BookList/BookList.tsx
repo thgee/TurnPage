@@ -13,7 +13,11 @@ import { InView, useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
 // mode : best, sell, report
-const BookList = ({ mode }: { mode: "best" | "sell" | "report" }) => {
+const BookList = ({
+  mode,
+}: {
+  mode: "best" | "sell" | "report" | "myReport" | "mySell";
+}) => {
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -69,13 +73,19 @@ const BookList = ({ mode }: { mode: "best" | "sell" | "report" }) => {
 
 export default BookList;
 
-const getQueryFn = (mode: "best" | "sell" | "report") => {
+const getQueryFn = (
+  mode: "best" | "sell" | "report" | "myReport" | "mySell"
+) => {
   switch (mode) {
     case "best":
       return apiGetBestSeller;
-    case "sell":
-      return apiGetBestSeller; // 책방 리스트 조회 API 완성되면 수정
     case "report":
       return apiGetBestSeller; // 독후감 리스트 조회 API 완성되면 수정
+    case "sell":
+      return apiGetBestSeller; // 책방 리스트 조회 API 완성되면 수정
+    case "myReport":
+      return apiGetBestSeller; // 내 독후감 리스트 조회 API 완성되면 수정
+    case "mySell":
+      return apiGetBestSeller; // 내 판매글 리스트 조회 API 완성되면 수정
   }
 };
