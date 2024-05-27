@@ -5,8 +5,8 @@ import { getStar } from "../../../utils/getStar";
 import { Link } from "react-router-dom";
 
 const BookInfo = ({ bookId }: IBookInfoProps) => {
-  const { isLoading, data: bookInfo } = useQuery({
-    queryKey: ["bookDetail"],
+  const { data: bookInfo } = useQuery({
+    queryKey: ["bookDetail", bookId],
     queryFn: () => apiGetBookDetail(Number(bookId)),
   });
 
