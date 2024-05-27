@@ -5,6 +5,7 @@ import { IBestSeller } from "../../../apis/bestseller/types";
 import ButtonA from "../../ButtonA/ButtonA";
 import { Container } from "./styles";
 import { useMediaQuery } from "react-responsive";
+import { getStar } from "../../../utils/getStar";
 
 const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
         <div className="img-box">
           <img
             src={bookInfo.cover}
-            onClick={() => navigate(`/detail/${bookInfo.bookId}`)}
+            onClick={() => navigate(`/book-detail/${bookInfo.bookId}`)}
             style={{ cursor: "pointer" }}
           />
         </div>
@@ -65,16 +66,3 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
 };
 
 export default BestSellerItem;
-
-const getStar = (num: number) => {
-  const stars = [];
-  for (let _ = 0; _ < num; _++) {
-    stars.push(<PiStarFill size={26} />);
-  }
-
-  for (let _ = 0; _ < 5 - num; _++) {
-    stars.push(<PiStarBold size={26} />);
-  }
-
-  return stars;
-};

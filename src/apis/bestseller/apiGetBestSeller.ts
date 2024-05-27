@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IBestSeller } from "./types";
 
 export const apiGetBestSeller = ({
   pageParam,
@@ -28,7 +29,7 @@ export const apiGetBestSeller = ({
           it.title = _title;
           return it;
         });
-        return bookInfos;
+        return bookInfos as IBestSeller[];
       }
     )
     .catch((error) => {
