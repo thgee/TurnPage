@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { scroller } from "react-scroll";
 import * as Style from "./styles";
-import BestSellerCarousel from "../../components/BestSeller/BestSellerCarousel/BestSellerCarousel";
+import BestSellerCarousel from "../../components/home/BestSellerCarousel/BestSellerCarousel";
 
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell

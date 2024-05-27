@@ -8,7 +8,7 @@ const BestSellerPreview = ({ bookInfo }: { bookInfo: IBestSeller }) => {
     <Style.Container>
       <Style.BookImgBox
         onClick={() => {
-          navigate(`/bookDetail/${bookInfo.bookId}`);
+          navigate(`/book-detail/${bookInfo.bookId}`);
         }}
       >
         <img src={bookInfo.cover} height={250} />

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import GoogleLoginBtn from "../../components/LoginBtn/GoogleBtn/GoogleLoginBtn";
-import KakaoLoginBtn from "../../components/LoginBtn/KakaoBtn/KakaoLoginBtn";
 import * as Style from "./styles";
-import { useRecoilState } from "recoil";
 import { useLocation } from "react-router-dom";
+import KakaoLoginBtn from "../../components/login/KakaoBtn/KakaoLoginBtn";
+import GoogleLoginBtn from "../../components/login/GoogleBtn/GoogleLoginBtn";
 
 const Login = () => {
   const _prePagePath = useLocation().state?.prePagePath;
