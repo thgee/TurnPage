@@ -12,8 +12,9 @@ export const Section1 = styled.section`
 `;
 export const Section2 = styled.section``;
 
-export const TabBtnRemoveFilter = styled(TabBtn)`
+export const _TabBtn = styled(TabBtn)`
   &::before {
-    backdrop-filter: none;
+    display: none;
   }
+  margin-top: 30px;
 `;

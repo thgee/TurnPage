@@ -2,28 +2,37 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    commonColor: {
-      point: string;
-      titleText: string;
-      bg: string;
-      normalText: string;
-    };
+    color: {
+      text: {
+        text1: string;
+        text2: stirng;
+        text3: stirng;
+        text4: stirng;
+      };
+      border: {
+        border1: stirng;
+        border2: stirng;
+      };
+      btn: {
+        bg1: stirng;
+        bg2: stirng;
+        bg3: stirng;
+        bg4: stirng;
+        text1: stirng;
+        text2: stirng;
+        text3: stirng;
+        text4: stirng;
+      };
 
-    btnColor: {
-      btn1Bg: string;
-      btn1Text: string;
-      btn2Bg: string;
-      btn2Text: string;
-    };
+      bg: {
+        bg1: stirng;
+        bg2: stirng;
+        bg3: stirng;
+        bg4: stirng;
+      };
 
-    // 홈화면 친구들의 독후감, 현재 판매중인 책 탭버튼
-    homeTabColor: {
-      tabActiveBg: string;
-      tabActiveText: string;
-      tabInactiveBg: string;
-      tabInactiveText: string;
+      icon: { icon1: string };
     };
-
     fontFamily: {
       light: string;
       medium: string;

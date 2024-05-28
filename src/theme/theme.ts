@@ -1,24 +1,35 @@
 import { DefaultTheme } from "styled-components";
 
 export const lightTheme: DefaultTheme = {
-  commonColor: {
-    point: "#FFDEDE",
-    titleText: "#5D5757",
-    bg: "#FFF5F5",
-    normalText: "#000",
-  },
-  btnColor: {
-    btn1Bg: "#5D5757",
-    btn1Text: "#fff",
-    btn2Bg: "#EEE",
-    btn2Text: "#5D5757",
-  },
-  // 홈화면 친구들의 독후감, 현재 판매중인 책 탭버튼
-  homeTabColor: {
-    tabActiveBg: "#5D5757",
-    tabActiveText: "#FFFFFF",
-    tabInactiveBg: "#DFDDDD",
-    tabInactiveText: "#5D5757",
+  color: {
+    text: {
+      text1: "#000000",
+      text2: "#5D5757",
+      text3: "#929A9A",
+      text4: "#CCCCCC",
+    },
+    border: {
+      border1: "#000000",
+      border2: "#5D5757",
+    },
+    btn: {
+      bg1: "#3E3E3E",
+      bg2: "#5D5757",
+      bg3: "#DFDDDD",
+      bg4: "#FFDEDE",
+      text1: "#FFFFFF",
+      text2: "#FFFFFF",
+      text3: "#5D5757",
+      text4: "#5D5757",
+    },
+    bg: {
+      bg1: "#5D5757",
+      bg2: "#EEEEEE",
+      bg3: "#FFDEDE",
+      bg4: "#FFFFFF",
+    },
+
+    icon: { icon1: "#000000" },
   },
 
   fontFamily: {

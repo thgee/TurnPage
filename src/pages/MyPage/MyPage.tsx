@@ -3,6 +3,7 @@ import TabBtn from "../../components/TabBtn/TabBtn";
 import * as Style from "./styles";
 import BookList from "../../components/BookList/BookList";
 import Profile from "../../components/myPage/Profile/Profile";
+import Friend from "../../components/myPage/Friend/Friend";
 
 const MyPage = () => {
   const [tabState, SetTabState] = useState<
@@ -15,11 +16,12 @@ const MyPage = () => {
       <Style.Section1>
         <Style.Title>마이페이지</Style.Title>
         <Profile />
+        <Friend />
       </Style.Section1>
 
       {/* 내 독후감, 내 판매글 리스트 */}
       <Style.Section2>
-        <Style.TabBtnRemoveFilter
+        <Style._TabBtn
           mode="mypage"
           tabState={tabState}
           SetTabState={SetTabState}

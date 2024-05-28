@@ -3,7 +3,7 @@ import { ISellItemProps } from "./types";
 import { useNavigate } from "react-router-dom";
 import { BookInfoWrap, RowA, RowB } from "./styles";
 import { Container } from "../styles";
-import ButtonA from "../../ButtonA/ButtonA";
+import Btn1 from "../../Btn1/Btn1";
 
 // 책방 리스트에 띄울 아이템 박스
 const SellItem = ({ bookInfo }: ISellItemProps) => {
@@ -34,10 +34,10 @@ const SellItem = ({ bookInfo }: ISellItemProps) => {
           <span>{bookInfo?.price}원</span>
         </div>
         <div className="btn-wrap">
-          <ButtonA onClick={() => navigate(`/bookDetail/${bookInfo.title}`)}>
+          <Btn1 onClick={() => navigate(`/bookDetail/${bookInfo.title}`)}>
             해당 도서 정보 살펴보기
-          </ButtonA>
-          <ButtonA>판매 게시글 상세히 보기</ButtonA>
+          </Btn1>
+          <Btn1>판매 게시글 상세히 보기</Btn1>
         </div>
       </RowB>
     </Container>
