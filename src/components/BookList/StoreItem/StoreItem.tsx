@@ -6,7 +6,7 @@ import { Container } from "../styles";
 import Btn1 from "../../Btn1/Btn1";
 
 // 책방 리스트에 띄울 아이템 박스
-const SellItem = ({ bookInfo }: ISellItemProps) => {
+const StoreItem = ({ bookInfo }: ISellItemProps) => {
   const navigate = useNavigate();
 
   return (
@@ -44,7 +44,7 @@ const SellItem = ({ bookInfo }: ISellItemProps) => {
   );
 };
 
-export default SellItem;
+export default StoreItem;
 
 const getStar = (num: number) => {
   const stars = [];

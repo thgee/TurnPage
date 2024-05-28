@@ -8,9 +8,9 @@ import BestSellerCarousel from "../../components/home/BestSellerCarousel/BestSel
 import TabBtn from "../../components/TabBtn/TabBtn";
 
 const Home = () => {
-  // 친구들의 독후감 : report, 현재 판매중인 책 : sell
+  // 친구들의 독후감 : report, 현재 판매중인 책 : store
   const [tabState, SetTabState] = useState<
-    "report" | "sell" | "myReport" | "mySell"
+    "report" | "store" | "myReport" | "mySell"
   >("report");
 
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(

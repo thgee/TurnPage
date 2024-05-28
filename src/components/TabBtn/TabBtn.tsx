@@ -13,8 +13,8 @@ const TabBtn = ({ tabState, SetTabState, className, mode }: ITabBtnProps) => {
             친구들의 독후감
           </Style.Tab>
           <Style.Tab
-            isClick={"sell" === tabState}
-            onClick={() => SetTabState("sell")}
+            isClick={"store" === tabState}
+            onClick={() => SetTabState("store")}
           >
             현재 판매중인 책
           </Style.Tab>
@@ -44,9 +44,9 @@ const TabBtn = ({ tabState, SetTabState, className, mode }: ITabBtnProps) => {
 export default TabBtn;
 
 interface ITabBtnProps {
-  tabState: "report" | "sell" | "myReport" | "mySell";
+  tabState: "report" | "store" | "myReport" | "mySell";
   SetTabState: React.Dispatch<
-    React.SetStateAction<"report" | "sell" | "myReport" | "mySell">
+    React.SetStateAction<"report" | "store" | "myReport" | "mySell">
   >;
   className?: string;
   mode: "home" | "mypage";

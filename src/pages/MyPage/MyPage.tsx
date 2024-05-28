@@ -7,7 +7,7 @@ import Friend from "../../components/myPage/Friend/Friend";
 
 const MyPage = () => {
   const [tabState, SetTabState] = useState<
-    "report" | "sell" | "myReport" | "mySell"
+    "report" | "store" | "myReport" | "mySell"
   >("myReport");
 
   return (

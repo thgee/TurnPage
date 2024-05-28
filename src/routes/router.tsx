@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import Login from "../pages/Login/Login";
 import BestSeller from "../pages/BestSeller/BestSeller";
-import Sell from "../pages/Sell/BestSeller";
+import Sell from "../pages/Store/BestSeller";
 import BookDetail from "../pages/BookDetail/BookDetail";
 import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         element: <BestSeller />,
       },
       {
-        path: "sell",
+        path: "store",
         element: <Sell />,
       },
       {

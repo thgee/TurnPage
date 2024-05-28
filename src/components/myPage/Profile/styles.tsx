@@ -69,7 +69,7 @@ export const Col3 = styled.div`
   h1 {
     font-size: 1.1rem;
     font-family: ${(p) => p.theme.fontFamily.medium};
-    letter-spacing: 3px;
+    word-spacing: 4px;
     margin: 14px 0;
 
     > span {

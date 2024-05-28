@@ -6,6 +6,10 @@ import { accessTokenState } from "../../recoil/accessTokenState";
 import { useEffect } from "react";
 
 const Header = () => {
+  // 현재 보고있는 페이지의 Link 버튼을 굵게 만들기 위함
+  const location = useLocation();
+  const isVisit = (path: string) => location.pathname === path;
+
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(
     searchScrollMoveState
   );
@@ -29,22 +33,23 @@ const Header = () => {
     <Style.Container>
       {/* 검색창 왼쪽 */}
       <Style.RowA>
-        <Link to="/">
+        <Style.Link_ to="/" isVisit={isVisit("/")}>
           <img
             src={`${process.env.PUBLIC_URL}/assets/logo.svg`}
             alt="logo"
             width="38px"
           />
-        </Link>
-        <Link className="link" to="best">
+        </Style.Link_>
+
+        <Style.Link_ to="best" isVisit={isVisit("/best")}>
           베스트셀러
-        </Link>
-        <Link className="link" to="#">
+        </Style.Link_>
+        <Style.Link_ to="#" isVisit={isVisit("/report")}>
           독후감
-        </Link>
-        <Link className="link" to="sell">
+        </Style.Link_>
+        <Style.Link_ to="store" isVisit={isVisit("/store")}>
           책방
-        </Link>
+        </Style.Link_>
       </Style.RowA>
 
       {/* 검색창 */}
@@ -61,23 +66,25 @@ const Header = () => {
 
       {/* 검색창 오른쪽 */}
       <Style.RowC>
-        <Link className="link" to="#">
+        <Style.Link_ to="#" isVisit={isVisit("/sell")}>
           책 판매하기
-        </Link>
+        </Style.Link_>
 
         {accessToken ? (
           <>
-            <Link className="link" to="mypage">
+            <Style.Link_ to="mypage" isVisit={isVisit("/mypage")}>
               마이페이지
-            </Link>
-            <span className="link" onClick={handleLogout}>
-              로그아웃
-            </span>
+            </Style.Link_>
+            <span onClick={handleLogout}>로그아웃</span>
           </>
         ) : (
-          <Link className="link" to="login" state={{ prePagePath: pathname }}>
+          <Style.Link_
+            to="login"
+            state={{ prePagePath: pathname }}
+            isVisit={isVisit("/login")}
+          >
             로그인
-          </Link>
+          </Style.Link_>
         )}
       </Style.RowC>
     </Style.Container>

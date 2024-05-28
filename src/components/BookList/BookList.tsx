@@ -5,18 +5,18 @@ import { apiGetBestSeller } from "../../apis/bestseller/apiGetBestSeller";
 import { IBestSeller } from "../../apis/bestseller/types";
 import BestSeller from "../../pages/BestSeller/BestSeller";
 import ReportItem from "./ReportItem/ReportItem";
-import SellItem from "./SellItem/SellItem";
+import SellItem from "./StoreItem/StoreItem";
 import BestSellerItem from "./BestSellerItem/BestSellerItem";
-import { ISellItemProps } from "./SellItem/types";
+import { ISellItemProps } from "./StoreItem/types";
 import { IReportItem } from "./ReportItem/types";
 import { InView, useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
-// mode : best, sell, report
+// mode : best, store, report
 const BookList = ({
   mode,
 }: {
-  mode: "best" | "sell" | "report" | "myReport" | "mySell";
+  mode: "best" | "store" | "report" | "myReport" | "mySell";
 }) => {
   const { ref, inView } = useInView();
 
@@ -51,7 +51,7 @@ const BookList = ({
               />
             )}
             {/* 책방이나 독후감 리스트 API 호출 시 as로 narrowing 후 사용하기 */}
-            {/* {mode === "sell" && <SellItem key={}} bookInfo={info} />}
+            {/* {mode === "store" && <SellItem key={}} bookInfo={info} />}
           {mode === "report" && (
             <ReportItem key={} bookInfo={info} />
           )} */}
@@ -74,14 +74,14 @@ const BookList = ({
 export default BookList;
 
 const getQueryFn = (
-  mode: "best" | "sell" | "report" | "myReport" | "mySell"
+  mode: "best" | "store" | "report" | "myReport" | "mySell"
 ) => {
   switch (mode) {
     case "best":
       return apiGetBestSeller;
     case "report":
       return apiGetBestSeller; // 독후감 리스트 조회 API 완성되면 수정
-    case "sell":
+    case "store":
       return apiGetBestSeller; // 책방 리스트 조회 API 완성되면 수정
     case "myReport":
       return apiGetBestSeller; // 내 독후감 리스트 조회 API 완성되면 수정

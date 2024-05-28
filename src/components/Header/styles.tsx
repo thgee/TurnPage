@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
   background-color: ${(p) => p.theme.color.bg.bg3};
@@ -11,13 +12,17 @@ export const Container = styled.header`
   top: 0px;
   left: 0;
   z-index: 10;
+`;
 
-  .link {
-    cursor: pointer;
-    color: ${(p) => p.theme.color.text.text2};
-    &:hover {
-      color: ${(p) => p.theme.color.text.text1};
-    }
+export const Link_ = styled(Link)<{ isVisit: boolean }>`
+  cursor: pointer;
+  color: ${(p) => p.theme.color.text.text2};
+
+  // 현재 방문중인 페이지는 굵게 표시
+  font-family: ${(p) => p.isVisit && p.theme.fontFamily.medium};
+
+  &:hover {
+    color: ${(p) => p.theme.color.text.text1};
   }
 `;
 
