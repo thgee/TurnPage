@@ -84,10 +84,22 @@ body{
   color : ${(p) => p.theme.color.text.text1};
 	background-color:${(p) => p.theme.color.bg.bg4};
   min-width: 800px;
+
 }
 
 a{
   color : ${(p) => p.theme.color.text.text1};
+}
+
+button{
+  font-family: ${(p) => p.theme.fontFamily.light};
+  outline : none;
+  border : none;
+  cursor : pointer;
+  transition: all 0.1s;
+  &:hover{
+    transform:scale(1.05);
+  }
 }
 
 `;

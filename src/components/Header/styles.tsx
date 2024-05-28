@@ -20,6 +20,7 @@ export const Link_ = styled(Link)<{ isVisit: boolean }>`
 
   // 현재 방문중인 페이지는 굵게 표시
   font-family: ${(p) => p.isVisit && p.theme.fontFamily.medium};
+  color: ${(p) => p.isVisit && p.theme.color.text.text1};
 
   &:hover {
     color: ${(p) => p.theme.color.text.text1};

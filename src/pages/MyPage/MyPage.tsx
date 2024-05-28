@@ -15,8 +15,14 @@ const MyPage = () => {
       {/* 프로필, 친구 박스 */}
       <Style.Section1>
         <Style.Title>마이페이지</Style.Title>
-        <Profile />
-        <Friend />
+        <div className="row">
+          <div className="col1">
+            <Profile />
+          </div>
+          <div className="col2">
+            <Friend />
+          </div>
+        </div>
       </Style.Section1>
 
       {/* 내 독후감, 내 판매글 리스트 */}

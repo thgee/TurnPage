@@ -9,6 +9,22 @@ export const Title = styled.h1`
 `;
 export const Section1 = styled.section`
   padding: 10px 30px;
+
+  > .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .col1 {
+      flex-grow: 1;
+      margin: 0 10px;
+      padding: 30px 0;
+    }
+    > .col2 {
+      padding: 30px 0;
+      margin: 0 10px;
+      flex-grow: 1;
+    }
+  }
 `;
 export const Section2 = styled.section``;
 
