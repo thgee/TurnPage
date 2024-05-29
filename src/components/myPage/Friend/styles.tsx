@@ -26,8 +26,8 @@ export const Header = styled.div`
   }
   > .add-friend {
     padding: 9px 14px;
-    background-color: ${(p) => p.theme.color.btn.bg2};
-    color: ${(p) => p.theme.color.btn.text2};
+    background-color: ${(p) => p.theme.color.btn.bg1};
+    color: ${(p) => p.theme.color.btn.text1};
     outline: none;
     border: none;
     border-radius: 5px;

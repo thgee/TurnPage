@@ -18,7 +18,7 @@ const AddFriendModal = ({
         </div>
         <div className="row2">
           <input type="text" />
-          <IoPersonAddSharp size={30} />
+          <IoPersonAddSharp size={30} style={{ cursor: "pointer" }} />
         </div>
       </style.Container>
     </ReactModal>

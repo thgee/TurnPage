@@ -91,14 +91,15 @@ a{
   color : ${(p) => p.theme.color.text.text1};
 }
 
-button,svg{
+button{
   font-family: ${(p) => p.theme.fontFamily.light};
   outline : none;
   border : none;
   cursor : pointer;
   transition: all 0.1s;
   &:hover{
-    transform:scale(1.05);
+    transform:scale(1.01);
+    box-shadow : 0 0 10px 4px ${(p) => p.theme.color.bg.bg3}
   }
 }
 

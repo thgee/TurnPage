@@ -17,11 +17,9 @@ declare module "styled-components" {
         bg1: stirng;
         bg2: stirng;
         bg3: stirng;
-        bg4: stirng;
         text1: stirng;
         text2: stirng;
         text3: stirng;
-        text4: stirng;
       };
 
       bg: {
