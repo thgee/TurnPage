@@ -3,7 +3,7 @@ import { PiStarBold, PiStarFill } from "react-icons/pi";
 
 export const Container = styled.li`
   width: 100%;
-  border: 1px solid ${(p) => p.theme.commonColor.titleText};
+  border: 1px solid ${(p) => p.theme.color.border.border2};
   border-radius: 20px;
   padding: 10px 20px;
   display: flex;
@@ -38,7 +38,7 @@ export const RowB = styled.div`
   .btn-wrap {
     margin: 20px;
 
-    // ButtonA
+    // Btn1
     > button {
       width: 100%;
       display: block;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  background-color: ${(p) => p.theme.btnColor.btn1Bg};
-  color: ${(p) => p.theme.btnColor.btn1Text};
+  background-color: ${(p) => p.theme.color.btn.bg2};
+  color: ${(p) => p.theme.color.btn.text2};
   border-radius: 4px;
   padding: 8px 10px;
   border: none;

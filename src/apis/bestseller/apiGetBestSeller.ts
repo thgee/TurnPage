@@ -27,6 +27,10 @@ export const apiGetBestSeller = ({
             it.subTitle = match[1];
           } else it.subTitle = "";
           it.title = _title;
+
+          // 별점이 0이면 5로 바꿔주기
+          if (it.star === 0) it.star = 5;
+
           return it;
         });
         return bookInfos as IBestSeller[];

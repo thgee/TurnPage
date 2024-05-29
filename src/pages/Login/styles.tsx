@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: calc(100vh - 56px);
+  background-color: ${(p) => p.theme.color.bg.bg2};
 `;
 export const ColContainer = styled.div`
   height: 100%;

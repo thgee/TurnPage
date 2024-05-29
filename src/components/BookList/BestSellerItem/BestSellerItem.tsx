@@ -2,7 +2,7 @@ import { PiStarFill, PiStarBold } from "react-icons/pi";
 import { BookInfoWrap, RowA, RowB } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { IBestSeller } from "../../../apis/bestseller/types";
-import ButtonA from "../../ButtonA/ButtonA";
+import Btn1 from "../../Btn1/Btn1";
 import { Container } from "./styles";
 import { useMediaQuery } from "react-responsive";
 import { getStar } from "../../../utils/getStar";
@@ -46,8 +46,8 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
           {!isPc && (
             <RowB>
               <div className="btn-wrap">
-                <ButtonA>중고 판매 게시글 살펴보기</ButtonA>
-                <ButtonA>친구들이 쓴 독후감 살펴보기</ButtonA>
+                <Btn1>중고 판매 게시글 살펴보기</Btn1>
+                <Btn1>친구들이 쓴 독후감 살펴보기</Btn1>
               </div>
             </RowB>
           )}
@@ -56,8 +56,8 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
       {isPc && (
         <RowB>
           <div className="btn-wrap">
-            <ButtonA>중고 판매 게시글 살펴보기</ButtonA>
-            <ButtonA>친구들이 쓴 독후감 살펴보기</ButtonA>
+            <Btn1>중고 판매 게시글 살펴보기</Btn1>
+            <Btn1>친구들이 쓴 독후감 살펴보기</Btn1>
           </div>
         </RowB>
       )}

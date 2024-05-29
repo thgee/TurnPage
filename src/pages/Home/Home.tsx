@@ -5,10 +5,13 @@ import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { scroller } from "react-scroll";
 import * as Style from "./styles";
 import BestSellerCarousel from "../../components/home/BestSellerCarousel/BestSellerCarousel";
+import TabBtn from "../../components/TabBtn/TabBtn";
 
 const Home = () => {
-  // 친구들의 독후감 : report, 현재 판매중인 책 : sell
-  const [tabState, SetTabState] = useState<"report" | "sell">("report");
+  // 친구들의 독후감 : report, 현재 판매중인 책 : store
+  const [tabState, SetTabState] = useState<
+    "report" | "store" | "myReport" | "mySell"
+  >("report");
 
   const [searchScrollMove, setSearchScrollMove] = useRecoilState(
     searchScrollMoveState
@@ -38,20 +41,7 @@ const Home = () => {
       {/* 독후감, 판매중인책*/}
       <Style.SectionB id="searchScrollMove">
         {/* 탭 버튼 선택 */}
-        <Style.TabWrap>
-          <Style.Tab
-            isClick={"report" === tabState}
-            onClick={() => SetTabState("report")}
-          >
-            친구들의 독후감
-          </Style.Tab>
-          <Style.Tab
-            isClick={"sell" === tabState}
-            onClick={() => SetTabState("sell")}
-          >
-            현재 판매중인 책
-          </Style.Tab>
-        </Style.TabWrap>
+        <TabBtn tabState={tabState} SetTabState={SetTabState} mode="home" />
         <BookList mode={tabState} />
       </Style.SectionB>
     </Style.Container>

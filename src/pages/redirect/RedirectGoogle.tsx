@@ -22,8 +22,9 @@ const RedirectGoogle = () => {
         localStorage.setItem("refreshToken", data.refreshToken);
         setAccessToken(data.accessToken);
         // 로그인하기 직전 페이지로 이동
-        const prePagePath = localStorage.getItem("prePagePath") || "/";
-        navigate(prePagePath);
+        let prePagePath = localStorage.getItem("prePagePath");
+        if (prePagePath === "undefined") prePagePath = "/";
+        navigate(prePagePath as string);
       }
     );
   }, []);

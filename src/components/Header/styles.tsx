@@ -1,23 +1,37 @@
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
-  background-color: ${(p) => p.theme.commonColor.point};
+  background-color: ${(p) => p.theme.color.bg.bg3};
   height: 56px;
   width: 100%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(p) => p.theme.color.border.border1};
   display: flex;
   position: sticky;
   top: 0px;
   left: 0;
   z-index: 10;
 
-  .link {
+  .logout {
     cursor: pointer;
-    color: ${(p) => p.theme.commonColor.titleText};
+    color: ${(p) => p.theme.color.text.text2};
     &:hover {
-      color: ${(p) => p.theme.commonColor.normalText};
+      color: ${(p) => p.theme.color.text.text1};
     }
+  }
+`;
+
+export const Link_ = styled(Link)<{ isVisit?: boolean }>`
+  cursor: pointer;
+  color: ${(p) => p.theme.color.text.text2};
+
+  // 현재 방문중인 페이지는 굵게 표시
+  font-family: ${(p) => p.isVisit && p.theme.fontFamily.medium};
+  color: ${(p) => p.isVisit && p.theme.color.text.text1};
+
+  &:hover {
+    color: ${(p) => p.theme.color.text.text1};
   }
 `;
 
@@ -44,7 +58,7 @@ export const RowC = styled(RowFlexProto)`
 // 검색창 박스
 export const Search = styled.div`
   border-radius: 16px;
-  background-color: ${(p) => p.theme.commonColor.bg};
+  background-color: ${(p) => p.theme.color.bg.bg4};
   width: 90%;
   position: relative;
   height: 30px;
@@ -55,7 +69,7 @@ export const Search = styled.div`
 
   // 검색하는 부분
   input {
-    background-color: ${(p) => p.theme.commonColor.bg};
+    background-color: ${(p) => p.theme.color.bg.bg4};
     border: none;
     flex-grow: 1;
     margin: 0 10px;
