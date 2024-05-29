@@ -91,7 +91,7 @@ a{
   color : ${(p) => p.theme.color.text.text1};
 }
 
-button{
+button,svg{
   font-family: ${(p) => p.theme.fontFamily.light};
   outline : none;
   border : none;
@@ -102,6 +102,10 @@ button{
   }
 }
 
+
+input{
+  outline:none;
+}
 `;
 
 export default GlobalStyle;

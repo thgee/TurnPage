@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  padding: 6px 10px;
 
   .profile-img {
     border-radius: 100px;
