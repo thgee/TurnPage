@@ -47,7 +47,6 @@ export const Col1 = styled.div`
     object-fit: cover;
     border-radius: 20px;
     border: 2px solid ${(p) => p.theme.color.border.border2};
-    padding: 20px;
   }
 `;
 export const Col2 = styled.div`
