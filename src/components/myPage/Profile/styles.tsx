@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   padding: 60px 30px;
   color: ${(p) => p.theme.color.text.text2};
+  align-items: center;
 
   .profile-btn {
     cursor: pointer;
@@ -46,6 +47,7 @@ export const Col1 = styled.div`
     object-fit: cover;
     border-radius: 20px;
     border: 2px solid ${(p) => p.theme.color.border.border2};
+    padding: 20px;
   }
 `;
 export const Col2 = styled.div`
@@ -65,7 +67,7 @@ export const Col2 = styled.div`
 `;
 export const Col3 = styled.div`
   align-self: center;
-  margin-right: 100px;
+  margin-right: 30px;
   h1 {
     font-size: 1.1rem;
     font-family: ${(p) => p.theme.fontFamily.medium};

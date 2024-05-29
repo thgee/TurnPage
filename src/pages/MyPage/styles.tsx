@@ -15,7 +15,7 @@ export const Section1 = styled.section`
     flex-wrap: wrap;
 
     > .col1 {
-      flex-grow: 1;
+      flex-grow: 2;
       margin: 0 10px;
       padding: 30px 0;
     }

@@ -75,7 +75,9 @@ const Header = () => {
             <Style.Link_ to="mypage" isVisit={isVisit("/mypage")}>
               마이페이지
             </Style.Link_>
-            <span onClick={handleLogout}>로그아웃</span>
+            <span className="logout" onClick={handleLogout}>
+              로그아웃
+            </span>
           </>
         ) : (
           <Style.Link_

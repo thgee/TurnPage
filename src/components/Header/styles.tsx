@@ -12,9 +12,17 @@ export const Container = styled.header`
   top: 0px;
   left: 0;
   z-index: 10;
+
+  .logout {
+    cursor: pointer;
+    color: ${(p) => p.theme.color.text.text2};
+    &:hover {
+      color: ${(p) => p.theme.color.text.text1};
+    }
+  }
 `;
 
-export const Link_ = styled(Link)<{ isVisit: boolean }>`
+export const Link_ = styled(Link)<{ isVisit?: boolean }>`
   cursor: pointer;
   color: ${(p) => p.theme.color.text.text2};
 
