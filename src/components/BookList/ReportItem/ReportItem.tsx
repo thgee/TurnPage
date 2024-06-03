@@ -1,6 +1,6 @@
-import { IReportItem } from "./types";
+import { IReport } from "../../../apis/report/types";
 
-const ReportItem = ({ bookInfo }: IReportItem) => {
+const ReportItem = ({ bookInfo }: { bookInfo: IReport }) => {
   return <>독후감</>;
 };
 
