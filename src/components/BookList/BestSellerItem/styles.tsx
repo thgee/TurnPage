@@ -7,7 +7,6 @@ export const Container = styled.li`
   padding: 10px 20px;
   display: flex;
   max-width: 1500px;
-  min-width: 1110px;
   margin: 30px auto;
   justify-content: space-between;
 

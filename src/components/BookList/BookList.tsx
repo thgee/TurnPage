@@ -1,16 +1,16 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import BookItem2 from "./ReportItem/ReportItem";
 import { Container } from "./styles";
 import { apiGetBestSeller } from "../../apis/bestseller/apiGetBestSeller";
 import { IBestSeller } from "../../apis/bestseller/types";
-import BestSeller from "../../pages/BestSeller/BestSeller";
-import ReportItem from "./ReportItem/ReportItem";
-import SellItem from "./StoreItem/StoreItem";
 import BestSellerItem from "./BestSellerItem/BestSellerItem";
 import { ISellItemProps } from "./StoreItem/types";
-import { IReportItem } from "./ReportItem/types";
 import { InView, useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { apiGetReports } from "../../apis/report/apiGetReports";
+import { useRecoilValue } from "recoil";
+import { accessTokenState } from "../../recoil/accessTokenState";
+import { IReport } from "../../apis/report/types";
+import ReportItem from "./ReportItem/ReportItem";
 
 // mode : best, store, report
 const BookList = ({
@@ -20,14 +20,18 @@ const BookList = ({
 }) => {
   const { ref, inView } = useInView();
 
+  const accessToken = useRecoilValue(accessTokenState);
+
   useEffect(() => {
     // 스크롤 감지 블럭이 화면에 들어오고 다음페이지가 존재하는 경우 api 호출
     if (inView && hasNextPage) fetchNextPage();
   }, [inView]);
 
-  const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery({
+  const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
+    IBestSeller[] | IReport[]
+  >({
     queryKey: [mode],
-    queryFn: getQueryFn(mode),
+    queryFn: getQueryFn(mode, accessToken as string),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       // 데이터가 없는 페이지까지 호출한 후 그 다음부터는 다음페이지가 없음을 알려주어 호출하지 않음
@@ -42,7 +46,7 @@ const BookList = ({
     <Container>
       {/* 리스트 렌더링 */}
       {data?.pages?.map((infos) =>
-        infos.map((info: IBestSeller | ISellItemProps | IReportItem) => (
+        infos.map((info: IBestSeller | ISellItemProps | IReport) => (
           <>
             {mode === "best" && (
               <BestSellerItem
@@ -50,11 +54,14 @@ const BookList = ({
                 bookInfo={info as IBestSeller}
               />
             )}
+            {mode === "report" && (
+              <ReportItem
+                key={(info as IReport).reportId}
+                bookInfo={info as IReport}
+              />
+            )}
             {/* 책방이나 독후감 리스트 API 호출 시 as로 narrowing 후 사용하기 */}
-            {/* {mode === "store" && <SellItem key={}} bookInfo={info} />}
-          {mode === "report" && (
-            <ReportItem key={} bookInfo={info} />
-          )} */}
+            {/* {mode === "store" && <SellItem key={}} bookInfo={info} />} */}
           </>
         ))
       )}
@@ -74,18 +81,11 @@ const BookList = ({
 export default BookList;
 
 const getQueryFn = (
-  mode: "best" | "store" | "report" | "myReport" | "mySell"
-) => {
-  switch (mode) {
-    case "best":
-      return apiGetBestSeller;
-    case "report":
-      return apiGetBestSeller; // 독후감 리스트 조회 API 완성되면 수정
-    case "store":
-      return apiGetBestSeller; // 책방 리스트 조회 API 완성되면 수정
-    case "myReport":
-      return apiGetBestSeller; // 내 독후감 리스트 조회 API 완성되면 수정
-    case "mySell":
-      return apiGetBestSeller; // 내 판매글 리스트 조회 API 완성되면 수정
-  }
+  mode: "best" | "report" | "store" | "myReport" | "mySell",
+  accessToken: string
+): any => {
+  if (mode === "report")
+    return ({ pageParam }: { pageParam: number }) =>
+      apiGetReports({ pageParam, accessToken });
+  if (mode === "best") return apiGetBestSeller;
 };

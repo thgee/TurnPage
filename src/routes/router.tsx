@@ -4,11 +4,13 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import Login from "../pages/Login/Login";
 import BestSeller from "../pages/BestSeller/BestSeller";
-import Sell from "../pages/Store/BestSeller";
+import Sell from "../pages/Store/Store";
 import BookDetail from "../pages/BookDetail/BookDetail";
 import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
+import Report from "../pages/Report/Report";
+import ReportWrite from "../pages/ReportWrite/ReportWrite";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "store",
         element: <Sell />,
+      },
+      {
+        path: "report",
+        element: <Report />,
+      },
+      {
+        path: "report/write",
+        element: <ReportWrite />,
       },
       {
         path: "book-detail/:bookId",

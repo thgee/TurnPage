@@ -44,7 +44,7 @@ const Header = () => {
         <Style.Link_ to="best" isVisit={isVisit("/best")}>
           베스트셀러
         </Style.Link_>
-        <Style.Link_ to="#" isVisit={isVisit("/report")}>
+        <Style.Link_ to="report" isVisit={isVisit("/report")}>
           독후감
         </Style.Link_>
         <Style.Link_ to="store" isVisit={isVisit("/store")}>

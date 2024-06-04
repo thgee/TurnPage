@@ -17,10 +17,10 @@ export const apiGetBestSeller = ({
     .then(
       ({
         data: {
-          data: { bookInfos },
+          data: { bookInfoList },
         },
       }) => {
-        bookInfos.map((it: any) => {
+        bookInfoList.map((it: any) => {
           let _title = it.title.match(/^[^-]*/)[0];
           let match = it.title.match(/-(.*)/);
           if (match !== null && match[1] !== undefined) {
@@ -33,7 +33,7 @@ export const apiGetBestSeller = ({
 
           return it;
         });
-        return bookInfos as IBestSeller[];
+        return bookInfoList as IBestSeller[];
       }
     )
     .catch((error) => {

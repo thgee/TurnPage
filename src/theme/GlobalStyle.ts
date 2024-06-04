@@ -98,8 +98,8 @@ button{
   cursor : pointer;
   transition: all 0.1s;
   &:hover{
-    transform:scale(1.01);
-    box-shadow : 0 0 10px 4px ${(p) => p.theme.color.bg.bg3}
+    transform:scale(1.04);
+    box-shadow : 0 0 5px 2px ${(p) => p.theme.color.bg.bg3}
   }
 }
 
