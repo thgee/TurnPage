@@ -1,20 +1,15 @@
 import { useState } from "react";
-import TabBtn from "../../components/TabBtn/TabBtn";
 import * as Style from "./styles";
 import BookList from "../../components/BookList/BookList";
 import Profile from "../../components/myPage/Profile/Profile";
 import Friend from "../../components/myPage/Friend/Friend";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
-import { useQuery } from "@tanstack/react-query";
-import { apiGetUserInfo } from "../../apis/myPage/apiGetUserInfo";
 import { Navigate, useNavigate } from "react-router-dom";
-import { stat } from "fs";
+import MyPageTabBtn from "../../components/myPage/MyPageTabBtn/MyPageTabBtn";
 
 const MyPage = () => {
-  const [tabState, SetTabState] = useState<
-    "report" | "store" | "myReport" | "mySell"
-  >("myReport");
+  const [tab, setTab] = useState<"myReport" | "mySell" | "myBuy">("myReport");
 
   const accessToken = useRecoilValue(accessTokenState);
 
@@ -38,12 +33,11 @@ const MyPage = () => {
 
       {/* 내 독후감, 내 판매글 리스트 */}
       <Style.Section2>
-        <Style._TabBtn
-          mode="mypage"
-          tabState={tabState}
-          SetTabState={SetTabState}
-        />
-        <BookList mode={tabState} />
+        <Style.Title>내 활동</Style.Title>
+
+        <MyPageTabBtn setTab={setTab} />
+
+        <BookList mode={tab} />
       </Style.Section2>
     </Style.Container>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TabBtn from "../../components/TabBtn/TabBtn";
+import TabBtn from "../../components/home/HomeTabBtn/HomeTabBtn";
 
 export const Container = styled.div``;
 export const Title = styled.h1`
@@ -26,7 +26,9 @@ export const Section1 = styled.section`
     }
   }
 `;
-export const Section2 = styled.section``;
+export const Section2 = styled.section`
+  padding: 10px 30px;
+`;
 
 export const _TabBtn = styled(TabBtn)`
   &::before {

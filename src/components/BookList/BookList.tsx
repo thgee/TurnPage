@@ -16,7 +16,7 @@ import ReportItem from "./ReportItem/ReportItem";
 const BookList = ({
   mode,
 }: {
-  mode: "best" | "store" | "report" | "myReport" | "mySell";
+  mode: "best" | "store" | "report" | "myReport" | "mySell" | "myBuy";
 }) => {
   const { ref, inView } = useInView();
 
@@ -81,7 +81,7 @@ const BookList = ({
 export default BookList;
 
 const getQueryFn = (
-  mode: "best" | "report" | "store" | "myReport" | "mySell",
+  mode: "best" | "report" | "store" | "myReport" | "mySell" | "myBuy",
   accessToken: string
 ): any => {
   if (mode === "report")

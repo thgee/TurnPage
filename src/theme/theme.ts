@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
       text2: "#5D5757",
       text3: "#929A9A",
       text4: "#CCCCCC",
+      text5: "#FF3C3C",
     },
     border: {
       border1: "#000000",
@@ -27,7 +28,7 @@ export const lightTheme: DefaultTheme = {
       bg4: "#FFFFFF",
     },
 
-    icon: { icon1: "#000000" },
+    icon: { icon1: "#000000", icon2: "#FF9E9E" },
   },
 
   fontFamily: {

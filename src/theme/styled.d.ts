@@ -8,6 +8,7 @@ declare module "styled-components" {
         text2: stirng;
         text3: stirng;
         text4: stirng;
+        text5: stirng;
       };
       border: {
         border1: stirng;
@@ -29,7 +30,10 @@ declare module "styled-components" {
         bg4: stirng;
       };
 
-      icon: { icon1: string };
+      icon: {
+        icon1: string;
+        icon2: string;
+      };
     };
     fontFamily: {
       light: string;
