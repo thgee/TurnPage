@@ -10,6 +10,7 @@ import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
 import Report from "../pages/Report/Report";
+import ReportWrite from "../pages/ReportWrite/ReportWrite";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "report",
         element: <Report />,
+      },
+      {
+        path: "report/write",
+        element: <ReportWrite />,
       },
       {
         path: "book-detail/:bookId",
