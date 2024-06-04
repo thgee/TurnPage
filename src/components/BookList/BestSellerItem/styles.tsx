@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.li`
   width: 100%;
-  border: 1px solid ${(p) => p.theme.color.border.border2};
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 20px 20px;
   display: flex;
   max-width: 1500px;
-  margin: 30px auto;
+  margin: 14px auto;
+  box-shadow: 0 0 14px 0px #bcbcbc;
   justify-content: space-between;
 
   @media (max-width: 1024px) {
@@ -23,7 +23,7 @@ export const RowA = styled.div`
   }
 
   > .img-box {
-    height: 280px;
+    height: 220px;
     width: 200px;
     overflow: hidden;
     flex-shrink: 0;

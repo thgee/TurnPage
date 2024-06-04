@@ -4,37 +4,39 @@ import { useNavigate } from "react-router-dom";
 import { BookInfoWrap, RowA, RowB } from "./styles";
 import { Container } from "../styles";
 import Btn1 from "../../Btn1/Btn1";
+import { IStore } from "../../../apis/store/types";
+import { getStar } from "../../../utils/getStar";
 
-// 책방 리스트에 띄울 아이템 박스
-const StoreItem = ({ bookInfo }: ISellItemProps) => {
+// 책방, 구매내역에서 띄울 아이템
+const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
   const navigate = useNavigate();
 
   return (
     <Container>
       <RowA>
         <div>
-          <img src={bookInfo.img} />
+          <img src={storeInfo.bookInfo.cover} />
         </div>
         <BookInfoWrap>
           <div className="title-wrap">
-            <h1>{bookInfo.title}</h1>
-            <h2>{bookInfo.subTtile}</h2>
+            <h1>{storeInfo.bookInfo.title}</h1>
+            <h2>{storeInfo.bookInfo.subTitle}</h2>
           </div>
-          <span className="author">{bookInfo.author}</span>
+          <span className="author">{storeInfo.bookInfo.author}</span>
           <div>
-            <span className="publisher">{bookInfo.publisher}</span>
-            <span className="date">{bookInfo.date}</span>
+            <span className="publisher">{storeInfo.bookInfo.publisher}</span>
+            <span className="date">{storeInfo.bookInfo.publicationDate}</span>
           </div>
-          <div className="star-wrap">{getStar(bookInfo.grade)}</div>
+          <div className="star-wrap">{getStar(storeInfo.bookInfo.star)}</div>
         </BookInfoWrap>
       </RowA>
       <RowB>
         <div className="price-wrap">
-          <span>상태: {bookInfo?.state}</span>
-          <span>{bookInfo?.price}원</span>
+          <span>상태: {storeInfo?.grade}</span>
+          <span>{storeInfo?.price}원</span>
         </div>
         <div className="btn-wrap">
-          <Btn1 onClick={() => navigate(`/bookDetail/${bookInfo.title}`)}>
+          <Btn1 onClick={() => navigate(`/bookDetail/${storeInfo.title}`)}>
             해당 도서 정보 살펴보기
           </Btn1>
           <Btn1>판매 게시글 상세히 보기</Btn1>
@@ -45,16 +47,3 @@ const StoreItem = ({ bookInfo }: ISellItemProps) => {
 };
 
 export default StoreItem;
-
-const getStar = (num: number) => {
-  const stars = [];
-  for (let _ = 0; _ < num; _++) {
-    stars.push(<PiStarFill size={26} />);
-  }
-
-  for (let _ = 0; _ < 5 - num; _++) {
-    stars.push(<PiStarBold size={26} />);
-  }
-
-  return stars;
-};

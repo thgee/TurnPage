@@ -11,6 +11,9 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { IReport } from "../../apis/report/types";
 import ReportItem from "./ReportItem/ReportItem";
+import { apiGetStore } from "../../apis/store/apiGetStore";
+import StoreItem from "./StoreItem/StoreItem";
+import { IStore } from "../../apis/store/types";
 
 // mode : best, store, report
 const BookList = ({
@@ -28,7 +31,7 @@ const BookList = ({
   }, [inView]);
 
   const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
-    IBestSeller[] | IReport[]
+    IBestSeller[] | IReport[] | IStore[]
   >({
     queryKey: [mode],
     queryFn: getQueryFn(mode, accessToken as string),
@@ -46,7 +49,7 @@ const BookList = ({
     <Container>
       {/* 리스트 렌더링 */}
       {data?.pages?.map((infos) =>
-        infos.map((info: IBestSeller | ISellItemProps | IReport) => (
+        infos.map((info) => (
           <>
             {mode === "best" && (
               <BestSellerItem
@@ -60,8 +63,12 @@ const BookList = ({
                 bookInfo={info as IReport}
               />
             )}
-            {/* 책방이나 독후감 리스트 API 호출 시 as로 narrowing 후 사용하기 */}
-            {/* {mode === "store" && <SellItem key={}} bookInfo={info} />} */}
+            {mode === "store" && (
+              <StoreItem
+                key={(info as IStore).salePostId}
+                storeInfo={info as IStore}
+              />
+            )}
           </>
         ))
       )}
@@ -88,4 +95,5 @@ const getQueryFn = (
     return ({ pageParam }: { pageParam: number }) =>
       apiGetReports({ pageParam, accessToken });
   if (mode === "best") return apiGetBestSeller;
+  if (mode === "store") return apiGetStore;
 };

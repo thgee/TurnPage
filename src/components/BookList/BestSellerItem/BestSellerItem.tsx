@@ -11,9 +11,9 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
   const navigate = useNavigate();
 
   const isPc = useMediaQuery({
-    query: "(min-width : 1024px)",
+    query: "(min-width : 1080px)",
   });
-
+  const titleLength = bookInfo.title.length + bookInfo.subTitle.length;
   return (
     <Container>
       <RowA>
@@ -27,13 +27,12 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
 
         <BookInfoWrap>
           <div className="title-wrap">
-            <h1>{bookInfo.title}</h1>
-            <h2>
-              {isPc &&
-                (bookInfo.subTitle.length > 15
-                  ? bookInfo.subTitle.slice(0, 15) + "..."
-                  : bookInfo.subTitle)}
-            </h2>
+            <h1>
+              {bookInfo.title.length > 20
+                ? bookInfo.title.slice(0, 20) + "..."
+                : bookInfo.title}
+            </h1>
+            <h2>{isPc && titleLength <= 30 && bookInfo.subTitle}</h2>
           </div>
           <span className="author">{bookInfo.author}</span>
           <div>
