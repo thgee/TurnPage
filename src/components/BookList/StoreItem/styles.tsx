@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { PiStarBold, PiStarFill } from "react-icons/pi";
 
 export const Container = styled.li`
   width: 100%;
@@ -10,87 +9,99 @@ export const Container = styled.li`
   margin: 14px auto;
   box-shadow: 0 0 14px 0px #bcbcbc;
   justify-content: space-between;
-`;
 
-export const RowA = styled.div`
-  flex-grow: 1;
-  display: flex;
-`;
-export const RowB = styled.div`
-  flex-grow: 0.3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .price-wrap {
-    align-items: center;
-    flex-grow: 1;
-    text-align: end;
+  .r-col {
     display: flex;
     justify-content: space-between;
-    flex-grow: 0.3;
-
-    // 상태랑 가격 텍스트
-    > span {
-      margin: 0 10px;
-    }
+    flex-grow: 1;
   }
 
   .btn-wrap {
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-right: 30px;
 
     // Btn1
     > button {
-      width: 100%;
-      display: block;
-      margin: 10px 0;
+      width: fit-content;
+      margin: 6px 0;
     }
   }
 
-  // BookItem1 작아졌을 때
-  @media (max-width: 1050px) {
+  > .img-box {
+    height: 220px;
+    width: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 4px;
 
-    .btn-wrap {
-      margin: 20px 0px;
+    > img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .r-col {
+      flex-direction: column;
+      flex-grow: 1;
     }
   }
 `;
 
-export const BookInfoWrap = styled.div`
+export const ColorBoxProto = styled.div`
+  padding: 4px 8px;
+  color: ${(p) => p.theme.color.text.text5};
+  background-color: ${(p) => p.theme.color.bg.bg3};
+  border-radius: 8px;
+  font-family: ${(p) => p.theme.fontFamily.medium};
+  width: fit-content;
+`;
+
+export const ColorBoxGrade = styled(ColorBoxProto)`
+  color: ${(p) => p.theme.color.text.text5};
+`;
+export const ColorBoxPrice = styled(ColorBoxProto)`
+  color: ${(p) => p.theme.color.text.text2};
+`;
+
+export const Col1 = styled.div`
+  flex-grow: 1;
+  padding: 15px 15px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin-left: 10px;
   justify-content: space-between;
+  height: fit-content;
+  > * {
+    margin-bottom: 10px;
+  }
 
   .title-wrap {
     display: flex;
-    justify-content: space-between;
+    align-items: start;
+
+    > .title {
+      max-width: 300px;
+      margin-right: 14px;
+      color: ${(p) => p.theme.color.text.text2};
+      font-family: ${(p) => p.theme.fontFamily.medium};
+      font-size: 1.2rem;
+    }
   }
 
-  // title
-  h1 {
-    font-size: 1.4rem;
-  }
-  // subtitle
-  h2 {
-    align-self: end;
-    flex-grow: 1;
-    margin-left: 6px;
-    color: #888;
-  }
+  .sub-text-wrap {
+    color: ${(p) => p.theme.color.text.text3};
+    font-size: 0.9;
+    margin-bottom: 20px;
 
-  .author,
-  .publisher,
-  .date {
-    color: #888;
-  }
-
-  .star-wrap {
-    display: flex;
-    flex-grow: 0.6;
-    align-items: center;
+    > * {
+      margin: 6px 0;
+    }
   }
 `;
+export const Col2 = styled.div``;

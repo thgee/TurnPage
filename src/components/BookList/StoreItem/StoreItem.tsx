@@ -5,6 +5,9 @@ import Btn1 from "../../Btn1/Btn1";
 import * as style from "./styles";
 import { IStore } from "../../../apis/store/types";
 import { getStar } from "../../../utils/getStar";
+import { convertPriceComma } from "../../../utils/convertPriceComma";
+import { shortenText } from "../../../utils/shortenText";
+import { useMediaQuery } from "react-responsive";
 
 // 책방, 구매내역에서 띄울 아이템
 const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
@@ -12,35 +15,39 @@ const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
 
   return (
     <style.Container>
-      <style.RowA>
-        <div>
-          <img src={storeInfo.bookInfo.cover} />
-        </div>
-        <style.BookInfoWrap>
+      <div className="img-box">
+        <img src={storeInfo.bookInfo.cover} />
+      </div>
+
+      <div className="r-col">
+        <style.Col1>
           <div className="title-wrap">
-            <h1>{storeInfo.bookInfo.title}</h1>
-            <h2>{storeInfo.bookInfo.subTitle}</h2>
+            <h1 className="title">{shortenText(storeInfo.title, 34)}</h1>
+            <style.ColorBoxGrade>{storeInfo?.grade}</style.ColorBoxGrade>
           </div>
-          <span className="author">{storeInfo.bookInfo.author}</span>
-          <div>
-            <span className="publisher">{storeInfo.bookInfo.publisher}</span>
-            <span className="date">{storeInfo.bookInfo.publicationDate}</span>
+
+          <div className="sub-text-wrap">
+            <div>{storeInfo.createdAt}</div>
+            <div>{shortenText(storeInfo.bookInfo.title, 20)}</div>
           </div>
-          <div className="star-wrap">{getStar(storeInfo.bookInfo.star)}</div>
-        </style.BookInfoWrap>
-      </style.RowA>
-      <style.RowB>
-        <div className="price-wrap">
-          <span>상태: {storeInfo?.grade}</span>
-          <span>{storeInfo?.price}원</span>
-        </div>
-        <div className="btn-wrap">
-          <Btn1 onClick={() => navigate(`/bookDetail/${storeInfo.title}`)}>
-            해당 도서 정보 살펴보기
-          </Btn1>
-          <Btn1>판매 게시글 상세히 보기</Btn1>
-        </div>
-      </style.RowB>
+
+          <style.ColorBoxPrice>
+            {convertPriceComma(storeInfo?.price)}원
+          </style.ColorBoxPrice>
+        </style.Col1>
+        <style.Col2>
+          <div className="btn-wrap">
+            <Btn1
+              onClick={() =>
+                navigate(`/book-detail/${storeInfo.bookInfo.bookId}`)
+              }
+            >
+              해당 도서 정보 살펴보기
+            </Btn1>
+            <Btn1>판매 게시글 상세히 보기</Btn1>
+          </div>
+        </style.Col2>
+      </div>
     </style.Container>
   );
 };

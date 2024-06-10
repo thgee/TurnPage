@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { IBestSeller } from "../../../apis/bestseller/types";
 import * as Style from "./styles";
+import { shortenText } from "../../../utils/shortenText";
 
 const BestSellerPreview = ({ bookInfo }: { bookInfo: IBestSeller }) => {
   const navigate = useNavigate();
@@ -16,9 +17,7 @@ const BestSellerPreview = ({ bookInfo }: { bookInfo: IBestSeller }) => {
       <Style.BookInfoWrap>
         <h1 className="title">
           {/* 제목이 20자 이상이면 ...으로 줄임 */}
-          {bookInfo.title.length > 20
-            ? bookInfo.title.slice(0, 20) + "..."
-            : bookInfo.title}
+          {shortenText(bookInfo.title, 20)}
         </h1>
         <span>{bookInfo.author}</span>
         <span>{bookInfo.publicationDate}</span>
