@@ -69,6 +69,12 @@ const BookList = ({
                 storeInfo={info as IStore}
               />
             )}
+            {/* {mode === "mySell" && (
+              <StoreItem
+                key={(info as IMySell).salePostId}
+                storeInfo={info as IMySell}
+              />
+            )} */}
           </>
         ))
       )}
@@ -96,4 +102,5 @@ const getQueryFn = (
       apiGetReports({ pageParam, accessToken });
   if (mode === "best") return apiGetBestSeller;
   if (mode === "store") return apiGetStore;
+  // if (mode === "mySell") return apiGetMySell;
 };

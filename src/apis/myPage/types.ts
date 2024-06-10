@@ -8,3 +8,5 @@ export interface IUserInfo {
   saleCount: number;
   purchaseCount: number;
 }
+
+export interface IMySell {}

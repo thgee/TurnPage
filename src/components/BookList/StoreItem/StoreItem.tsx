@@ -1,9 +1,8 @@
 import { PiStarFill, PiStarBold } from "react-icons/pi";
 import { ISellItemProps } from "./types";
 import { useNavigate } from "react-router-dom";
-import { BookInfoWrap, RowA, RowB } from "./styles";
-import { Container } from "../styles";
 import Btn1 from "../../Btn1/Btn1";
+import * as style from "./styles";
 import { IStore } from "../../../apis/store/types";
 import { getStar } from "../../../utils/getStar";
 
@@ -12,12 +11,12 @@ const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
   const navigate = useNavigate();
 
   return (
-    <Container>
-      <RowA>
+    <style.Container>
+      <style.RowA>
         <div>
           <img src={storeInfo.bookInfo.cover} />
         </div>
-        <BookInfoWrap>
+        <style.BookInfoWrap>
           <div className="title-wrap">
             <h1>{storeInfo.bookInfo.title}</h1>
             <h2>{storeInfo.bookInfo.subTitle}</h2>
@@ -28,9 +27,9 @@ const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
             <span className="date">{storeInfo.bookInfo.publicationDate}</span>
           </div>
           <div className="star-wrap">{getStar(storeInfo.bookInfo.star)}</div>
-        </BookInfoWrap>
-      </RowA>
-      <RowB>
+        </style.BookInfoWrap>
+      </style.RowA>
+      <style.RowB>
         <div className="price-wrap">
           <span>상태: {storeInfo?.grade}</span>
           <span>{storeInfo?.price}원</span>
@@ -41,8 +40,8 @@ const StoreItem = ({ storeInfo }: { storeInfo: IStore }) => {
           </Btn1>
           <Btn1>판매 게시글 상세히 보기</Btn1>
         </div>
-      </RowB>
-    </Container>
+      </style.RowB>
+    </style.Container>
   );
 };
 

@@ -18,7 +18,7 @@ const Profile = () => {
       {/* <button className="profile-btn edit-profile-btn">프로필 수정</button> */}
       <Style.Col1>
         <img src={userInfo?.profileImage} />
-        {/* <button className="profile-btn edit-img-btn">프로필 이미지 변경</button> */}
+        {/* <button className="profile-btn edit-img-btn">프로필 이미지 변경</buttn> */}
       </Style.Col1>
       <Style.Col2>
         <h1>{userInfo?.name}</h1>
@@ -29,7 +29,7 @@ const Profile = () => {
           {userInfo?.point
             .toString()
             .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}{" "}
-          P
+          " P
         </h2>
       </Style.Col2>
       <Style.Col3>
