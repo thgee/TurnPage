@@ -8,4 +8,8 @@ export const Container = styled.ul`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1080px) {
+  }
 `;

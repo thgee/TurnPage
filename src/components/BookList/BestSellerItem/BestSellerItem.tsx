@@ -11,7 +11,7 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
   const navigate = useNavigate();
 
   const isPc = useMediaQuery({
-    query: "(min-width : 1080px)",
+    query: "(min-width : 1024px)",
   });
   const titleLength = bookInfo.title.length + bookInfo.subTitle.length;
   return (
@@ -26,16 +26,18 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
         </div>
 
         <BookInfoWrap>
-          <div className="title-wrap">
-            <h1>
-              {bookInfo.title.length > 20
-                ? bookInfo.title.slice(0, 20) + "..."
-                : bookInfo.title}
-            </h1>
-            <h2>{isPc && titleLength <= 30 && bookInfo.subTitle}</h2>
+          <div className="ta-wrap">
+            <div className="title-wrap">
+              <h1>
+                {bookInfo.title.length > 20
+                  ? bookInfo.title.slice(0, 20) + "..."
+                  : bookInfo.title}
+              </h1>
+              <h2>{isPc && titleLength <= 30 && bookInfo.subTitle}</h2>
+            </div>
+            <span className="author">{bookInfo.author}</span>
           </div>
-          <span className="author">{bookInfo.author}</span>
-          <div>
+          <div className="pd-wrap">
             <span className="publisher">{bookInfo.publisher}</span>
             <span className="date">{bookInfo.publicationDate}</span>
           </div>

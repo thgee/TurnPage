@@ -11,7 +11,7 @@ export const Container = styled.li`
   justify-content: space-between;
 
   @media (max-width: 1024px) {
-    min-width: 700px;
+    width: 500px;
   }
 `;
 
@@ -66,6 +66,9 @@ export const RowB = styled.div`
       display: block;
       margin: 10px 0;
     }
+    @media (max-width: 1024px) {
+      margin: 0;
+    }
   }
 `;
 
@@ -76,6 +79,15 @@ export const BookInfoWrap = styled.div`
   margin-left: 10px;
   justify-content: space-between;
 
+  .ta-wrap,
+  .pd-wrap {
+    display: flex;
+    flex-direction: column;
+    > * {
+      margin-bottom: 6px;
+    }
+  }
+
   .title-wrap {
     display: flex;
     justify-content: space-between;
@@ -83,7 +95,11 @@ export const BookInfoWrap = styled.div`
 
   // title
   h1 {
-    font-size: 1.4rem;
+    max-width: 300px;
+    margin-right: 14px;
+    color: ${(p) => p.theme.color.text.text2};
+    font-family: ${(p) => p.theme.fontFamily.medium};
+    font-size: 1.2rem;
   }
   // subtitle
   h2 {

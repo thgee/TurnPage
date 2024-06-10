@@ -5,9 +5,13 @@ import { apiGetBookDetail } from "../../apis/bookDetail/apiGetBookDetail";
 import { getStar } from "../../utils/getStar";
 import BookInfo from "../../components/bookDetail/BookInfo/BookInfo";
 import Review from "../../components/bookDetail/Review/Review";
+import { useEffect } from "react";
 
 const BookDetail = () => {
   const { bookId } = useParams();
+
+  // 페이지 마운트 시 스크롤을 맨 위로 초기화
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
     <style.Container>

@@ -12,8 +12,8 @@ import { accessTokenState } from "../../recoil/accessTokenState";
 import { IReport } from "../../apis/report/types";
 import ReportItem from "./ReportItem/ReportItem";
 import { apiGetStore } from "../../apis/store/apiGetStore";
-import StoreItem from "./StoreItem/StoreItem";
 import { IStore } from "../../apis/store/types";
+import StoreItem from "./StoreItem/StoreItem";
 
 // mode : best, store, report
 const BookList = ({

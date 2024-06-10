@@ -1,9 +1,8 @@
 import axios from "axios";
-import { IUserInfo } from "./types";
 
 export const apiGetUserInfo = (accessToken: string) => {
   return axios
-    .get(`${process.env.REACT_APP_SERVER_DOMAIN}/members/myPage`, {
+    .get(`${process.env.REACT_APP_SERVER_DOMAIN}/reports/my`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

@@ -10,3 +10,4 @@ export interface IUserInfo {
 }
 
 export interface IMySell {}
+export interface IMyReport {}

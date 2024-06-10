@@ -47,8 +47,11 @@ export const Container = styled.li`
   }
 
   @media (max-width: 1080px) {
+    width: 600px;
+
     .r-col {
       flex-direction: column;
+      margin-left: 50px;
       flex-grow: 1;
     }
   }
@@ -91,6 +94,10 @@ export const Col1 = styled.div`
       color: ${(p) => p.theme.color.text.text2};
       font-family: ${(p) => p.theme.fontFamily.medium};
       font-size: 1.2rem;
+
+      @media (max-width: 1080px) {
+        max-width: 200px;
+      }
     }
   }
 
