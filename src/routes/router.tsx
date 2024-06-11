@@ -4,13 +4,14 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import Login from "../pages/Login/Login";
 import BestSeller from "../pages/BestSeller/BestSeller";
-import Sell from "../pages/Store/Store";
 import BookDetail from "../pages/BookDetail/BookDetail";
 import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
-import Report from "../pages/Report/Report";
-import ReportWrite from "../pages/ReportWrite/ReportWrite";
+import ReportNew from "../pages/report/ReportNew/ReportNew";
+import SellNew from "../pages/Sell/SellNew/SellNew";
+import Report from "../pages/report/Report/Report";
+import Sell from "../pages/Sell/Sell/Sell";
 
 const router = createBrowserRouter([
   {
@@ -41,16 +42,20 @@ const router = createBrowserRouter([
         element: <BestSeller />,
       },
       {
-        path: "store",
+        path: "sell",
         element: <Sell />,
+      },
+      {
+        path: "sell/new",
+        element: <SellNew />,
       },
       {
         path: "report",
         element: <Report />,
       },
       {
-        path: "report/write",
-        element: <ReportWrite />,
+        path: "report/new",
+        element: <ReportNew />,
       },
       {
         path: "book-detail/:bookId",

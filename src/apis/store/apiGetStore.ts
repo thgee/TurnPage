@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IStore } from "./types";
+import { ISell } from "./types";
 
 // 판매중인 책 리스트
-export const apiGetStore = ({ pageParam }: { pageParam: number }) => {
+export const apiGetSell = ({ pageParam }: { pageParam: number }) => {
   const params = { page: pageParam, size: 10 };
 
   return axios
@@ -27,7 +27,7 @@ export const apiGetStore = ({ pageParam }: { pageParam: number }) => {
 
           return it;
         });
-        return salePostInfoList as IStore[];
+        return salePostInfoList as ISell[];
       }
     )
     .catch((error) => {

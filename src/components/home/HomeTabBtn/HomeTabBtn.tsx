@@ -10,8 +10,8 @@ const HomeTabBtn = ({ tabState, SetTabState, className }: IHomeTabBtnProps) => {
         친구들의 독후감
       </Style.Tab>
       <Style.Tab
-        isClick={"store" === tabState}
-        onClick={() => SetTabState("store")}
+        isClick={"sell" === tabState}
+        onClick={() => SetTabState("sell")}
       >
         현재 판매중인 책
       </Style.Tab>
@@ -22,7 +22,7 @@ const HomeTabBtn = ({ tabState, SetTabState, className }: IHomeTabBtnProps) => {
 export default HomeTabBtn;
 
 interface IHomeTabBtnProps {
-  tabState: "report" | "store";
-  SetTabState: React.Dispatch<React.SetStateAction<"report" | "store">>;
+  tabState: "report" | "sell";
+  SetTabState: React.Dispatch<React.SetStateAction<"report" | "sell">>;
   className?: string;
 }

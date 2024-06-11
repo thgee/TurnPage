@@ -47,7 +47,7 @@ const Header = () => {
         <Style.Link_ to="report" isVisit={isVisit("/report")}>
           독후감
         </Style.Link_>
-        <Style.Link_ to="store" isVisit={isVisit("/store")}>
+        <Style.Link_ to="sell" isVisit={isVisit("/sell")}>
           책방
         </Style.Link_>
       </Style.RowA>
@@ -66,7 +66,7 @@ const Header = () => {
 
       {/* 검색창 오른쪽 */}
       <Style.RowC>
-        <Style.Link_ to="#" isVisit={isVisit("/sell")}>
+        <Style.Link_ to="/sell/new" isVisit={isVisit("/sell/new")}>
           책 판매하기
         </Style.Link_>
 
