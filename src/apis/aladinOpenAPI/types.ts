@@ -1,4 +1,4 @@
-export interface IAladin {
+export interface ISearchBookAladin {
   itemId: number;
   title: string;
   author: string;

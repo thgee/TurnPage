@@ -4,6 +4,7 @@ import * as Style from "./styles";
 import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { useEffect } from "react";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Header = () => {
   // 현재 보고있는 페이지의 Link 버튼을 굵게 만들기 위함
@@ -54,14 +55,13 @@ const Header = () => {
 
       {/* 검색창 */}
       <Style.RowB>
-        <Style.Search>
+        <SearchBox>
           <input
             type="text"
             placeholder="구매하고 싶은 책을 입력해 주세요"
             onChange={handleSearchInput}
           />
-          <Style.SearchIcon />
-        </Style.Search>
+        </SearchBox>
       </Style.RowB>
 
       {/* 검색창 오른쪽 */}
