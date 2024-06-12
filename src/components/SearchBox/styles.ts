@@ -10,6 +10,7 @@ export const Search = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
+  padding-left: 10px;
   box-shadow: inset 2px 2px 5px -3px rgb(10, 10, 10);
   border: 1px solid ${(p) => p.theme.color.border.border3};
 

@@ -1,7 +1,7 @@
 import ReactModal from "react-modal";
 import { apiSearchBookAladin } from "../../apis/aladinOpenAPI/apiSearchBookAladin";
 import SearchBox from "../SearchBox/SearchBox";
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { ISearchBookAladin } from "../../apis/aladinOpenAPI/types";
 import { debounce } from "lodash";
 import * as style from "./styles";
@@ -13,17 +13,17 @@ const SearchBookModal = ({
   const [query, setQuery] = useState("");
   const [searchedBooks, setSearchedBooks] = useState<ISearchBookAladin[]>([]);
 
-  const debouncedSearch = useMemo(
-    () =>
-      debounce((query) => {
-        setQuery(query);
-        if (query.length <= 2) {
-          setSearchedBooks([]);
-          return;
-        }
-        apiSearchBookAladin(query).then((data) => setSearchedBooks(data));
-      }, 200),
-    [query]
+  // useCallback을 사용하여 debounce 함수를 한 번만 생성하게 만듬
+  const debouncedSearch = useCallback(
+    debounce((query: string) => {
+      // 한 글자 이하이면 검색하지 않음
+      if (query.length <= 1) {
+        setSearchedBooks([]);
+        return;
+      }
+      apiSearchBookAladin(query).then((data) => setSearchedBooks(data));
+    }, 300),
+    []
   );
 
   return (
@@ -34,18 +34,14 @@ const SearchBookModal = ({
     >
       <style.Container>
         <SearchBox className="search-box">
-          {/* onClick={handleSearch} */}
           <input
             type="text"
             placeholder="저자, 제목 등을 이용해 책을 검색해주세요."
-            // onChange={(e) => setQuery(e.currentTarget.value)}
             onChange={(e) => {
+              setQuery(e.currentTarget.value);
               debouncedSearch(e.currentTarget.value);
             }}
-            // value={query}
-            onKeyDown={(e) => {
-              // if (e.key === "Enter") handleSearch();
-            }}
+            value={query}
           />
         </SearchBox>
 
@@ -80,12 +76,15 @@ const modalStyle: ReactModal.Styles = {
   content: {
     width: "50%",
     minWidth: "600px",
-    minHeight: "500px",
+    // minHeight: "500px",
+    // maxHeight: "70vh",
     height: "fit-content",
     borderRadius: "25px",
     zIndex: "150",
     position: "absolute",
+    marginTop: "30px",
     transform: "translate(-50%, -50%)",
+    paddingRight: "10px",
     top: "50%",
     left: "50%",
     boxShadow: "0px 0px 100px 6px rgba(0, 0, 0, 0.3)",
