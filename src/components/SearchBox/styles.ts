@@ -23,25 +23,6 @@ export const Search = styled.div`
     outline: none;
     width: 100%;
   }
-
-  input::placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
-  input::-webkit-input-placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
-  input:-ms-input-placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
-   textarea::placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
-  textarea::-webkit-input-placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
-  textarea:-ms-input-placeholder {
-    color: ${(p) => p.theme.color.text.text3};
-  }
 `;
 
 // 돋보기

@@ -5,7 +5,7 @@ export interface ISearchBookAladin {
   cover: string;
   isbn: string;
   publisher: string;
-  publicationDate: Date;
+  publicationDate: string;
   description: string;
   rank: null;
 }

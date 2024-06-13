@@ -1,8 +1,7 @@
 import BookList from "../../components/BookList/BookList";
-import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useEffect, useRef, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
-import { scroller } from "react-scroll";
 import * as Style from "./styles";
 import BestSellerCarousel from "../../components/home/BestSellerCarousel/BestSellerCarousel";
 import TabBtn from "../../components/home/HomeTabBtn/HomeTabBtn";
@@ -10,19 +9,12 @@ import TabBtn from "../../components/home/HomeTabBtn/HomeTabBtn";
 const Home = () => {
   // 친구들의 독후감 : report, 현재 판매중인 책 : sell
   const [tabState, SetTabState] = useState<"report" | "sell">("report");
-
-  const [searchScrollMove, setSearchScrollMove] = useRecoilState(
-    searchScrollMoveState
-  );
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const searchScrollMove = useRecoilValue(searchScrollMoveState);
 
   // search 입력 시 스크롤 이동 로직
   useEffect(() => {
-    if (searchScrollMove)
-      scroller.scrollTo("searchScrollMove", {
-        duration: 300,
-        smooth: true,
-        offset: -50, // 스크롤 위치 세부조정
-      });
+    scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [searchScrollMove]);
 
   return (
@@ -37,7 +29,9 @@ const Home = () => {
       </Style.SectionA>
 
       {/* 독후감, 판매중인책*/}
+
       <Style.SectionB id="searchScrollMove">
+        <div ref={scrollRef}></div>
         {/* 탭 버튼 선택 */}
         <TabBtn tabState={tabState} SetTabState={SetTabState} />
         <BookList mode={tabState} />

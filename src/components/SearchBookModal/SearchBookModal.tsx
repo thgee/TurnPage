@@ -5,10 +5,12 @@ import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { ISearchBookAladin } from "../../apis/aladinOpenAPI/types";
 import { debounce } from "lodash";
 import * as style from "./styles";
+import { ISearchBookModalProps } from "./type";
 
 const SearchBookModal = ({
   modalToggle,
   setModalToggle,
+  setSelectedBook,
 }: ISearchBookModalProps) => {
   const [query, setQuery] = useState("");
   const [searchedBooks, setSearchedBooks] = useState<ISearchBookAladin[]>([]);
@@ -22,16 +24,20 @@ const SearchBookModal = ({
         return;
       }
       apiSearchBookAladin(query).then((data) => setSearchedBooks(data));
-    }, 300),
+    }, 200),
     []
   );
 
+  const handleSelectBook = (it: ISearchBookAladin) => {
+    // 모달 닫기
+    setModalToggle(false);
+
+    // 선택한 책 정보 넣어주기
+    setSelectedBook(it);
+  };
+
   return (
-    <ReactModal
-      isOpen={modalToggle}
-      onRequestClose={() => setModalToggle(false)}
-      style={modalStyle}
-    >
+    <ReactModal isOpen={modalToggle} style={modalStyle}>
       <style.Container>
         <SearchBox className="search-box">
           <input
@@ -47,7 +53,7 @@ const SearchBookModal = ({
 
         <ul>
           {searchedBooks.map((it) => (
-            <style.BookItem>
+            <style.BookItem onClick={() => handleSelectBook(it)}>
               {/* 키워드는 다른색으로 표시 */}
               {it.title.split(query)[0]}
               {it.title.split(query)[1] && (
@@ -63,11 +69,6 @@ const SearchBookModal = ({
 };
 
 export default SearchBookModal;
-
-interface ISearchBookModalProps {
-  modalToggle: boolean;
-  setModalToggle: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const modalStyle: ReactModal.Styles = {
   overlay: {

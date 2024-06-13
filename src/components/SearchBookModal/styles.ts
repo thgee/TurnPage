@@ -1,31 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-height: 400px;
-  max-height: 70vh;
-  height: fit-content;
-  overflow-y: scroll;
-
   .search-box {
     margin: 0 auto;
     margin-bottom: 20px;
-    position: sticky;
-  }
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${(p) => p.theme.color.icon.icon2};
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: #fff;
-    border-radius: 10px;
   }
 
   ul {
-    margin-right: 30px;
+    padding-right: 20px;
+
+    overflow-y: auto;
+
+    min-height: 370px;
+    max-height: 70vh;
+    height: fit-content;
   }
 `;
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   position: sticky;
-  top: 65px;
+  top: 5px;
 
   // 탭 버튼 위쪽 공간에 backdrop filter을 주기 위함
   &::before {

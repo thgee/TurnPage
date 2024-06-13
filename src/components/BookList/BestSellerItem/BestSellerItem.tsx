@@ -2,7 +2,7 @@ import { PiStarFill, PiStarBold } from "react-icons/pi";
 import { BookInfoWrap, RowA, RowB } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { IBestSeller } from "../../../apis/bestseller/types";
-import Btn1 from "../../Btn1/Btn1";
+import Btn1 from "../../buttons/Btn1/Btn1";
 import { Container } from "./styles";
 import { useMediaQuery } from "react-responsive";
 import { getStar } from "../../../utils/getStar";
