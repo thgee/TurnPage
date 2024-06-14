@@ -45,22 +45,20 @@ const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
           },
           Button: {
             colorText:
-              grade === "상태를 선택하세요"
-                ? theme.color.text.text3
-                : theme.color.text.text2,
+              grade === "-" ? theme.color.text.text3 : theme.color.text.text2,
             fontFamily: theme.fontFamily.medium,
             colorBgContainer: theme.color.bg.bg2,
             defaultHoverBorderColor: theme.color.bg.bg3,
             defaultHoverColor: theme.color.btn.bg2,
             defaultActiveColor: theme.color.btn.bg2,
             defaultActiveBorderColor: theme.color.bg.bg3,
-            defaultBorderColor: theme.color.btn.bg2,
+            defaultBorderColor: theme.color.btn.bg1,
           },
         },
       }}
     >
       <Dropdown menu={menuProps} trigger={["click"]}>
-        <Button>
+        <Button style={{ height: 36, borderRadius: 10 }}>
           <Space>
             {grade}
             <DownOutlined />

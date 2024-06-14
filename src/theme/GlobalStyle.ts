@@ -105,8 +105,17 @@ button{
 }
 
 
-input{
+input, textarea{
   outline:none;
+  cursor : pointer;
+  resize: none;
+  font-size: 1rem;
+  font-family : ${(p) => p.theme.fontFamily.light};
+
+
+&:focus {
+  cursor: text;
+}
 }
 
 input::placeholder {
@@ -158,7 +167,9 @@ input::placeholder {
       overflow : auto;
     }
   } 
-  
+  li{
+    list-style: none;
+  }
 `;
 
 export default GlobalStyle;

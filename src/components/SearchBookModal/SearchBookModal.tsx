@@ -37,7 +37,11 @@ const SearchBookModal = ({
   };
 
   return (
-    <ReactModal isOpen={modalToggle} style={modalStyle}>
+    <ReactModal
+      isOpen={modalToggle}
+      style={modalStyle}
+      onRequestClose={() => setModalToggle(false)}
+    >
       <style.Container>
         <SearchBox className="search-box">
           <input
