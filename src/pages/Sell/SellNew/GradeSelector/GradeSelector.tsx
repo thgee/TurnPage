@@ -3,8 +3,10 @@ import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, ConfigProvider, Dropdown, message, Space } from "antd";
 import { useTheme } from "styled-components";
+import { ISellNewForm } from "../type";
+import { UseFormSetValue, UseFormWatch } from "react-hook-form";
 
-const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
+const GradeSelector = ({ setValue, watch }: IGradeSelectorProps) => {
   const theme = useTheme();
 
   const items: MenuProps["items"] = [
@@ -27,7 +29,7 @@ const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
   ];
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
-    setGrade(e.key);
+    setValue("grade", e.key);
   };
   const menuProps = {
     items,
@@ -45,7 +47,9 @@ const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
           },
           Button: {
             colorText:
-              grade === "-" ? theme.color.text.text3 : theme.color.text.text2,
+              watch("grade") === "-"
+                ? theme.color.text.text3
+                : theme.color.text.text2,
             fontFamily: theme.fontFamily.medium,
             colorBgContainer: theme.color.bg.bg2,
             defaultHoverBorderColor: theme.color.bg.bg3,
@@ -60,7 +64,7 @@ const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
       <Dropdown menu={menuProps} trigger={["click"]}>
         <Button style={{ height: 36, borderRadius: 10 }}>
           <Space>
-            {grade}
+            {watch("grade")}
             <DownOutlined />
           </Space>
         </Button>
@@ -72,6 +76,6 @@ const GradeSelector = ({ setGrade, grade }: IGradeSelectorProps) => {
 export default GradeSelector;
 
 interface IGradeSelectorProps {
-  setGrade: React.Dispatch<React.SetStateAction<string>>;
-  grade: string;
+  setValue: UseFormSetValue<ISellNewForm>;
+  watch: UseFormWatch<ISellNewForm>;
 }
