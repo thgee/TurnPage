@@ -8,6 +8,12 @@ export const Container = styled.div`
     font-family: ${(p) => p.theme.fontFamily.medium};
     font-size: 2rem;
   }
+
+  .error-text {
+    color: red;
+    font-size: 0.9rem;
+    margin: 6px;
+  }
 `;
 
 export const Section1 = styled.section`

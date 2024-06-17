@@ -10,9 +10,9 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { IReport } from "../../apis/report/types";
 import ReportItem from "./ReportItem/ReportItem";
-import { ISell } from "../../apis/store/types";
+import { ISell } from "../../apis/store/apiGetSellList/types";
 import SellItem from "./StoreItem/StoreItem";
-import { apiGetSell } from "../../apis/store/apiGetStore";
+import { apiGetStoreList } from "../../apis/store/apiGetSellList/apiGetStoreList";
 
 // mode : best, sell, report
 const BookList = ({
@@ -100,6 +100,6 @@ const getQueryFn = (
     return ({ pageParam }: { pageParam: number }) =>
       apiGetReports({ pageParam, accessToken });
   if (mode === "best") return apiGetBestSeller;
-  if (mode === "sell") return apiGetSell;
+  if (mode === "sell") return apiGetStoreList;
   // if (mode === "mySell") return apiGetMySell;
 };

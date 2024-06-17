@@ -5,7 +5,7 @@ import Btn1 from "../../buttons/Btn1/Btn1";
 import * as style from "./styles";
 import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { shortenText } from "../../../utils/shortenText";
-import { ISell } from "../../../apis/store/types";
+import { ISell } from "../../../apis/store/apiGetSellList/types";
 
 // 책방, 구매내역에서 띄울 아이템
 const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {

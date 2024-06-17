@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, ConfigProvider, Dropdown, message, Space } from "antd";
 import { useTheme } from "styled-components";
 import { ISellNewForm } from "../type";
-import { UseFormSetValue, UseFormWatch } from "react-hook-form";
+import {
+  UseFormClearErrors,
+  UseFormSetValue,
+  UseFormWatch,
+} from "react-hook-form";
 
-const GradeSelector = ({ setValue, watch }: IGradeSelectorProps) => {
+const GradeSelector = ({
+  setValue,
+  watch,
+  clearErrors,
+}: IGradeSelectorProps) => {
   const theme = useTheme();
 
   const items: MenuProps["items"] = [
@@ -30,6 +38,7 @@ const GradeSelector = ({ setValue, watch }: IGradeSelectorProps) => {
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
     setValue("grade", e.key);
+    if (watch("grade") !== "-") clearErrors("grade");
   };
   const menuProps = {
     items,
@@ -78,4 +87,5 @@ export default GradeSelector;
 interface IGradeSelectorProps {
   setValue: UseFormSetValue<ISellNewForm>;
   watch: UseFormWatch<ISellNewForm>;
+  clearErrors: UseFormClearErrors<ISellNewForm>;
 }

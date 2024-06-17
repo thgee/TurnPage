@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookList from "../../../components/BookList/BookList";
 import * as Style from "./styles";
 import SearchBookModal from "../../../components/SearchBookModal/SearchBookModal";
@@ -11,31 +11,72 @@ import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { StyledTextArea } from "../../../styles/StyledTextArea";
 import { useForm } from "react-hook-form";
 import { ISellNewForm } from "./type";
+import { apiPostSellNew } from "../../../apis/store/apiPostSellNew/apiPostSellNew";
+import { accessTokenState } from "../../../recoil/accessTokenState";
+import { useRecoilValue } from "recoil";
+import { IPostSellNew } from "../../../apis/store/apiPostSellNew/types";
+import { Navigate, useNavigate } from "react-router-dom";
+import { IoConstructOutline } from "react-icons/io5";
 
 const SellNew = () => {
-  const { register, handleSubmit, setValue, reset, watch } =
-    useForm<ISellNewForm>({
-      defaultValues: {
-        grade: "-",
-        price: "",
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<ISellNewForm>({
+    defaultValues: {
+      grade: "-",
+      price: "",
+    },
+  });
 
-  const [selectedBook, setSelectedBook] = useState<
-    ISearchBookAladin | undefined
-  >();
+  const accessToken = useRecoilValue(accessTokenState);
+
+  const [selectedBook, setSelectedBook] = useState<ISearchBookAladin>();
 
   const [modalToggle, setModalToggle] = useState(true);
 
+  const navigate = useNavigate();
+
   const onValid = (data: ISellNewForm) => {
-    console.log(watch());
-    reset();
+    if (watch("grade") === "-") {
+      setError("grade", { message: "* 상태 미입력" }, { shouldFocus: true });
+      return;
+    }
+
+    // validation check 후에 책 등록
+    const postData = {
+      title: data.sellTitle,
+      description: data.sellContent,
+      grade: data.grade,
+      price: Number(data.price.replace(/,/g, "")) as number,
+      bookInfo: selectedBook,
+    };
+    apiPostSellNew(postData as IPostSellNew, accessToken as string)
+      .then(() => {
+        alert("판매글이 성공적으로 등록되었습니다.");
+        navigate("/sell");
+      })
+      .catch((err) => alert("판매글 등록에 실패했습니다."));
+  };
+
+  const onInvalid = () => {
+    // grade 미입력 체크
+    if (watch("grade") === "-")
+      setError("grade", { message: "* 상태 미입력" }, { shouldFocus: true });
   };
 
   return (
     <Style.Container>
       <h1 className="title">도서 판매하기</h1>
-      <form onSubmit={handleSubmit(onValid)}>
+      <form
+        // validation check에 실패하면 상태 미입력 에러도 함께 체크해서 넣어주기
+        onSubmit={handleSubmit(onValid, onInvalid)}
+      >
         <Style.Section1>
           <div className="s1-col1">
             <div className="img-box">
@@ -75,29 +116,40 @@ const SellNew = () => {
               <StyledTextArea style={{ cursor: "pointer" }}>
                 <input
                   {...register("sellTitle", {
-                    required: "판매글 제목을 입력하세요",
+                    required: "* 판매글 제목 미입력",
                   })}
                   placeholder="판매 게시글 제목"
                 />
               </StyledTextArea>
+              <div className="error-text">{errors?.sellTitle?.message}</div>
             </div>
             <div className="row2">
               <div className="grade-wrap">
                 <span className="label">상태</span>
-                <GradeSelector setValue={setValue} watch={watch} />
+                <GradeSelector
+                  setValue={setValue}
+                  watch={watch}
+                  clearErrors={clearErrors}
+                />
+                <div className="error-text">{errors?.grade?.message}</div>
               </div>
               <div className="price-wrap">
                 <span className="label">가격</span>
                 <div className="price-box">
                   <input
                     {...register("price", {
-                      required: "가격을 입력하세요",
+                      required: "* 가격 미입력",
+                      pattern: {
+                        value: /^[0-9]*$/,
+                        message: "* 숫자만 입력할 수 있습니다",
+                      },
                     })}
                     placeholder="가격을 입력하세요"
                     value={convertPriceComma(watch("price"))}
                   />{" "}
                   원
                 </div>
+                <div className="error-text">{errors?.price?.message}</div>
               </div>
             </div>
             <div className="row3">
@@ -107,10 +159,12 @@ const SellNew = () => {
           </div>
         </Style.Section1>
         <Style.Section2>
+          <div className="error-text">{errors?.sellContent?.message}</div>
+
           <StyledTextArea style={{ height: 300 }}>
             <textarea
               {...register("sellContent", {
-                required: "도서에 대한 자세한 설명을 작성해주세요.",
+                required: "* 도서 설명 미입력",
               })}
               placeholder="도서에 대한 자세한 설명을 작성해주세요."
             />

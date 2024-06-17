@@ -2,7 +2,7 @@ import axios from "axios";
 import { ISell } from "./types";
 
 // 판매중인 책 리스트
-export const apiGetSell = ({ pageParam }: { pageParam: number }) => {
+export const apiGetStoreList = ({ pageParam }: { pageParam: number }) => {
   const params = { page: pageParam, size: 10 };
 
   return axios
