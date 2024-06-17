@@ -11,13 +11,13 @@ import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { StyledTextArea } from "../../../styles/StyledTextArea";
 import { useForm } from "react-hook-form";
 import { ISellNewForm } from "./type";
-import { apiPostSellNew } from "../../../apis/store/apiPostSellNew/apiPostSellNew";
 import { accessTokenState } from "../../../recoil/accessTokenState";
 import { useRecoilValue } from "recoil";
-import { IPostSellNew } from "../../../apis/store/apiPostSellNew/types";
 import { Navigate, useNavigate } from "react-router-dom";
 import { IoConstructOutline } from "react-icons/io5";
 import NotSelectBook from "../../../components/sellNew/NotSelectBook/NotSelectBook";
+import { apiPostSellNew } from "../../../apis/sell/apiPostSellNew/apiPostSellNew";
+import { IPostSellNew } from "../../../apis/sell/apiPostSellNew/types";
 
 const SellNew = () => {
   const {

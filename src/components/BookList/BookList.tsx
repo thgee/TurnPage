@@ -5,14 +5,14 @@ import { IBestSeller } from "../../apis/bestseller/types";
 import BestSellerItem from "./BestSellerItem/BestSellerItem";
 import { InView, useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import { apiGetReports } from "../../apis/report/apiGetReports";
+import { apiGetReportList } from "../../apis/report/apiGetReportList";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { IReport } from "../../apis/report/types";
 import ReportItem from "./ReportItem/ReportItem";
-import { ISell } from "../../apis/store/apiGetSellList/types";
-import SellItem from "./StoreItem/StoreItem";
-import { apiGetStoreList } from "../../apis/store/apiGetSellList/apiGetStoreList";
+import SellItem from "./SellItem/SellItem";
+import { ISell } from "../../apis/sell/apiGetSellList/types";
+import { apiGetSellList } from "../../apis/sell/apiGetSellList/apiGetSellList";
 
 // mode : best, sell, report
 const BookList = ({
@@ -59,7 +59,7 @@ const BookList = ({
             {mode === "report" && (
               <ReportItem
                 key={(info as IReport).reportId}
-                bookInfo={info as IReport}
+                reportInfo={info as IReport}
               />
             )}
             {mode === "sell" && (
@@ -96,10 +96,11 @@ const getQueryFn = (
   mode: "best" | "report" | "sell" | "myReport" | "mySell" | "myBuy",
   accessToken: string
 ): any => {
+  if (mode === "best") return apiGetBestSeller;
+  if (mode === "sell") return apiGetSellList;
+
   if (mode === "report")
     return ({ pageParam }: { pageParam: number }) =>
-      apiGetReports({ pageParam, accessToken });
-  if (mode === "best") return apiGetBestSeller;
-  if (mode === "sell") return apiGetStoreList;
+      apiGetReportList({ pageParam, accessToken });
   // if (mode === "mySell") return apiGetMySell;
 };

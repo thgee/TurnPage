@@ -12,6 +12,7 @@ import ReportNew from "../pages/report/ReportNew/ReportNew";
 import SellNew from "../pages/Sell/SellNew/SellNew";
 import Report from "../pages/report/Report/Report";
 import Sell from "../pages/Sell/Sell/Sell";
+import ReportDetail from "../pages/report/ReportDetail/ReportDetail";
 
 const router = createBrowserRouter([
   {
@@ -58,9 +59,14 @@ const router = createBrowserRouter([
         element: <ReportNew />,
       },
       {
+        path: "report/detail/:reportId",
+        element: <ReportDetail />,
+      },
+      {
         path: "book-detail/:bookId",
         element: <BookDetail />,
       },
+
       {
         path: "mypage",
         element: <MyPage />,
