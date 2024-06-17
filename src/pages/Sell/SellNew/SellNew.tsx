@@ -6,7 +6,7 @@ import { ISearchBookAladin } from "../../../apis/aladinOpenAPI/types";
 import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
-import GradeSelector from "./GradeSelector/GradeSelector";
+import GradeSelector from "../../../components/sellNew/GradeSelector/GradeSelector";
 import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { StyledTextArea } from "../../../styles/StyledTextArea";
 import { useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ import { useRecoilValue } from "recoil";
 import { IPostSellNew } from "../../../apis/store/apiPostSellNew/types";
 import { Navigate, useNavigate } from "react-router-dom";
 import { IoConstructOutline } from "react-icons/io5";
+import NotSelectBook from "../../../components/sellNew/NotSelectBook/NotSelectBook";
 
 const SellNew = () => {
   const {
@@ -69,6 +70,19 @@ const SellNew = () => {
     if (watch("grade") === "-")
       setError("grade", { message: "* 상태 미입력" }, { shouldFocus: true });
   };
+
+  // 책을 선택하지 않은 경우
+  if (!selectedBook)
+    return (
+      <>
+        <NotSelectBook setModalToggle={setModalToggle} />
+        <SearchBookModal
+          modalToggle={modalToggle}
+          setModalToggle={setModalToggle}
+          setSelectedBook={setSelectedBook}
+        />
+      </>
+    );
 
   return (
     <Style.Container>
@@ -171,7 +185,7 @@ const SellNew = () => {
           </StyledTextArea>
         </Style.Section2>
       </form>
-      {/* 책 검색 모달 */}
+
       <SearchBookModal
         modalToggle={modalToggle}
         setModalToggle={setModalToggle}
