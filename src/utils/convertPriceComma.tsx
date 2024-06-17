@@ -1,2 +1,4 @@
-export const convertPriceComma = (num: number) =>
-  num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+export const convertPriceComma = (num: number | string) => {
+  if (typeof num === "string") num = num.split(",").join("");
+  return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+};

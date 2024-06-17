@@ -23,13 +23,12 @@ const Profile = () => {
       <Style.Col2>
         <h1>{userInfo?.name}</h1>
         <h2>{userInfo?.email}</h2>
-        <h2>초대코드 : {userInfo?.inviteCode}</h2>
         <h2>
           잔여 포인트 :{" "}
           {userInfo?.point
             .toString()
             .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}{" "}
-          " P
+          P
         </h2>
       </Style.Col2>
       <Style.Col3>

@@ -1,18 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import * as Style from "./styles";
 import { searchScrollMoveState } from "../../recoil/searchScrollMoveState";
 import { accessTokenState } from "../../recoil/accessTokenState";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import SearchBox from "../SearchBox/SearchBox";
+import { throttle } from "lodash";
 
 const Header = () => {
   // 현재 보고있는 페이지의 Link 버튼을 굵게 만들기 위함
   const location = useLocation();
   const isVisit = (path: string) => location.pathname === path;
 
-  const [searchScrollMove, setSearchScrollMove] = useRecoilState(
-    searchScrollMoveState
-  );
+  const setSearchScrollMove = useSetRecoilState(searchScrollMoveState);
+
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   const handleLogout = () => {
@@ -23,11 +24,14 @@ const Header = () => {
 
   // 현재 url을 받아옴
   const { pathname } = useLocation();
-  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // 한 글자라도 입력하면 bestSeller를 숨겨야 함
-    if (e.target.value.length > 0) setSearchScrollMove(true);
-    else setSearchScrollMove(false);
-  };
+
+  // throttle을 걸어서 빠르게 타이핑 해도 스크롤이 끊기면서 이동하지 않도록 함
+  const handleSearchInput = useCallback(
+    throttle(() => {
+      setSearchScrollMove((v) => !v);
+    }, 500),
+    []
+  );
 
   return (
     <Style.Container>
@@ -47,26 +51,25 @@ const Header = () => {
         <Style.Link_ to="report" isVisit={isVisit("/report")}>
           독후감
         </Style.Link_>
-        <Style.Link_ to="store" isVisit={isVisit("/store")}>
+        <Style.Link_ to="sell" isVisit={isVisit("/sell")}>
           책방
         </Style.Link_>
       </Style.RowA>
 
       {/* 검색창 */}
       <Style.RowB>
-        <Style.Search>
+        <SearchBox>
           <input
             type="text"
             placeholder="구매하고 싶은 책을 입력해 주세요"
             onChange={handleSearchInput}
           />
-          <Style.SearchIcon />
-        </Style.Search>
+        </SearchBox>
       </Style.RowB>
 
       {/* 검색창 오른쪽 */}
       <Style.RowC>
-        <Style.Link_ to="#" isVisit={isVisit("/sell")}>
+        <Style.Link_ to="/sell/new" isVisit={isVisit("/sell/new")}>
           책 판매하기
         </Style.Link_>
 

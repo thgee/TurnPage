@@ -1,3 +1,4 @@
+import { theme } from "antd";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -98,15 +99,77 @@ button{
   cursor : pointer;
   transition: all 0.1s;
   &:hover{
-    transform:scale(1.04);
-    box-shadow : 0 0 5px 2px ${(p) => p.theme.color.bg.bg3}
+    transform:scale(1.01);
+    box-shadow : 0 0 5px 0px ${(p) => p.theme.color.border.border3}
   }
 }
 
 
-input{
+input, textarea{
   outline:none;
+  cursor : pointer;
+  resize: none;
+  font-size: 1rem;
+  font-family : ${(p) => p.theme.fontFamily.light};
+
+
+&:focus {
+  cursor: text;
 }
+}
+
+input::placeholder {
+    color: ${(p) => p.theme.color.text.text3};
+    font-family : ${(p) => p.theme.fontFamily.medium}
+  }
+  input::-webkit-input-placeholder {
+    color: ${(p) => p.theme.color.text.text3};
+    font-family : ${(p) => p.theme.fontFamily.medium}
+
+  }
+  input:-ms-input-placeholder {
+    color: ${(p) => p.theme.color.text.text3};
+    font-family : ${(p) => p.theme.fontFamily.medium};
+
+  }
+   textarea::placeholder {
+    font-family : ${(p) => p.theme.fontFamily.medium};
+    color: ${(p) => p.theme.color.text.text3};
+  }
+  textarea::-webkit-input-placeholder {
+    font-family : ${(p) => p.theme.fontFamily.medium};
+    color: ${(p) => p.theme.color.text.text3};
+  }
+  textarea:-ms-input-placeholder {
+    font-family : ${(p) => p.theme.fontFamily.medium};
+    color: ${(p) => p.theme.color.text.text3};
+  }
+
+
+  ::-webkit-scrollbar {
+      width: 5px;
+      height : 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: ${(p) => p.theme.color.icon.icon2};
+      border-radius: 10px;
+      }
+      ::-webkit-scrollbar-track {
+      background-color: #fff;
+      border-radius: 10px;
+      }
+
+  .App{
+
+    >.content{
+      position : relative;
+      max-height : calc(100vh - 56px);
+      overflow : auto;
+    }
+  } 
+  li{
+    list-style: none;
+  }
 `;
 
 export default GlobalStyle;

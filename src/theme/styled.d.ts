@@ -13,6 +13,7 @@ declare module "styled-components" {
       border: {
         border1: stirng;
         border2: stirng;
+        border3: stirng;
       };
       btn: {
         bg1: stirng;

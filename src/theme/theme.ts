@@ -12,6 +12,7 @@ export const lightTheme: DefaultTheme = {
     border: {
       border1: "#000000",
       border2: "#5D5757",
+      border3: "#b5b2b2",
     },
     btn: {
       bg1: "#DFDDDD",

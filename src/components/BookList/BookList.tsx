@@ -3,7 +3,6 @@ import { Container } from "./styles";
 import { apiGetBestSeller } from "../../apis/bestseller/apiGetBestSeller";
 import { IBestSeller } from "../../apis/bestseller/types";
 import BestSellerItem from "./BestSellerItem/BestSellerItem";
-import { ISellItemProps } from "./StoreItem/types";
 import { InView, useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { apiGetReports } from "../../apis/report/apiGetReports";
@@ -11,15 +10,15 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { IReport } from "../../apis/report/types";
 import ReportItem from "./ReportItem/ReportItem";
-import { apiGetStore } from "../../apis/store/apiGetStore";
-import { IStore } from "../../apis/store/types";
-import StoreItem from "./StoreItem/StoreItem";
+import { ISell } from "../../apis/store/apiGetSellList/types";
+import SellItem from "./StoreItem/StoreItem";
+import { apiGetStoreList } from "../../apis/store/apiGetSellList/apiGetStoreList";
 
-// mode : best, store, report
+// mode : best, sell, report
 const BookList = ({
   mode,
 }: {
-  mode: "best" | "store" | "report" | "myReport" | "mySell" | "myBuy";
+  mode: "best" | "sell" | "report" | "myReport" | "mySell" | "myBuy";
 }) => {
   const { ref, inView } = useInView();
 
@@ -31,7 +30,7 @@ const BookList = ({
   }, [inView]);
 
   const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
-    IBestSeller[] | IReport[] | IStore[]
+    IBestSeller[] | IReport[] | ISell[]
   >({
     queryKey: [mode],
     queryFn: getQueryFn(mode, accessToken as string),
@@ -63,16 +62,16 @@ const BookList = ({
                 bookInfo={info as IReport}
               />
             )}
-            {mode === "store" && (
-              <StoreItem
-                key={(info as IStore).salePostId}
-                storeInfo={info as IStore}
+            {mode === "sell" && (
+              <SellItem
+                key={(info as ISell).salePostId}
+                sellInfo={info as ISell}
               />
             )}
             {/* {mode === "mySell" && (
-              <StoreItem
+              <SellItem
                 key={(info as IMySell).salePostId}
-                storeInfo={info as IMySell}
+                sellInfo={info as IMySell}
               />
             )} */}
           </>
@@ -94,13 +93,13 @@ const BookList = ({
 export default BookList;
 
 const getQueryFn = (
-  mode: "best" | "report" | "store" | "myReport" | "mySell" | "myBuy",
+  mode: "best" | "report" | "sell" | "myReport" | "mySell" | "myBuy",
   accessToken: string
 ): any => {
   if (mode === "report")
     return ({ pageParam }: { pageParam: number }) =>
       apiGetReports({ pageParam, accessToken });
   if (mode === "best") return apiGetBestSeller;
-  if (mode === "store") return apiGetStore;
+  if (mode === "sell") return apiGetStoreList;
   // if (mode === "mySell") return apiGetMySell;
 };

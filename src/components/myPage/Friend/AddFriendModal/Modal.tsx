@@ -13,9 +13,7 @@ const AddFriendModal = ({
       style={modalStyle}
     >
       <style.Container>
-        <div className="row1">
-          친구로 등록할 회원의 초대 코드를 입력해 주세요.
-        </div>
+        <div className="row1">친구로 등록할 회원의 이메일을 입력해 주세요.</div>
         <div className="row2">
           <input type="text" />
           <IoPersonAddSharp size={30} style={{ cursor: "pointer" }} />

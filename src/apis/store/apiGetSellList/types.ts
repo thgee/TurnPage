@@ -1,4 +1,4 @@
-export interface IStore {
+export interface ISell {
   salePostId: number;
   bookInfo: {
     bookId: number;
