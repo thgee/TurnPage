@@ -6,7 +6,7 @@ import { ISearchBookAladin } from "../../../apis/aladinOpenAPI/types";
 import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
-import GradeSelector from "../../../components/sellNew/GradeSelector/GradeSelector";
+import GradeSelector from "../../../components/GradeSelector/GradeSelector";
 import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { StyledTextArea } from "../../../styles/StyledTextArea";
 import { useForm } from "react-hook-form";
@@ -15,9 +15,9 @@ import { accessTokenState } from "../../../recoil/accessTokenState";
 import { useRecoilValue } from "recoil";
 import { Navigate, useNavigate } from "react-router-dom";
 import { IoConstructOutline } from "react-icons/io5";
-import NotSelectBook from "../../../components/sellNew/NotSelectBook/NotSelectBook";
 import { apiPostSellNew } from "../../../apis/sell/apiPostSellNew/apiPostSellNew";
 import { IPostSellNew } from "../../../apis/sell/apiPostSellNew/types";
+import NotSelectBook from "../../../components/NotSelectBook/NotSelectBook";
 
 const SellNew = () => {
   const {
@@ -75,7 +75,10 @@ const SellNew = () => {
   if (!selectedBook)
     return (
       <>
-        <NotSelectBook setModalToggle={setModalToggle} />
+        <NotSelectBook
+          setModalToggle={setModalToggle}
+          text="판매할 책을 선택하세요"
+        />
         <SearchBookModal
           modalToggle={modalToggle}
           setModalToggle={setModalToggle}
@@ -168,7 +171,15 @@ const SellNew = () => {
             </div>
             <div className="row3">
               <Btn2 type="submit">판매글 등록하기</Btn2>
-              <Btn2 type="button">취소</Btn2>
+              <Btn2
+                type="button"
+                onClick={() => {
+                  window.confirm("판매글 작성을 중단하시겠습니까?") &&
+                    navigate("/sell");
+                }}
+              >
+                취소
+              </Btn2>
             </div>
           </div>
         </Style.Section1>

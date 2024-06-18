@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { IReport } from "../../../apis/report/types";
+import { IReport } from "../../../apis/report/apiGetReportList/types";
 import { shortenText } from "../../../utils/shortenText";
 import * as style from "./styles";
 
@@ -26,8 +26,10 @@ const ReportItem = ({ reportInfo }: { reportInfo: IReport }) => {
           </div>
         </div>
         <div className="report-info-wrap">
-          <div className="author">{reportInfo.title}</div>
-          <div>{shortenText(reportInfo.content, 150)}</div>
+          <div className="report-title">{reportInfo.title}</div>
+          <div className="report-preview">
+            {shortenText(reportInfo.content, 150)}
+          </div>
         </div>
       </style.ReportInfo>
 

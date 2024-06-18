@@ -53,6 +53,18 @@ export const ReportInfo = styled.div`
   .report-info-wrap {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
+    border-left: 3px solid #bbb;
+    padding-left: 8px;
+
+    .report-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .report-preview {
+      margin-left: 10px;
+    }
   }
 `;
 

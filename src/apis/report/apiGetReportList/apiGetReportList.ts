@@ -1,6 +1,6 @@
 import axios from "axios";
+import { splitTitle } from "../../../utils/splitTitle";
 import { IReport } from "./types";
-import { splitTitle } from "../../utils/splitTitle";
 
 export const apiGetReportList = ({
   pageParam,

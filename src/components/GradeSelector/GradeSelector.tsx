@@ -3,7 +3,7 @@ import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, ConfigProvider, Dropdown, message, Space } from "antd";
 import { useTheme } from "styled-components";
-import { ISellNewForm } from "../../../pages/Sell/SellNew/type";
+import { ISellNewForm } from "../../pages/Sell/SellNew/type";
 import {
   UseFormClearErrors,
   UseFormSetValue,
