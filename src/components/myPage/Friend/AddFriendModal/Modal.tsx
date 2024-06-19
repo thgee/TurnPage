@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
 import * as style from "./styles";
-import { IoPersonAddSharp } from "react-icons/io5";
+import { IoClose, IoPersonAddSharp } from "react-icons/io5";
 
 const AddFriendModal = ({
   modalToggle,
@@ -13,7 +13,19 @@ const AddFriendModal = ({
       style={modalStyle}
     >
       <style.Container>
+        <IoClose
+          size={20}
+          onClick={() => setModalToggle(false)}
+          style={{
+            cursor: "pointer",
+            color: "#aaa",
+            position: "absolute",
+            right: 14,
+            top: 14,
+          }}
+        />
         <div className="row1">친구로 등록할 회원의 이메일을 입력해 주세요.</div>
+
         <div className="row2">
           <input type="text" />
           <IoPersonAddSharp size={30} style={{ cursor: "pointer" }} />

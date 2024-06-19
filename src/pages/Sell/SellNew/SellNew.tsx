@@ -134,6 +134,10 @@ const SellNew = () => {
                 <input
                   {...register("sellTitle", {
                     required: "* 판매글 제목 미입력",
+                    maxLength: {
+                      value: 30,
+                      message: "* 30자 이내로 작성해주세요",
+                    },
                   })}
                   placeholder="판매 게시글 제목"
                 />
@@ -157,7 +161,7 @@ const SellNew = () => {
                     {...register("price", {
                       required: "* 가격 미입력",
                       pattern: {
-                        value: /^[0-9]*$/,
+                        value: /^[0-9,]*$/,
                         message: "* 숫자만 입력할 수 있습니다",
                       },
                     })}
@@ -190,6 +194,10 @@ const SellNew = () => {
             <textarea
               {...register("sellContent", {
                 required: "* 도서 설명 미입력",
+                maxLength: {
+                  value: 1000,
+                  message: "* 1000자 이내로 작성해주세요",
+                },
               })}
               placeholder="도서에 대한 자세한 설명을 작성해주세요."
             />

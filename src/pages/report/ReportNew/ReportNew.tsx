@@ -40,7 +40,7 @@ const ReportNew = () => {
   const navigate = useNavigate();
 
   const onValid = (data: IReportNewForm) => {
-    if (watch("startDate") === "") {
+    if (!watch("startDate")) {
       setError(
         "startDate",
         { message: "* 독서 기간 미입력" },
@@ -90,7 +90,6 @@ const ReportNew = () => {
         />
       </>
     );
-
   return (
     <Style.Container>
       <h1 className="title">독후감 작성</h1>
@@ -135,6 +134,10 @@ const ReportNew = () => {
                 <input
                   {...register("reportTitle", {
                     required: "* 독후감 제목 미입력",
+                    maxLength: {
+                      value: 30,
+                      message: "* 30자 이내로 작성해주세요",
+                    },
                   })}
                   placeholder="독후감 제목"
                 />
@@ -170,6 +173,10 @@ const ReportNew = () => {
             <textarea
               {...register("reportContent", {
                 required: "* 독후감 미입력",
+                maxLength: {
+                  value: 1000,
+                  message: "* 1000자 이내로 작성해주세요",
+                },
               })}
               placeholder="독후감을 작성해주세요"
             />
