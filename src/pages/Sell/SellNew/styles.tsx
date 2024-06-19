@@ -3,6 +3,8 @@ import { StyledTextArea } from "../../../styles/StyledTextArea";
 
 export const Container = styled.div`
   padding-bottom: 50px;
+  max-width: 1400px;
+  margin: 0 auto;
   > .title {
     margin: 30px;
     font-family: ${(p) => p.theme.fontFamily.medium};
@@ -93,7 +95,7 @@ export const Section1 = styled.section`
       width: 100%;
       display: flex;
       justify-content: space-between;
-      flex-grow: 0.8;
+      flex-grow: 0.6;
       padding-left: 30px;
 
       .label {
@@ -127,9 +129,11 @@ export const Section1 = styled.section`
     }
 
     > .row3 {
-      flex-grow: 0.1;
+      flex-grow: 0.4;
       > button {
         margin: 0 10px;
+        padding: 8px 30px;
+        width: fit-content;
       }
     }
   }

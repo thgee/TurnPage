@@ -174,7 +174,7 @@ const SellNew = () => {
               </div>
             </div>
             <div className="row3">
-              <Btn2 type="submit">판매글 등록하기</Btn2>
+              <Btn2 type="submit">등록</Btn2>
               <Btn2
                 type="button"
                 onClick={() => {

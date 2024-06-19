@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import TabBtn from "../../components/home/HomeTabBtn/HomeTabBtn";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  padding-bottom: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+`;
+
 export const Title = styled.h1`
   font-family: ${(p) => p.theme.fontFamily.medium};
   font-size: 2rem;

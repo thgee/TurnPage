@@ -3,6 +3,8 @@ import { StyledTextArea } from "../../../styles/StyledTextArea";
 
 export const Container = styled.div`
   padding-bottom: 50px;
+  max-width: 1400px;
+  margin: 0 auto;
   > .title {
     margin: 30px;
     font-family: ${(p) => p.theme.fontFamily.medium};
@@ -90,7 +92,7 @@ export const Section1 = styled.section`
       flex-grow: 0.2;
     }
     > .period-wrap {
-      flex-grow: 0.4;s
+      flex-grow: 0.4;
     }
 
     > .btn-wrap {
