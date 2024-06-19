@@ -9,9 +9,9 @@ import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
 import ReportNew from "../pages/report/ReportNew/ReportNew";
-import SellNew from "../pages/Sell/SellNew/SellNew";
+import SellNew from "../pages/sell/SellNew/SellNew";
 import Report from "../pages/report/Report/Report";
-import Sell from "../pages/Sell/Sell/Sell";
+import Sell from "../pages/sell/Sell/Sell";
 import ReportDetail from "../pages/report/ReportDetail/ReportDetail";
 
 const router = createBrowserRouter([
@@ -49,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "sell/new",
         element: <SellNew />,
+      },
+      {
+        path: "sell/detail/:salePostId",
+        element: <ReportDetail />,
       },
       {
         path: "report",

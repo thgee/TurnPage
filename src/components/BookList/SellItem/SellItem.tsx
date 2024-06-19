@@ -14,7 +14,10 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
   return (
     <style.Container>
       <div className="img-box">
-        <img src={sellInfo.bookInfo.cover} />
+        <img
+          src={sellInfo.bookInfo.cover}
+          onClick={() => navigate(`/sell/detail/${sellInfo.salePostId}`)}
+        />
       </div>
 
       <div className="r-col">
@@ -42,7 +45,11 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
             >
               해당 도서 정보 살펴보기
             </Btn1>
-            <Btn1>판매 게시글 상세히 보기</Btn1>
+            <Btn1
+              onClick={() => navigate(`/sell/detail/${sellInfo.salePostId}`)}
+            >
+              판매 게시글 상세히 보기
+            </Btn1>
           </div>
         </style.Col2>
       </div>
