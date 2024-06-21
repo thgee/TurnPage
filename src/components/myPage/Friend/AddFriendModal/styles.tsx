@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 5px;
   .row2 {
     display: flex;
     margin-top: 10px;
@@ -14,5 +13,11 @@ export const Container = styled.div`
       border: 2px solid ${(p) => p.theme.color.border.border2};
       margin-right: 10px;
     }
+  }
+
+  .error-text {
+    color: red;
+    font-size: 0.9rem;
+    margin: 6px;
   }
 `;

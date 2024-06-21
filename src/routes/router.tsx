@@ -9,9 +9,11 @@ import RedirectGoogle from "../pages/redirect/RedirectGoogle";
 import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
 import ReportNew from "../pages/report/ReportNew/ReportNew";
-import SellNew from "../pages/Sell/SellNew/SellNew";
+import SellNew from "../pages/sell/SellNew/SellNew";
 import Report from "../pages/report/Report/Report";
-import Sell from "../pages/Sell/Sell/Sell";
+import Sell from "../pages/sell/Sell/Sell";
+import ReportDetail from "../pages/report/ReportDetail/ReportDetail";
+import SellDetail from "../pages/sell/SellDetail/SellDetail";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
         element: <SellNew />,
       },
       {
+        path: "sell/detail/:salePostId",
+        element: <SellDetail />,
+      },
+      {
         path: "report",
         element: <Report />,
       },
@@ -58,9 +64,14 @@ const router = createBrowserRouter([
         element: <ReportNew />,
       },
       {
+        path: "report/detail/:reportId",
+        element: <ReportDetail />,
+      },
+      {
         path: "book-detail/:bookId",
         element: <BookDetail />,
       },
+
       {
         path: "mypage",
         element: <MyPage />,

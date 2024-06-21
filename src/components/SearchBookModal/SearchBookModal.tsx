@@ -6,6 +6,7 @@ import { ISearchBookAladin } from "../../apis/aladinOpenAPI/types";
 import { debounce } from "lodash";
 import * as style from "./styles";
 import { ISearchBookModalProps } from "./type";
+import { IoClose } from "react-icons/io5";
 
 const SearchBookModal = ({
   modalToggle,
@@ -43,6 +44,17 @@ const SearchBookModal = ({
       onRequestClose={() => setModalToggle(false)}
     >
       <style.Container>
+        <IoClose
+          size={20}
+          onClick={() => setModalToggle(false)}
+          style={{
+            cursor: "pointer",
+            color: "#aaa",
+            position: "absolute",
+            right: 14,
+            top: 14,
+          }}
+        />
         <SearchBox className="search-box">
           <input
             type="text"

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   .search-box {
-    margin: 0 auto;
     margin-bottom: 20px;
+    margin-left: 10px;
   }
 
   ul {

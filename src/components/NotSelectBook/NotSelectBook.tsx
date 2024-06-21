@@ -1,7 +1,7 @@
-import Btn2 from "../../buttons/Btn2/Btn2";
+import Btn2 from "../buttons/Btn2/Btn2";
 import * as style from "./styles";
 
-const NotSelectBook = ({ setModalToggle }: INotSelectBookProps) => {
+const NotSelectBook = ({ setModalToggle, text }: INotSelectBookProps) => {
   return (
     <style.Container>
       <img
@@ -19,7 +19,7 @@ const NotSelectBook = ({ setModalToggle }: INotSelectBookProps) => {
         }}
         className="btn"
       >
-        판매할 책을 선택해주세요
+        {text}
       </Btn2>
     </style.Container>
   );
@@ -29,4 +29,5 @@ export default NotSelectBook;
 
 interface INotSelectBookProps {
   setModalToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  text: string;
 }

@@ -1,34 +1,37 @@
 import styled from "styled-components";
-import { StyledTextArea } from "../../../styles/StyledTextArea";
 
 export const Container = styled.div`
   padding-bottom: 50px;
   max-width: 1400px;
   margin: 0 auto;
-  > .title {
+
+  .color-box {
+    background-color: ${(p) => p.theme.color.bg.bg2};
+    border-radius: 10px;
+    box-shadow: 0 4px 4px 0 #aaa;
+    width: 100%;
+
+    line-height: 120%;
+  }
+
+  > .page-title {
     margin: 30px;
     font-family: ${(p) => p.theme.fontFamily.medium};
     font-size: 2rem;
   }
-
-  .error-text {
-    color: red;
-    font-size: 0.9rem;
-    margin: 6px;
-  }
 `;
-
-export const Section1 = styled.section`
+export const Row1 = styled.div`
   padding: 0 100px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
   flex-wrap: wrap;
 
-  .s1-col1 {
+  .row1-col1 {
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
+    margin-right: 50px;
 
     .img-box {
       display: flex;
@@ -77,72 +80,82 @@ export const Section1 = styled.section`
     }
   }
 
-  .s1-col2 {
-    width: 400px;
-    flex-shrink: 0;
+  .row1-col2 {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: end;
-    min-height: 200px;
-    margin: 15px 0;
+    flex-direction: column;
+    width: 500px;
 
-    > .row1 {
-      width: 100%;
-      flex-grow: 0.2;
-    }
-    > .row2 {
-      width: 100%;
+    min-height: 300px;
+
+    .profile-date-wrap {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      flex-grow: 0.6;
-      padding-left: 30px;
 
-      .label {
-        color: ${(p) => p.theme.color.text.text2};
-        font-size: 1.1rem;
-        margin-right: 8px;
-      }
+      .profile-wrap {
+        display: flex;
+        align-items: center;
 
-      .price-box {
-        display: inline-block;
-        background-color: ${(p) => p.theme.color.bg.bg2};
-        font-family: ${(p) => p.theme.fontFamily.medium};
-        width: fit-content;
-        border-radius: 10px;
-        padding-right: 8px;
-        border: 1px solid ${(p) => p.theme.color.btn.bg1};
-        &:focus-within {
-          border: 1px solid ${(p) => p.theme.color.btn.bg2};
+        .profile-img {
+          height: 40px;
+          width: 40px;
+          border-radius: 100px;
+
+          border: 2px solid ${(p) => p.theme.color.text.text2};
+          margin-right: 6px;
         }
-
-        color: ${(p) => p.theme.color.text.text2};
-        input {
-          padding: 8px;
-          border: none;
-          background: none;
-          width: 130px;
+        .name {
+          font-size: 1.1rem;
           font-family: ${(p) => p.theme.fontFamily.medium};
-          color: ${(p) => p.theme.color.text.text2};
         }
+      }
+      .date {
+        color: ${(p) => p.theme.color.text.text2};
+        font-size: 0.9rem;
       }
     }
 
-    > .row3 {
+    .report-title {
+      font-size: 1.1rem;
+      padding: 10px;
+    }
+
+    .period-wrap {
+      width: fit-content;
+      padding: 10px;
+
+      .period-rabel {
+        color: ${(p) => p.theme.color.text.text2};
+      }
+
+      .period-text {
+        margin-left: 8px;
+        margin-top: 4px;
+      }
+    }
+
+    .btn-wrap {
+      align-self: end;
       flex-grow: 0.4;
-      > button {
-        margin: 0 10px;
+      display: flex;
+      align-items: center;
+
+      .btn {
         padding: 8px 30px;
         width: fit-content;
+        margin: 0 10px;
       }
     }
   }
 `;
-export const Section2 = styled.section`
-  padding: 0 100px;
-`;
 
-export const TextArea = styled(StyledTextArea)`
-  width: 80%;
-  height: 500px;
+export const Row2 = styled.div`
+  padding: 0 100px;
+
+  .content-box {
+    min-height: 300px;
+    font-size: 1.1rem;
+    padding: 20px;
+  }
 `;

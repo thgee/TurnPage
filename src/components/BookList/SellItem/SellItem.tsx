@@ -5,7 +5,7 @@ import Btn1 from "../../buttons/Btn1/Btn1";
 import * as style from "./styles";
 import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { shortenText } from "../../../utils/shortenText";
-import { ISell } from "../../../apis/store/apiGetSellList/types";
+import { ISell } from "../../../apis/sell/apiGetSellList/types";
 
 // 책방, 구매내역에서 띄울 아이템
 const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
@@ -14,7 +14,10 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
   return (
     <style.Container>
       <div className="img-box">
-        <img src={sellInfo.bookInfo.cover} />
+        <img
+          src={sellInfo.bookInfo.cover}
+          onClick={() => navigate(`/sell/detail/${sellInfo.salePostId}`)}
+        />
       </div>
 
       <div className="r-col">
@@ -42,7 +45,11 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
             >
               해당 도서 정보 살펴보기
             </Btn1>
-            <Btn1>판매 게시글 상세히 보기</Btn1>
+            <Btn1
+              onClick={() => navigate(`/sell/detail/${sellInfo.salePostId}`)}
+            >
+              판매 게시글 상세히 보기
+            </Btn1>
           </div>
         </style.Col2>
       </div>
