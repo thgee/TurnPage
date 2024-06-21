@@ -21,7 +21,13 @@ const ReportDetail = () => {
   });
 
   const handleDeleteReport = () => {
-    // apiDeleteReport(Number(reportId), accessToken as string).then()
+    window.confirm("독후감을 삭제하시겠습니까?") &&
+      apiDeleteReport(Number(reportId), accessToken as string)
+        .then(() => {
+          alert("독후감을 삭제하였습니다.");
+          navigate("/mypage");
+        })
+        .catch((err) => alert("독후감 삭제에 실패했습니다"));
   };
 
   return (

@@ -43,6 +43,7 @@ export const Container = styled.li`
     > img {
       height: 100%;
       object-fit: contain;
+      cursor: pointer;
     }
   }
 
