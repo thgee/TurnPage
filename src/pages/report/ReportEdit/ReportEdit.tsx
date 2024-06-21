@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
-import BookList from "../../../components/BookList/BookList";
+import { useState } from "react";
 import * as Style from "./styles";
 import SearchBookModal from "../../../components/SearchBookModal/SearchBookModal";
 import { ISearchBookAladin } from "../../../apis/aladinOpenAPI/types";
 import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
-import { convertPriceComma } from "../../../utils/convertPriceComma";
 import { StyledTextArea } from "../../../styles/StyledTextArea";
 import { useForm } from "react-hook-form";
 import { accessTokenState } from "../../../recoil/accessTokenState";
 import { useRecoilValue } from "recoil";
-import { Navigate, useNavigate } from "react-router-dom";
-import { IoConstructOutline } from "react-icons/io5";
-import { IReportNewForm } from "./type";
-import { IPostReportNew } from "../../../apis/report/apiPostReportNew/types";
-import { apiPostReportNew } from "../../../apis/report/apiPostReportNew/apiPostReportNew";
-import NotSelectBook from "../../../components/NotSelectBook/NotSelectBook";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import PeriodSelector from "../../../components/PeriodSelector/PeriodSelector";
+import { apiPatchReportEdit } from "../../../apis/report/apiPatchReportEdit/apiPatchReportEdit";
+import { IReportEditForm } from "./type";
+import { IReportDetail } from "../../../apis/report/apiGetReportDetail/types";
+import { IPatchReportEdit } from "../../../apis/report/apiPatchReportEdit/types";
 
-const ReportNew = () => {
+const ReportEdit = () => {
+  const { reportData }: { reportData: IReportDetail } = useLocation().state;
+
   const {
     register,
     handleSubmit,
@@ -29,17 +27,22 @@ const ReportNew = () => {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm<IReportNewForm>();
+  } = useForm<IReportEditForm>({
+    defaultValues: {
+      reportTitle: reportData.title,
+      reportContent: reportData.content,
+      startDate: reportData.startDate,
+      endDate: reportData.endDate,
+    },
+  });
 
   const accessToken = useRecoilValue(accessTokenState);
 
   const [selectedBook, setSelectedBook] = useState<ISearchBookAladin>();
 
-  const [modalToggle, setModalToggle] = useState(true);
-
   const navigate = useNavigate();
 
-  const onValid = (data: IReportNewForm) => {
+  const onValid = (data: IReportEditForm) => {
     if (!watch("startDate")) {
       setError(
         "startDate",
@@ -49,20 +52,23 @@ const ReportNew = () => {
       return;
     }
 
-    const postData = {
+    const patchData = {
       title: data.reportTitle,
       content: data.reportContent,
-      bookInfo: selectedBook,
       startDate: data.startDate,
       endDate: data.endDate,
     };
 
-    apiPostReportNew(postData as IPostReportNew, accessToken as string)
+    apiPatchReportEdit(
+      reportData.reportId,
+      patchData as IPatchReportEdit,
+      accessToken as string
+    )
       .then(() => {
-        alert("독후감이 성공적으로 등록되었습니다.");
-        navigate("/report");
+        alert("독후감을 수정하였습니다.");
+        navigate(`/report/detail/${reportData.reportId}`);
       })
-      .catch((err) => alert("독후감 등록에 실패했습니다."));
+      .catch((err) => alert("독후감 수정을 실패했습니다."));
   };
 
   const onInvalid = () => {
@@ -75,56 +81,29 @@ const ReportNew = () => {
       );
   };
 
-  // 책을 선택하지 않은 경우
-  if (!selectedBook)
-    return (
-      <>
-        <NotSelectBook
-          setModalToggle={setModalToggle}
-          text="독후감을 작성할 책을 선택하세요"
-        />
-        <SearchBookModal
-          modalToggle={modalToggle}
-          setModalToggle={setModalToggle}
-          setSelectedBook={setSelectedBook}
-        />
-      </>
-    );
   return (
     <Style.Container>
-      <h1 className="title">독후감 작성</h1>
+      <h1 className="title">독후감 수정</h1>
       <form onSubmit={handleSubmit(onValid, onInvalid)}>
         <Style.Section1>
           <div className="s1-col1">
             <div className="img-box">
-              <img
-                src={selectedBook?.cover}
-                onClick={() => {
-                  setModalToggle(true);
-                }}
-              />
-              <Btn2
-                type="button"
-                onClick={() => {
-                  setModalToggle(true);
-                }}
-              >
-                책 선택하기
-              </Btn2>
+              <img src={reportData.bookInfo?.cover} />
             </div>
             <div className="book-info-wrap">
               <li className="title-wrap">
                 <span className="title">
-                  {splitTitle(selectedBook?.title)?.title}
+                  {splitTitle(reportData.bookInfo?.title)?.title}
                 </span>
                 <span className="subTitle">
-                  {splitTitle(selectedBook?.title)?.subTitle}
+                  {splitTitle(reportData.bookInfo?.title)?.subTitle}
                 </span>
               </li>
-              <li>저자 : {selectedBook?.author}</li>
-              <li>출판사 : {selectedBook?.publisher}</li>
+              <li>저자 : {reportData.bookInfo?.author}</li>
+              <li>출판사 : {reportData.bookInfo?.publisher}</li>
               <li>
-                출판일 : {convertDateFormat(selectedBook?.publicationDate)}
+                출판일 :{" "}
+                {convertDateFormat(reportData.bookInfo?.publicationDate)}
               </li>
             </div>
           </div>
@@ -154,12 +133,12 @@ const ReportNew = () => {
               <div className="error-text">{errors?.startDate?.message}</div>
             </div>
             <div className="btn-wrap">
-              <Btn2 type="submit">등록</Btn2>
+              <Btn2 type="submit">수정</Btn2>
               <Btn2
                 type="button"
                 onClick={() => {
-                  window.confirm("독후감 작성을 중단하시겠습니까?") &&
-                    navigate("/report");
+                  window.confirm("독후감 수정을 중단하시겠습니까?") &&
+                    navigate(`/report/detail/${reportData.reportId}`);
                 }}
               >
                 취소
@@ -184,14 +163,8 @@ const ReportNew = () => {
           </StyledTextArea>
         </Style.Section2>
       </form>
-
-      <SearchBookModal
-        modalToggle={modalToggle}
-        setModalToggle={setModalToggle}
-        setSelectedBook={setSelectedBook}
-      />
     </Style.Container>
   );
 };
 
-export default ReportNew;
+export default ReportEdit;

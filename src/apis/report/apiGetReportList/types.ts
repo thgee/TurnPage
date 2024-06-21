@@ -2,8 +2,6 @@ export interface IReport {
   reportId: number;
   title: string;
   content: string;
-  startDate: string;
-  endDate: string;
   bookInfo: {
     bookId: number;
     title: string;

@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   > .title {
     margin-top: 40px;
-    margin-left: 50px;
+    margin-left: 100px;
     font-weight: 700;
     font-size: 2rem;
   }

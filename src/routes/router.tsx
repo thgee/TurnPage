@@ -10,10 +10,11 @@ import RedirectKakao from "../pages/redirect/RedirectKakao";
 import MyPage from "../pages/MyPage/MyPage";
 import ReportNew from "../pages/report/ReportNew/ReportNew";
 import SellNew from "../pages/sell/SellNew/SellNew";
-import Report from "../pages/report/Report/Report";
-import Sell from "../pages/sell/Sell/Sell";
 import ReportDetail from "../pages/report/ReportDetail/ReportDetail";
 import SellDetail from "../pages/sell/SellDetail/SellDetail";
+import ReportList from "../pages/report/ReportList/ReportList";
+import SellList from "../pages/sell/SellList/SellList";
+import ReportEdit from "../pages/report/ReportEdit/ReportEdit";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "sell",
-        element: <Sell />,
+        element: <SellList />,
       },
       {
         path: "sell/new",
@@ -57,11 +58,15 @@ const router = createBrowserRouter([
       },
       {
         path: "report",
-        element: <Report />,
+        element: <ReportList />,
       },
       {
         path: "report/new",
         element: <ReportNew />,
+      },
+      {
+        path: "report/edit",
+        element: <ReportEdit />,
       },
       {
         path: "report/detail/:reportId",

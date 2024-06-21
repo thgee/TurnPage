@@ -3,15 +3,18 @@ import {
   UseFormClearErrors,
   UseFormSetError,
   UseFormSetValue,
+  UseFormWatch,
 } from "react-hook-form";
 import { ConfigProvider, DatePicker } from "antd";
 import dayjs from "dayjs";
 import { IReportNewForm } from "../../pages/report/ReportNew/type";
+import { IReportEditForm } from "../../pages/report/ReportEdit/type";
 
 const PeriodSelector = ({
   setValue,
   clearErrors,
   setError,
+  watch,
 }: IPeriodSelectorProps) => {
   const { RangePicker } = DatePicker;
 
@@ -56,6 +59,7 @@ const PeriodSelector = ({
           className="period-selector"
           id="period-selector"
           onChange={handleChange}
+          value={[dayjs(watch("startDate")), dayjs(watch("endDate"))]}
         />
       </ConfigProvider>
     </Container>
@@ -68,6 +72,7 @@ interface IPeriodSelectorProps {
   setValue: UseFormSetValue<IReportNewForm>;
   setError: UseFormSetError<IReportNewForm>;
   clearErrors: UseFormClearErrors<IReportNewForm>;
+  watch: UseFormWatch<IReportEditForm>;
 }
 
 const Container = styled.div`

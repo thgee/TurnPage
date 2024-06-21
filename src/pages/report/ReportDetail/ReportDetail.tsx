@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
+import { apiDeleteReport } from "../../../apis/report/apiDeleteReport/apiDeleteReport";
 
 const ReportDetail = () => {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ const ReportDetail = () => {
     queryFn: () => apiGetReportDetail(Number(reportId), accessToken as string),
   });
 
-  const handleDeleteReport = () => {};
+  const handleDeleteReport = () => {
+    // apiDeleteReport(Number(reportId), accessToken as string).then()
+  };
 
   return (
     <style.Container>
@@ -74,7 +77,9 @@ const ReportDetail = () => {
           <div className="btn-wrap">
             <Btn2
               className="btn"
-              onClick={() => navigate(`/report/edit/${reportId}`)}
+              onClick={() =>
+                navigate(`/report/edit`, { state: { reportData: reportData } })
+              }
             >
               수정
             </Btn2>
