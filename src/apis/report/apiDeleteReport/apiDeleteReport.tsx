@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export const apiDeleteReport = (reportId: number, accessToken: string) => {
   return axios

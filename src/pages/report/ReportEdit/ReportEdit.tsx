@@ -68,7 +68,9 @@ const ReportEdit = () => {
         alert("독후감을 수정하였습니다.");
         navigate(`/report/detail/${reportData.reportId}`);
       })
-      .catch((err) => alert("독후감 수정을 실패했습니다."));
+      .catch(({ response: { status } }) => {
+        if (status === 401) alert("자신의 독후감만 수정할 수 있습니다.");
+      });
   };
 
   const onInvalid = () => {

@@ -8,6 +8,7 @@ import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
 import { apiDeleteReport } from "../../../apis/report/apiDeleteReport/apiDeleteReport";
+import { AxiosError } from "axios";
 
 const ReportDetail = () => {
   const navigate = useNavigate();
@@ -27,7 +28,9 @@ const ReportDetail = () => {
           alert("독후감을 삭제하였습니다.");
           navigate("/mypage");
         })
-        .catch((err) => alert("독후감 삭제에 실패했습니다"));
+        .catch(({ response: { status } }) => {
+          if (status === 401) alert("자신의 독후감만 삭제할 수 있습니다.");
+        });
   };
 
   return (
