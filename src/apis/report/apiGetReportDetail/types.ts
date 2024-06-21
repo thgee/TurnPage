@@ -1,7 +1,7 @@
 export interface IReportDetail {
   reportId: number;
-  title: number;
-  content: number;
+  title: string;
+  content: string;
   startDate: string;
   endDate: string;
   createdAt: string; // 독후감 등록 날짜

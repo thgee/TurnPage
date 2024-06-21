@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { splitTitle } from "../../../utils/splitTitle";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
+import { apiDeleteReport } from "../../../apis/report/apiDeleteReport/apiDeleteReport";
 
 const ReportDetail = () => {
   const navigate = useNavigate();
@@ -19,7 +20,15 @@ const ReportDetail = () => {
     queryFn: () => apiGetReportDetail(Number(reportId), accessToken as string),
   });
 
-  const handleDeleteReport = () => {};
+  const handleDeleteReport = () => {
+    window.confirm("독후감을 삭제하시겠습니까?") &&
+      apiDeleteReport(Number(reportId), accessToken as string)
+        .then(() => {
+          alert("독후감을 삭제하였습니다.");
+          navigate("/mypage");
+        })
+        .catch((err) => alert("독후감 삭제에 실패했습니다"));
+  };
 
   return (
     <style.Container>
@@ -74,7 +83,9 @@ const ReportDetail = () => {
           <div className="btn-wrap">
             <Btn2
               className="btn"
-              onClick={() => navigate(`/report/edit/${reportId}`)}
+              onClick={() =>
+                navigate(`/report/edit`, { state: { reportData: reportData } })
+              }
             >
               수정
             </Btn2>

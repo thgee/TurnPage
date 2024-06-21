@@ -37,16 +37,9 @@ export const Section1 = styled.section`
 
       & > img {
         box-shadow: 0px 0px 10px 1px #879;
-        cursor: pointer;
-        transition: all 0.3s;
-        /* object-fit: fill; */
         height: 240px;
         margin-bottom: 10px;
         display: block;
-
-        &:hover {
-          transform: scale(1.02);
-        }
       }
     }
 

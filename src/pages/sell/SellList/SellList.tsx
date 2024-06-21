@@ -2,7 +2,7 @@ import BookList from "../../../components/BookList/BookList";
 import FloatingBtn from "../../../components/FloatingBtn/FloatingBtn";
 import * as Style from "./styles";
 
-const Sell = () => {
+const SellList = () => {
   return (
     <Style.Container>
       <h1 className="title">책방</h1>
@@ -12,4 +12,4 @@ const Sell = () => {
   );
 };
 
-export default Sell;
+export default SellList;
