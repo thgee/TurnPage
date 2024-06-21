@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FriendItem from "./FriendItem/FriendItem";
 import * as Style from "./styles";
-import AddFriendModal from "./AddFriendModal/Modal";
+import AddFriendModal from "./AddFriendModal/AddFriendModal";
 
 const Friend = () => {
   const [modalToggle, setModalToggle] = useState(false);

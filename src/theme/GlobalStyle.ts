@@ -78,6 +78,7 @@ a{
 
 *{
   box-sizing:border-box;
+  word-break : break-all;
 }
 
 body{
@@ -105,13 +106,14 @@ button{
 }
 
 
+
 input, textarea{
   outline:none;
   cursor : pointer;
   resize: none;
   font-size: 1rem;
   font-family : ${(p) => p.theme.fontFamily.light};
-
+  word-break : break-all; 
 
 &:focus {
   cursor: text;
@@ -169,6 +171,13 @@ input::placeholder {
   } 
   li{
     list-style: none;
+  }
+
+  
+  pre{
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: auto;
   }
 `;
 

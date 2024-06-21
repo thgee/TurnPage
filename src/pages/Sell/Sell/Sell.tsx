@@ -5,7 +5,7 @@ import * as Style from "./styles";
 const Sell = () => {
   return (
     <Style.Container>
-      <h1 className="title">판매 중인 도서 목록</h1>
+      <h1 className="title">책방</h1>
       <BookList mode="sell" />
       <FloatingBtn path="/sell/new" />
     </Style.Container>

@@ -13,6 +13,7 @@ import SellNew from "../pages/sell/SellNew/SellNew";
 import Report from "../pages/report/Report/Report";
 import Sell from "../pages/sell/Sell/Sell";
 import ReportDetail from "../pages/report/ReportDetail/ReportDetail";
+import SellDetail from "../pages/sell/SellDetail/SellDetail";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "sell/detail/:salePostId",
-        element: <ReportDetail />,
+        element: <SellDetail />,
       },
       {
         path: "report",
