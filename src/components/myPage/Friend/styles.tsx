@@ -14,9 +14,9 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
   padding-bottom: 6px;
   border-bottom: 1px solid ${(p) => p.theme.color.border.border3};
+  font-size: 1.1rem;
 
   > .add-friend {
     padding: 6px 10px;
@@ -39,15 +39,15 @@ export const FollowTabWrap = styled.div<{ isActive: "following" | "follower" }>`
     content: "";
     display: inline-block;
     position: absolute;
-    width: 94px;
+    width: 86px;
     border-radius: 10px;
-    left: -4px;
+    left: -2px;
     bottom: -14px;
     height: 3px;
     background-color: ${(p) => p.theme.color.text.text2};
     transition: all 0.3s;
 
-    transform: translateX(${(p) => (p.isActive === "follower" ? "98px" : 0)});
+    transform: translateX(${(p) => (p.isActive === "follower" ? "92px" : 0)});
   }
 
   .following-btn {

@@ -20,7 +20,6 @@ const Friend = () => {
     queryFn: () => apiGetFollowList(accessToken as string),
   });
 
-  console.log(followTab);
   return (
     <Style.Container>
       <AddFriendModal
