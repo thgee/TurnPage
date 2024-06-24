@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../../../recoil/accessTokenState";
 import { useForm } from "react-hook-form";
+import { AxiosError } from "axios";
 
 const AddFriendModal = ({
   modalToggle,
@@ -25,7 +26,7 @@ const AddFriendModal = ({
         setModalToggle(false);
       })
       .catch((err) => {
-        alert("팔로우에 실패하였습니다. 친구의 이메일을 다시 확인해주세요.");
+        alert(err.response?.data?.message);
         setModalToggle(false);
       });
   };
@@ -55,7 +56,7 @@ const AddFriendModal = ({
             top: 14,
           }}
         />
-        <div className="row1">친구로 등록할 회원의 이메일을 입력해 주세요.</div>
+        <div className="row1">팔로우할 회원의 이메일을 입력해 주세요.</div>
 
         <div className="row2">
           <input

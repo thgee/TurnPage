@@ -7,6 +7,8 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
 import { Navigate, useNavigate } from "react-router-dom";
 import MyPageTabBtn from "../../components/myPage/MyPageTabBtn/MyPageTabBtn";
+import { useQuery } from "@tanstack/react-query";
+import { apiGetFollowList } from "../../apis/myPage/apiGetFollowList";
 
 const MyPage = () => {
   const [tab, setTab] = useState<"myReport" | "mySell" | "myBuy">("myReport");

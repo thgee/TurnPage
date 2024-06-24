@@ -11,3 +11,28 @@ export interface IUserInfo {
 
 export interface IMySell {}
 export interface IMyReport {}
+
+export interface IFollowList {
+  followingInfoList: [
+    {
+      followId: number;
+      memberInfo: {
+        memberId: number;
+        name: string;
+        profileImage: string;
+      };
+    }
+  ];
+  followerInfoList: [
+    {
+      followId: number;
+      memberInfo: {
+        memberId: number;
+        name: string;
+        profileImage: string;
+      };
+    }
+  ];
+  followingCount: number;
+  followerCount: number;
+}
