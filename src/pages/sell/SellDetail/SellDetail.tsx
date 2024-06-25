@@ -7,12 +7,25 @@ import { accessTokenState } from "../../../recoil/accessTokenState";
 import Btn2 from "../../../components/buttons/Btn2/Btn2";
 import { convertDateFormat } from "../../../utils/convertDateFormat";
 import { convertPriceComma } from "../../../utils/convertPriceComma";
+import { apiDeleteSell } from "../../../apis/sell/apiDeleteSell/apiDeleteSell";
 
 const SellDetail = () => {
   const { sellId } = useParams();
 
   const navigate = useNavigate();
   const accessToken = useRecoilValue(accessTokenState);
+
+  const handleDeleteSell = () => {
+    window.confirm("판매글을 삭제하시겠습니까?") &&
+      apiDeleteSell(Number(sellId), accessToken as string)
+        .then(() => {
+          alert("판매글을 삭제하였습니다.");
+          navigate("/mypage");
+        })
+        .catch((err) => {
+          alert("판매글 삭제에 실패했습니다.");
+        });
+  };
 
   const { data: sellData } = useQuery({
     queryKey: ["sellDetail", sellId, accessToken],
@@ -78,8 +91,9 @@ const SellDetail = () => {
             >
               수정
             </Btn2>
-            {/* <Btn2 className="btn" onClick={handleDeleteSell}> */}
-            <Btn2 className="btn">삭제</Btn2>
+            <Btn2 className="btn" onClick={handleDeleteSell}>
+              삭제
+            </Btn2>
           </div>
         </div>
       </style.Row1>
