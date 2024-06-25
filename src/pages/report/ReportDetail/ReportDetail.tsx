@@ -17,7 +17,7 @@ const ReportDetail = () => {
 
   // react-query로 독후감 정보 받아와서 화면에 렌더링 해야 함
   const { data: reportData } = useQuery({
-    queryKey: ["reportDetail", reportId],
+    queryKey: ["reportDetail", reportId, accessToken],
     queryFn: () => apiGetReportDetail(Number(reportId), accessToken as string),
   });
 
@@ -41,9 +41,7 @@ const ReportDetail = () => {
           <div className="img-box">
             <img
               src={reportData?.bookInfo.cover}
-              onClick={() =>
-                navigate(`/book-detail/${reportData?.bookInfo.bookId}`)
-              }
+              onClick={() => navigate(`/book/${reportData?.bookInfo.bookId}`)}
             />
           </div>
 

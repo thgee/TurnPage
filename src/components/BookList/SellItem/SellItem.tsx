@@ -38,11 +38,7 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
         </style.Col1>
         <style.Col2>
           <div className="btn-wrap">
-            <Btn1
-              onClick={() =>
-                navigate(`/book-detail/${sellInfo.bookInfo.bookId}`)
-              }
-            >
+            <Btn1 onClick={() => navigate(`/book/${sellInfo.bookInfo.bookId}`)}>
               해당 도서 정보 살펴보기
             </Btn1>
             <Btn1

@@ -22,9 +22,6 @@ export const apiGetSellList = ({ pageParam }: { pageParam: number }) => {
           } else it.bookInfo.subTitle = "";
           it.bookInfo.title = _title;
 
-          // 별점이 0이면 5로 바꿔주기
-          if (it.star === 0) it.star = 5;
-
           return it;
         });
         return salePostInfoList as ISell[];

@@ -20,7 +20,7 @@ const BestSellerItem = ({ bookInfo }: { bookInfo: IBestSeller }) => {
         <div className="img-box">
           <img
             src={bookInfo.cover}
-            onClick={() => navigate(`/book-detail/${bookInfo.bookId}`)}
+            onClick={() => navigate(`/book/${bookInfo.bookId}`)}
             style={{ cursor: "pointer" }}
           />
         </div>

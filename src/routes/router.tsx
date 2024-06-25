@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         element: <SellNew />,
       },
       {
-        path: "sell/detail/:salePostId",
+        path: "sell/detail/:sellId",
         element: <SellDetail />,
       },
       {
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         element: <ReportDetail />,
       },
       {
-        path: "book-detail/:bookId",
+        path: "book/:bookId",
         element: <BookDetail />,
       },
 

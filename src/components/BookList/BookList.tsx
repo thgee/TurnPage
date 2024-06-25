@@ -31,7 +31,7 @@ const BookList = ({
   }, [inView]);
 
   const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
-    IBestSeller[] | IReport[] | ISell[] | IReport[]
+    IBestSeller[] | IReport[] | ISell[]
   >({
     queryKey: [mode],
     queryFn: getQueryFn(mode, accessToken as string),
