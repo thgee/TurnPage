@@ -1,37 +1,34 @@
 import styled from "styled-components";
+import { StyledTextArea } from "../../../styles/StyledTextArea";
 
 export const Container = styled.div`
   padding-bottom: 50px;
   max-width: 1400px;
   margin: 0 auto;
-
-  .color-box {
-    background-color: ${(p) => p.theme.color.bg.bg2};
-    border-radius: 10px;
-    box-shadow: 0 4px 4px 0 #aaa;
-    width: 100%;
-
-    line-height: 120%;
-  }
-
-  > .page-title {
+  > .title {
     margin: 30px;
     font-family: ${(p) => p.theme.fontFamily.medium};
     font-size: 2rem;
   }
+
+  .error-text {
+    color: red;
+    font-size: 0.9rem;
+    margin: 6px;
+  }
 `;
-export const Row1 = styled.div`
+
+export const Section1 = styled.section`
   padding: 0 100px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
   flex-wrap: wrap;
 
-  .row1-col1 {
+  .s1-col1 {
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
-    margin-right: 50px;
 
     .img-box {
       display: flex;
@@ -40,16 +37,11 @@ export const Row1 = styled.div`
 
       & > img {
         box-shadow: 0px 0px 10px 1px #879;
-        cursor: pointer;
         transition: all 0.3s;
         /* object-fit: fill; */
         height: 240px;
         margin-bottom: 10px;
         display: block;
-
-        &:hover {
-          transform: scale(1.02);
-        }
       }
     }
 
@@ -80,7 +72,7 @@ export const Row1 = styled.div`
     }
   }
 
-  .row1-col2 {
+  .s1-col2 {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -88,10 +80,12 @@ export const Row1 = styled.div`
 
     min-height: 300px;
 
-    .profile-date-wrap {
+    > .profile-date-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
 
       .profile-wrap {
         display: flex;
@@ -116,59 +110,65 @@ export const Row1 = styled.div`
       }
     }
 
-    .sell-title {
-      font-size: 1.1rem;
-      padding: 10px;
+    > .row1 {
+      width: 100%;
+      flex-grow: 0.2;
     }
-
-    .grade-price-wrap {
+    > .row2 {
+      width: 100%;
       display: flex;
+      justify-content: space-between;
+      flex-grow: 0.6;
+      padding-left: 30px;
 
-      .grade-wrap {
-        margin-right: 50px;
+      .label {
+        color: ${(p) => p.theme.color.text.text2};
+        font-size: 1.1rem;
+        margin-right: 8px;
       }
 
-      .grade-wrap,
-      .price-wrap {
-        display: flex;
-        align-items: center;
-
-        > .label {
-          margin-right: 10px;
+      .price-box {
+        display: inline-block;
+        background-color: ${(p) => p.theme.color.bg.bg2};
+        font-family: ${(p) => p.theme.fontFamily.medium};
+        width: fit-content;
+        border-radius: 10px;
+        padding-right: 8px;
+        border: 1px solid ${(p) => p.theme.color.btn.bg1};
+        &:focus-within {
+          border: 1px solid ${(p) => p.theme.color.btn.bg2};
         }
 
-        > .text {
-          background-color: ${(p) => p.theme.color.bg.bg2};
-          border-radius: 10px;
-          border: 1px solid #ddd;
-          padding: 8px 10px;
-          color: ${(p) => p.theme.color.text.text2};
+        color: ${(p) => p.theme.color.text.text2};
+        input {
+          padding: 8px;
+          border: none;
+          background: none;
+          width: 130px;
           font-family: ${(p) => p.theme.fontFamily.medium};
+          color: ${(p) => p.theme.color.text.text2};
         }
       }
     }
 
-    .btn-wrap {
-      align-self: end;
+    > .row3 {
       flex-grow: 0.4;
       display: flex;
       align-items: center;
-
-      .btn {
+      justify-content: end;
+      > button {
+        margin: 0 10px;
         padding: 8px 30px;
         width: fit-content;
-        margin: 0 10px;
       }
     }
   }
 `;
-
-export const Row2 = styled.div`
+export const Section2 = styled.section`
   padding: 0 100px;
+`;
 
-  .content-box {
-    min-height: 300px;
-    font-size: 1.1rem;
-    padding: 20px;
-  }
+export const TextArea = styled(StyledTextArea)`
+  width: 80%;
+  height: 500px;
 `;

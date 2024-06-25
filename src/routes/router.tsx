@@ -15,6 +15,7 @@ import SellDetail from "../pages/sell/SellDetail/SellDetail";
 import ReportList from "../pages/report/ReportList/ReportList";
 import SellList from "../pages/sell/SellList/SellList";
 import ReportEdit from "../pages/report/ReportEdit/ReportEdit";
+import SellEdit from "../pages/sell/SellEdit/SellEdit";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,11 @@ const router = createBrowserRouter([
         element: <SellNew />,
       },
       {
-        path: "sell/detail/:salePostId",
+        path: "sell/edit",
+        element: <SellEdit />,
+      },
+      {
+        path: "sell/detail/:sellId",
         element: <SellDetail />,
       },
       {
@@ -73,7 +78,7 @@ const router = createBrowserRouter([
         element: <ReportDetail />,
       },
       {
-        path: "book-detail/:bookId",
+        path: "book/:bookId",
         element: <BookDetail />,
       },
 
