@@ -159,6 +159,14 @@ export const Row1 = styled.div`
         width: fit-content;
         margin: 0 10px;
       }
+
+      .soldout {
+        cursor: default;
+        &:hover {
+          box-shadow: none;
+          transform: none;
+        }
+      }
     }
   }
 `;

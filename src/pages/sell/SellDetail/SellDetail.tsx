@@ -82,18 +82,38 @@ const SellDetail = () => {
               </div>
             </div>
           </div>
+
           <div className="btn-wrap">
-            <Btn2
-              className="btn"
-              onClick={() =>
-                navigate(`/sell/edit`, { state: { sellData: sellData } })
-              }
-            >
-              수정
-            </Btn2>
-            <Btn2 className="btn" onClick={handleDeleteSell}>
-              삭제
-            </Btn2>
+            {/* 판매완료 시 */}
+            {sellData?.isSold ? (
+              <Btn2 className="btn soldout">판매완료</Btn2>
+            ) : // 판매중이면서 자신의 글이면
+            sellData?.isMine ? (
+              <>
+                <Btn2
+                  className="btn"
+                  onClick={() =>
+                    navigate(`/sell/edit`, { state: { sellData: sellData } })
+                  }
+                >
+                  수정
+                </Btn2>
+                <Btn2 className="btn" onClick={handleDeleteSell}>
+                  삭제
+                </Btn2>
+              </>
+            ) : (
+              // 판매중이면서 타인의 글이면
+
+              <Btn2
+                className="btn"
+                onClick={() =>
+                  navigate(`/buy`, { state: { sellData: sellData } })
+                }
+              >
+                주문하기
+              </Btn2>
+            )}
           </div>
         </div>
       </style.Row1>

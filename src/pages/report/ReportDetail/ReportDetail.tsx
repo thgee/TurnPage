@@ -81,18 +81,26 @@ const ReportDetail = () => {
               {reportData?.startDate} - {reportData?.endDate}
             </div>
           </div>
+
           <div className="btn-wrap">
-            <Btn2
-              className="btn"
-              onClick={() =>
-                navigate(`/report/edit`, { state: { reportData: reportData } })
-              }
-            >
-              수정
-            </Btn2>
-            <Btn2 className="btn" onClick={handleDeleteReport}>
-              삭제
-            </Btn2>
+            {/* 자신의 독후감인 경우*/}
+            {reportData?.isMine && (
+              <>
+                <Btn2
+                  className="btn"
+                  onClick={() =>
+                    navigate(`/report/edit`, {
+                      state: { reportData: reportData },
+                    })
+                  }
+                >
+                  수정
+                </Btn2>
+                <Btn2 className="btn" onClick={handleDeleteReport}>
+                  삭제
+                </Btn2>
+              </>
+            )}
           </div>
         </div>
       </style.Row1>

@@ -5,6 +5,7 @@ export interface IReportDetail {
   startDate: string;
   endDate: string;
   createdAt: string; // 독후감 등록 날짜
+  isMine: boolean;
 
   bookInfo: {
     // 독후감 대상 독서에 관한 정보
