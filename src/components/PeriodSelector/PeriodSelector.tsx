@@ -59,7 +59,6 @@ const PeriodSelector = ({
           className="period-selector"
           id="period-selector"
           onChange={handleChange}
-          value={[dayjs(watch("startDate")), dayjs(watch("endDate"))]}
         />
       </ConfigProvider>
     </Container>

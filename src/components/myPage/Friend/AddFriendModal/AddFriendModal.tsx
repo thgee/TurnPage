@@ -7,10 +7,13 @@ import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../../../recoil/accessTokenState";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
+import { IFollowList } from "../../../../apis/myPage/types";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
 
 const AddFriendModal = ({
   modalToggle,
   setModalToggle,
+  refetchFollowingList,
 }: IAddFriendModalProps) => {
   const accessToken = useRecoilValue(accessTokenState);
 
@@ -23,6 +26,7 @@ const AddFriendModal = ({
     apiPostFollow(accessToken as string, data.email)
       .then(() => {
         alert("팔로우에 성공하였습니다.");
+        refetchFollowingList();
         setModalToggle(false);
       })
       .catch((err) => {
@@ -88,6 +92,9 @@ export default AddFriendModal;
 interface IAddFriendModalProps {
   modalToggle: boolean;
   setModalToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  refetchFollowingList: (
+    options?: RefetchOptions | undefined
+  ) => Promise<QueryObserverResult<IFollowList, Error>>;
 }
 
 const modalStyle: ReactModal.Styles = {

@@ -9,9 +9,6 @@ export interface IUserInfo {
   purchaseCount: number;
 }
 
-export interface IMySell {}
-export interface IMyReport {}
-
 export interface IFollowList {
   followingInfoList: [
     {

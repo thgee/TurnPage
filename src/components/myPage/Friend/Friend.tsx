@@ -15,7 +15,7 @@ const Friend = () => {
 
   const accessToken = useRecoilValue(accessTokenState);
 
-  const { data: followList } = useQuery({
+  const { data: followList, refetch: refetchFollowingList } = useQuery({
     queryKey: ["followList", accessToken],
     queryFn: () => apiGetFollowList(accessToken as string),
   });
@@ -25,6 +25,7 @@ const Friend = () => {
       <AddFriendModal
         modalToggle={modalToggle}
         setModalToggle={setModalToggle}
+        refetchFollowingList={refetchFollowingList}
       />
 
       <Style.Header>
@@ -54,6 +55,9 @@ const Friend = () => {
               key={it.followId}
               img={it.memberInfo.profileImage}
               name={it.memberInfo.name}
+              followId={it.followId}
+              mode="following"
+              refetchFollowingList={refetchFollowingList}
             />
           ))}
         {followTab === "follower" &&
@@ -62,6 +66,9 @@ const Friend = () => {
               key={it.followId}
               img={it.memberInfo.profileImage}
               name={it.memberInfo.name}
+              followId={it.followId}
+              mode="follower"
+              refetchFollowingList={refetchFollowingList}
             />
           ))}
       </Style.List>
