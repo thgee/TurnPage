@@ -8,8 +8,8 @@ export const Container = styled.div`
   .profile-img {
     border-radius: 100px;
     border: 2px solid ${(p) => p.theme.color.border.border2};
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
   .name {

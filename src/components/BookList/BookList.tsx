@@ -13,6 +13,7 @@ import ReportItem from "./ReportItem/ReportItem";
 import SellItem from "./SellItem/SellItem";
 import { ISell } from "../../apis/sell/apiGetSellList/types";
 import { apiGetSellList } from "../../apis/sell/apiGetSellList/apiGetSellList";
+import { apiGetMyReports } from "../../apis/myPage/apiGetMyReports";
 
 // mode : best, sell, report
 const BookList = ({
@@ -30,7 +31,7 @@ const BookList = ({
   }, [inView]);
 
   const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
-    IBestSeller[] | IReport[] | ISell[]
+    IBestSeller[] | IReport[] | ISell[] | IReport[]
   >({
     queryKey: [mode],
     queryFn: getQueryFn(mode, accessToken as string),
@@ -68,12 +69,12 @@ const BookList = ({
                 sellInfo={info as ISell}
               />
             )}
-            {/* {mode === "mySell" && (
-              <SellItem
-                key={(info as IMySell).salePostId}
-                sellInfo={info as IMySell}
+            {mode === "myReport" && (
+              <ReportItem
+                key={(info as IReport).reportId}
+                reportInfo={info as IReport}
               />
-            )} */}
+            )}
           </>
         ))
       )}
@@ -102,5 +103,7 @@ const getQueryFn = (
   if (mode === "report")
     return ({ pageParam }: { pageParam: number }) =>
       apiGetReportList({ pageParam, accessToken });
-  // if (mode === "mySell") return apiGetMySell;
+  if (mode === "myReport")
+    return ({ pageParam }: { pageParam: number }) =>
+      apiGetMyReports({ pageParam, accessToken });
 };

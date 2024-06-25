@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 60px 30px;
   color: ${(p) => p.theme.color.text.text2};
   align-items: center;
+  height: 300px;
 
   .profile-btn {
     cursor: pointer;
