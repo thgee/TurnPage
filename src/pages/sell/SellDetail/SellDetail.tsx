@@ -107,9 +107,7 @@ const SellDetail = () => {
 
               <Btn2
                 className="btn"
-                onClick={() =>
-                  navigate(`/buy`, { state: { sellData: sellData } })
-                }
+                onClick={() => navigate(`/order`, { state: { sellData } })}
               >
                 주문하기
               </Btn2>

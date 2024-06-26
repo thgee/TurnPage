@@ -16,6 +16,7 @@ import ReportList from "../pages/report/ReportList/ReportList";
 import SellList from "../pages/sell/SellList/SellList";
 import ReportEdit from "../pages/report/ReportEdit/ReportEdit";
 import SellEdit from "../pages/sell/SellEdit/SellEdit";
+import Order from "../pages/Order/Order";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,11 @@ const router = createBrowserRouter([
       {
         path: "mypage",
         element: <MyPage />,
+      },
+
+      {
+        path: "order",
+        element: <Order />,
       },
     ],
     errorElement: <NotFound />,
