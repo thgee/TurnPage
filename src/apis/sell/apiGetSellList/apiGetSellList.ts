@@ -3,7 +3,7 @@ import { ISell } from "./types";
 
 // 판매중인 책 리스트
 export const apiGetSellList = ({ pageParam }: { pageParam: number }) => {
-  const params = { page: pageParam, size: 10 };
+  const params = { page: pageParam, size: 10, total: true };
 
   return axios
     .get(`${process.env.REACT_APP_SERVER_DOMAIN}/salePosts`, { params })

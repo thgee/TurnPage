@@ -9,6 +9,7 @@ export const Container = styled.li`
   margin: 14px auto;
   box-shadow: 0 0 14px 0px #bcbcbc;
   justify-content: space-between;
+  position: relative;
 
   .r-col {
     display: flex;
@@ -99,6 +100,13 @@ export const Col1 = styled.div`
   }
 `;
 export const Col2 = styled.div`
+  .is-sold-text {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: ${(p) => p.theme.color.text.text3};
+  }
+
   .btn-wrap {
     display: flex;
     flex-direction: column;

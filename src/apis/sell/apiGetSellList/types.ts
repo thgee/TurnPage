@@ -10,4 +10,5 @@ export interface ISell {
   price: number;
   grade: string;
   createdAt: string;
+  isSold: boolean;
 }

@@ -37,6 +37,7 @@ const SellItem = ({ sellInfo }: { sellInfo: ISell }) => {
           </style.ColorBoxPrice>
         </style.Col1>
         <style.Col2>
+          {sellInfo.isSold && <div className="is-sold-text">판매완료</div>}
           <div className="btn-wrap">
             <Btn1 onClick={() => navigate(`/book/${sellInfo.bookInfo.bookId}`)}>
               해당 도서 정보 살펴보기

@@ -4,7 +4,7 @@ import { apiGetBestSeller } from "../../apis/bestseller/apiGetBestSeller";
 import { IBestSeller } from "../../apis/bestseller/types";
 import BestSellerItem from "./BestSellerItem/BestSellerItem";
 import { InView, useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { apiGetReportList } from "../../apis/report/apiGetReportList/apiGetReportList";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "../../recoil/accessTokenState";
@@ -14,6 +14,8 @@ import SellItem from "./SellItem/SellItem";
 import { ISell } from "../../apis/sell/apiGetSellList/types";
 import { apiGetSellList } from "../../apis/sell/apiGetSellList/apiGetSellList";
 import { apiGetMyReports } from "../../apis/myPage/apiGetMyReports";
+import { Checkbox, CheckboxProps, ConfigProvider } from "antd";
+import { useTheme } from "styled-components";
 
 // mode : best, sell, report
 const BookList = ({
@@ -23,6 +25,7 @@ const BookList = ({
 }) => {
   const { ref, inView } = useInView();
 
+  const theme = useTheme();
   const accessToken = useRecoilValue(accessTokenState);
 
   useEffect(() => {
@@ -45,8 +48,36 @@ const BookList = ({
     },
   });
 
+  const [isSoldToggle, setIsSoldToggle] = useState(false);
+
+  const checkChange: CheckboxProps["onChange"] = (e) => {
+    setIsSoldToggle(e.target.checked);
+  };
+
   return (
     <Container>
+      {/* 판매완료 보기 체크박스 */}
+      {mode === "sell" && (
+        <ConfigProvider
+          theme={{
+            token: {
+              fontFamily: theme.fontFamily.light,
+              colorPrimary: theme.color.icon.icon2,
+              colorText: theme.color.text.text2,
+              colorBorder: theme.color.text.text3,
+            },
+          }}
+        >
+          <Checkbox
+            checked={isSoldToggle}
+            onChange={checkChange}
+            className="check-box"
+          >
+            판매완료 글 포함
+          </Checkbox>
+        </ConfigProvider>
+      )}
+
       {/* 리스트 렌더링 */}
       {data?.pages?.map((infos) =>
         infos.map((info) => (
@@ -63,12 +94,22 @@ const BookList = ({
                 reportInfo={info as IReport}
               />
             )}
-            {mode === "sell" && (
-              <SellItem
-                key={(info as ISell).salePostId}
-                sellInfo={info as ISell}
-              />
-            )}
+            {mode === "sell" &&
+              // 판매완료 포함인 경우
+              (isSoldToggle ? (
+                <SellItem
+                  key={(info as ISell).salePostId}
+                  sellInfo={info as ISell}
+                />
+              ) : (
+                // 판매완료 제외인 경우
+                !(info as ISell).isSold && (
+                  <SellItem
+                    key={(info as ISell).salePostId}
+                    sellInfo={info as ISell}
+                  />
+                )
+              ))}
             {mode === "myReport" && (
               <ReportItem
                 key={(info as IReport).reportId}

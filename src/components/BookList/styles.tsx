@@ -9,7 +9,9 @@ export const Container = styled.ul`
   flex-direction: column;
   margin-top: 30px;
   flex-wrap: wrap;
+  padding-top: 20px;
 
   @media (max-width: 1080px) {
+    width: fit-content;
   }
 `;
