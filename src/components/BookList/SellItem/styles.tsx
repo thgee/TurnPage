@@ -16,20 +16,6 @@ export const Container = styled.li`
     flex-grow: 1;
   }
 
-  .btn-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    margin-right: 30px;
-
-    // Btn1
-    > button {
-      width: fit-content;
-      margin: 6px 0;
-    }
-  }
-
   > .img-box {
     height: 220px;
     width: 200px;
@@ -112,4 +98,17 @@ export const Col1 = styled.div`
     }
   }
 `;
-export const Col2 = styled.div``;
+export const Col2 = styled.div`
+  .btn-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-right: 30px;
+
+    > button {
+      width: fit-content;
+      margin: 6px 0;
+    }
+  }
+`;

@@ -10,6 +10,7 @@ export const Container = styled.div`
   color: ${(p) => p.theme.color.text.text2};
   align-items: center;
   height: 300px;
+  gap: 16px;
 
   .profile-btn {
     cursor: pointer;

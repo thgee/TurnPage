@@ -4,11 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import { accessTokenState } from "../../../recoil/accessTokenState";
 import { apiGetUserInfo } from "../../../apis/myPage/apiGetUserInfo";
 import { IUserInfo } from "../../../apis/myPage/types";
+import PointCharge from "../../PointCharge/PointCharge";
 
 const Profile = () => {
   const accessToken = useRecoilValue(accessTokenState);
 
-  const { data: userInfo } = useQuery<IUserInfo>({
+  const { data: userInfo, refetch } = useQuery<IUserInfo>({
     queryKey: ["userInfo", accessToken],
     queryFn: () => apiGetUserInfo(accessToken as string),
   });
@@ -24,12 +25,13 @@ const Profile = () => {
         <h1>{userInfo?.name}</h1>
         <h2>{userInfo?.email}</h2>
         <h2>
-          잔여 포인트 :{" "}
+          내 포인트 :{" "}
           {userInfo?.point
             .toString()
             .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}{" "}
           P
         </h2>
+        <PointCharge refetch={refetch} />
       </Style.Col2>
       <Style.Col3>
         <h1>
