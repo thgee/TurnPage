@@ -5,30 +5,48 @@ import { GrMoney } from "react-icons/gr";
 import { useState } from "react";
 import { convertPriceComma } from "../../utils/convertPriceComma";
 import Btn1 from "../buttons/Btn1/Btn1";
+import { apiPatchPointCharge } from "../../apis/point/apiPatchPointCharge/apiPatchPointCharge";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { accessTokenState } from "../../recoil/accessTokenState";
+import { IPointChargeProps } from "./type";
+import { chargeModalToggleState } from "../../recoil/chargeModalToggle";
 
-const PointCharge = () => {
-  const [modalToggle, setModalToggle] = useState(false);
+const PointCharge = ({ refetch }: IPointChargeProps) => {
+  const [chargeModalToggle, setChargeModalToggle] = useRecoilState(
+    chargeModalToggleState
+  );
 
   const points = [1000, 5000, 10000, 30000, 50000];
+  const accesstoken = useRecoilValue(accessTokenState);
+
+  const handlePointCharge = (point: number) => {
+    apiPatchPointCharge(accesstoken as string, point)
+      .then(() => {
+        alert(`${convertPriceComma(point)} 포인트를 충전했습니다.`);
+        setChargeModalToggle(false);
+        refetch();
+      })
+      .catch((err) => alert("포인트 충전을 실패했습니다."));
+  };
 
   return (
     <style.Container>
-      <div className="g1" onClick={() => setModalToggle(true)}>
+      <div className="g1" onClick={() => setChargeModalToggle(true)}>
         <GrMoney />
-        <div className="point-recharge">포인트 충전하기</div>
+        <div className="charge-text">포인트 충전하기</div>
       </div>
 
       <ReactModal
-        isOpen={modalToggle}
+        isOpen={chargeModalToggle}
         style={modalStyle}
-        onRequestClose={() => setModalToggle(false)}
+        onRequestClose={() => setChargeModalToggle(false)}
       >
         <style.Modal>
           <div className="header">
             <h1 className="header-title">포인트 충전</h1>
             <IoClose
               size={20}
-              onClick={() => setModalToggle(false)}
+              onClick={() => setChargeModalToggle(false)}
               style={{
                 cursor: "pointer",
                 color: "#aaa",
@@ -43,7 +61,9 @@ const PointCharge = () => {
             {points.map((it) => (
               <li className="point-item">
                 <h1 className="point-text">{convertPriceComma(it)} P</h1>
-                <style.ChargeBtn onClick={() => {}}>충전</style.ChargeBtn>
+                <style.ChargeBtn onClick={() => handlePointCharge(it)}>
+                  충전
+                </style.ChargeBtn>
               </li>
             ))}
           </ul>
