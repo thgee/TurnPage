@@ -16,12 +16,15 @@ import { apiGetSellList } from "../../apis/sell/apiGetSellList/apiGetSellList";
 import { apiGetMyReports } from "../../apis/myPage/apiGetMyReports";
 import { Checkbox, CheckboxProps, ConfigProvider } from "antd";
 import { useTheme } from "styled-components";
+import { apiGetMyOrderList } from "../../apis/myPage/apiGetMyOrderList";
+import { IMyOrder } from "../../apis/myPage/types";
+import OrderItem from "./OrderItem/OrderItem";
 
 // mode : best, sell, report
 const BookList = ({
   mode,
 }: {
-  mode: "best" | "sell" | "report" | "myReport" | "mySell" | "myBuy";
+  mode: "best" | "sell" | "report" | "myReport" | "mySell" | "myOrder";
 }) => {
   const { ref, inView } = useInView();
 
@@ -34,9 +37,9 @@ const BookList = ({
   }, [inView]);
 
   const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery<
-    IBestSeller[] | IReport[] | ISell[]
+    IBestSeller[] | IReport[] | ISell[] | IMyOrder[]
   >({
-    queryKey: [mode],
+    queryKey: [mode, accessToken],
     queryFn: getQueryFn(mode, accessToken as string),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
@@ -94,6 +97,12 @@ const BookList = ({
                 reportInfo={info as IReport}
               />
             )}
+            {mode === "myOrder" && (
+              <OrderItem
+                key={(info as IMyOrder).orderId}
+                orderInfo={info as IMyOrder}
+              />
+            )}
             {mode === "sell" &&
               // 판매완료 포함인 경우
               (isSoldToggle ? (
@@ -135,7 +144,7 @@ const BookList = ({
 export default BookList;
 
 const getQueryFn = (
-  mode: "best" | "report" | "sell" | "myReport" | "mySell" | "myBuy",
+  mode: "best" | "report" | "sell" | "myReport" | "mySell" | "myOrder",
   accessToken: string
 ): any => {
   if (mode === "best") return apiGetBestSeller;
@@ -147,4 +156,7 @@ const getQueryFn = (
   if (mode === "myReport")
     return ({ pageParam }: { pageParam: number }) =>
       apiGetMyReports({ pageParam, accessToken });
+  if (mode === "myOrder")
+    return ({ pageParam }: { pageParam: number }) =>
+      apiGetMyOrderList({ pageParam, accessToken });
 };

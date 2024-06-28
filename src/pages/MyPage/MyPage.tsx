@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiGetFollowList } from "../../apis/myPage/apiGetFollowList";
 
 const MyPage = () => {
-  const [tab, setTab] = useState<"myReport" | "mySell" | "myBuy">("myReport");
+  const [tab, setTab] = useState<"myReport" | "mySell" | "myOrder">("myReport");
 
   const accessToken = useRecoilValue(accessTokenState);
 

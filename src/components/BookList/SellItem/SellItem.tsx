@@ -1,5 +1,4 @@
 import { PiStarFill, PiStarBold } from "react-icons/pi";
-import { ISellItemProps } from "./types";
 import { useNavigate } from "react-router-dom";
 import Btn1 from "../../buttons/Btn1/Btn1";
 import * as style from "./styles";

@@ -48,10 +48,10 @@ const MyPageTabBtn = ({ setTab }: IMyPageTabBtnProps) => {
                   <span>구매내역</span>
                 </div>
               ),
-              value: "myBuy",
+              value: "myOrder",
             },
           ]}
-          onChange={(value: "myReport" | "mySell" | "myBuy") => {
+          onChange={(value: "myReport" | "mySell" | "myOrder") => {
             setTab(value);
           }}
         />
@@ -63,5 +63,7 @@ const MyPageTabBtn = ({ setTab }: IMyPageTabBtnProps) => {
 export default MyPageTabBtn;
 
 interface IMyPageTabBtnProps {
-  setTab: React.Dispatch<React.SetStateAction<"myReport" | "mySell" | "myBuy">>;
+  setTab: React.Dispatch<
+    React.SetStateAction<"myReport" | "mySell" | "myOrder">
+  >;
 }
