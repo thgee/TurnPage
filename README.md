@@ -32,7 +32,7 @@
 
 ## 👥 팀원 구성
 
-<div align="center">
+
 
 |                                                                 **FE**                                                                  |                                                                    **BE**                                                                    |                                                                     **BE**                                                                      |
 | :-------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -56,14 +56,14 @@
 
 | 홈 화면 |
 |----------|
-| <img src="https://github.com/user-attachments/assets/95554519-3040-4117-bce1-9961bfa6dd44" width = "500" /> |
+| <img src="https://github.com/user-attachments/assets/95554519-3040-4117-bce1-9961bfa6dd44" width = "600" /> |
 
 
 <br />
 
 | 베스트셀러 |
 | ---------------------------------- |
-|  <img src="https://github.com/user-attachments/assets/e95a59a2-beb4-4403-a499-10f739d085a9" width = "500" />  |
+|  <img src="https://github.com/user-attachments/assets/e95a59a2-beb4-4403-a499-10f739d085a9" width = "600" />  |
 
 
 <br />
@@ -71,7 +71,7 @@
 
 | 마이 페이지 |
 |----------------|
-| <img src="https://github.com/user-attachments/assets/edf364f0-588e-477e-9bce-33283d7844e5" width = "500" />  |
+| <img src="https://github.com/user-attachments/assets/edf364f0-588e-477e-9bce-33283d7844e5" width = "600" />  |
 
 
 
@@ -79,21 +79,21 @@
 
 | 도서 상세 페이지 |
 | ---------------------------------- |
-|  <img src="https://github.com/user-attachments/assets/8e5a05db-5b04-46ed-8311-801711717237" width = "500" />  |
+|  <img src="https://github.com/user-attachments/assets/8e5a05db-5b04-46ed-8311-801711717237" width = "600" />  |
 
 
 <br />
 
 | 도서 판매글 작성 |
 | ---------------------------------- |
-|  <img src="https://github.com/user-attachments/assets/d21296e3-1ec0-47f8-8c0b-2f838765d5e5" width = "500" />  |
+|  <img src="https://github.com/user-attachments/assets/d21296e3-1ec0-47f8-8c0b-2f838765d5e5" width = "600" />  |
 
 
 <br />
 
 | 독후감 작성 |
 | ---------------------------------- |
-|  <img src="https://github.com/user-attachments/assets/2ed56fae-d29f-44f2-a266-9886b8cc9fcc" width = "500" />  |
+|  <img src="https://github.com/user-attachments/assets/2ed56fae-d29f-44f2-a266-9886b8cc9fcc" width = "600" />  |
 
 
 
